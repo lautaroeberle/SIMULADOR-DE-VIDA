@@ -1,0 +1,1858 @@
+
+//SALUD(FUNCION RANDOM DE ENFERMEDADES)-COMIDA(BAJA CUANDO SE TERMINA EL DIA)-PLATA-ENERGIA(RECUPERAS ENERGIA DURMIENDO)-sueño-gym
+
+
+
+
+
+
+//para apuesta: APruletajuego
+//para juego: ruletajuego
+//corregir saltos de linea
+//+ srand (time(NULL));
+//  NUMERORULETA= rand() % 36 + 1; PARA COLOR Y TIPO
+
+
+
+
+//SEGUIR CON  cout<<"         "<<rul4<<" ($"<<rulap4<<")"<<endl;
+//rulap=0 con TODAS
+//SEGUIR CON rulp (PERDIDAS)  (NO descontar, ya descontadas)
+//SEGUIR CON rulg (GANANCIAS)
+
+//PLATA APOSTADA:
+//PERIDDA: -$
+//GANANCIA: $
+//TOTAL GANADO/PERIDO
+//PLATA ACTUAL (dps de apuesta)
+#include<iostream>
+#include<unistd.h>
+using namespace std;
+int main(){
+
+    int plata=100;
+
+    int adondeir=0, salircasino=10;
+    string ruletaparoimpar, ruletarojoonegro, rtaruleta;
+    string INGRESECUALQUIERCARACTER1,INGRESECUALQUIERCARACTER2, confirmarnombreyedad="n"; 
+    string ruletartaimportante="N";
+    int salud=5, energia=5, hambre=4, sed=4, suenio=2;
+   int comidaobebida=10;
+
+    cout<<"Bienvenido al simulador de vida."<<endl;
+    usleep (1000000);
+    cout<<"Ingresa 1 para empezar tu vida."<<endl;
+    cout<<"Ingresa 2 para recibir una breve explicacion sobre como funciona el simulador."<<endl;
+    int explicacioninicial;
+    cin>>explicacioninicial;
+    while(explicacioninicial!=1&&explicacioninicial!=2){
+        cout<<"Ingresa 1 para empezar tu vida."<<endl;
+        cout<<"Ingresa 2 para recibir una breve explicacion sobre como funciona el simulador."<<endl;
+        cin>>explicacioninicial;
+    }
+    if(explicacioninicial==2){
+        cout<<"\n\nEn este simulador vas a tener necesidades basicas a satisfacer:"<<endl;
+        usleep (1200000);
+        cout<<"Plata ($):"<<endl;
+        cout<<"La plata es escencial. Sin ella no llegaras muy lejos."<<endl;
+        cout<<"Vas a comenzar la vida con $100. Podras ganar plata apostando en el casino y/o trabajando."<<endl;
+        usleep (1200000);
+        cout<<"\nSalud (S):"<<endl;
+        cout<<"Es vital mantenerse con buen nivel de salud."<<endl;
+        cout<<"Este se medira del 0 al 10 (0-10)."<<endl;
+        cout<<"Podras aumentar tu nivel de salud comiendo sano y ejercitandote. Tu nivel de salud disminuira si comes comida chatarra, contraes enfermedades o te lesionas."<<endl;
+        cout<<"Cuidado con llegar a 0... Podrias morir."<<endl;
+        usleep (1200000);
+        cout<<"\nHambre (H):"<<endl;
+        cout<<"Es muy importante mantenerse con un bajo nivel de hambre."<<endl;
+        cout<<"Este se medira del 0 al 10 (0-10)."<<endl;
+        cout<<"Tu nivel de hambre aumentara cada vez que comience un nuevo dia, pero podras disminuirlo comprando comida en la tienda."<<endl;
+        cout<<"Cuidado con llegar a 10... Podrias morir."<<endl;
+        usleep (1200000);
+        cout<<"\nSed (SE):"<<endl;
+        cout<<"Es sumamente importante mantenerse con un bajo nivel de sed."<<endl;
+        cout<<"Este se medira del 0 al 10 (0-10)."<<endl;
+        cout<<"Tu nivel de sed aumentara cada vez que comience un nuevo dia, pero podras disminuirlo comprando bebidas en la tienda."<<endl;
+        cout<<"Cuidado con llegar a 10... Podrias morir."<<endl;
+        usleep (1200000);
+        cout<<"\nSueño (SU):"<<endl;
+        cout<<"Es realmente importante mantenerse con un bajo nivel de sueño."<<endl;
+        cout<<"Este se medira del 0 al 10 (0-10)."<<endl;
+        cout<<"Tu nivel de sueño aumentara conforme realices actividades durante el dia, pero podras disminuirlo durmiendo."<<endl;
+        cout<<"Cuidado con llegar a 10... Podrias morir."<<endl;
+        usleep (1200000);
+        cout<<"\nEnergia (E):"<<endl;
+        cout<<"Si bien la energia no es una necesidad basica a satisfacer, necesitaras tener un buen nivel de energia para desempeñar actividades durante el dia."<<endl;
+        cout<<"Este se medira del 0 al 10 (0-10)."<<endl;
+        cout<<"Tu nivel de energia disminuira conforme realices actividades durante el dia, pero podras aumentarlo durmiendo o consumiendo bebidas energeticas."<<endl;
+        cout<<"\nIngresa cualquier caracter para continuar."<<endl;
+        cin>>INGRESECUALQUIERCARACTER2;
+        cout<<"\n\nInstalaciones del simulador:"<<endl;
+        cout<<"\nCasino:"<<endl;
+        cout<<"Podras apostar plata en él. "<<endl;
+        cout<<"* consume E *"<<endl;
+        usleep (1500000);
+        cout<<"\nTienda:"<<endl;
+        cout<<"Podras comprar consumibles en ella."<<endl;
+        usleep (1500000);
+        cout<<"\nTrabajo:"<<endl;
+        cout<<"Podras ganar plata en él."<<endl;
+        cout<<"* consume E - probabilidad de disminuir S * "<<endl;
+        usleep (1500000);
+        cout<<"\nCasa"<<endl;
+        cout<<"Podras dormir en ella."<<endl;
+        usleep (1500000);
+        cout<<"\nBanco"<<endl;
+        cout<<"Podras pedir prestamos en él."<<endl;
+        cout<<"\n\nIngresa cualquier caracter para comenzar tu vida"<<endl;
+        cin>>INGRESECUALQUIERCARACTER2;
+    } //explicacion explicacioninicial
+    
+    
+    
+    cout<<"-----SIMULADOR DE VIDA-----"<<endl;
+    
+    while(confirmarnombreyedad=="N"||confirmarnombreyedad=="n"){
+    cout<<"\nIngresa tu nombre."<<endl;
+    string nombre;
+    cin>>nombre;
+    cout<<"Ingresa tu edad."<<endl;
+    int edad;
+    cin>>edad;
+    usleep(1000000);
+    cout<<"Nombre: "<<nombre<<endl;
+    cout<<"Edad: "<<edad<<endl;
+    usleep(1000000);
+    cout<<"Confirmar nombre y edad?"<<endl;
+    cout<<"S/N"<<endl;
+    cin>>confirmarnombreyedad;
+    while(confirmarnombreyedad!="S"&&confirmarnombreyedad!="s"&&confirmarnombreyedad!="n"&&confirmarnombreyedad!="N"){
+        cout<<"S/N"<<endl;
+        cin>>confirmarnombreyedad;
+    }
+    
+   }
+    
+            while(salud>0&&plata>0&&suenio<10&&hambre<10&&sed<10){
+            cout<<"\n\nTe encontras en la calle..."<<endl;
+            cout<<"Elegi tu destino:"<<endl;
+            cout<<"1.   -TRABAJO-"<<endl;
+            cout<<"2.   -CASINO-"<<endl;
+            cout<<"3.   -TIENDA-"<<endl;
+            cout<<"4.   -BANCO-"<<endl;
+            cout<<"5.   -CASA- "<<endl;
+           
+            cin>>adondeir;
+            while(adondeir!=1&&adondeir!=2&&adondeir!=3&&adondeir!=4){
+               cout<<"El numero ingresado es invalido."<<endl;
+                cin>>adondeir;
+            }
+
+            switch(adondeir){
+                case 1: //funciontrabajo
+                break;
+
+
+
+                case 2: ruletartaimportante="S";
+                    break;
+
+                case 3: //tienda
+                while (comidaobebida!=0){ //mientras que comidaobebida sea diferente a salir 
+    cout<<"\nQue queres comprar?"<<endl;
+    cout<<"\n1.  COMIDAS"<<endl;
+    cout<<"2.  BEBIDAS"<<endl;
+    cout<<"\n0.  SALIR"<<endl;
+    
+    cin>>comidaobebida; //toma valor 1
+    while(comidaobebida!=1&&comidaobebida!=2&&comidaobebida!=0){
+        cout<<"\nEl numero ingresado es invalido."<<endl;
+    cin>>comidaobebida;
+    }
+    
+    if(comidaobebida==1){
+       int comidas=10;
+    while(comidas!=0){  //while salir de comidas
+    cout<<"\n\n--COMIDAS--"<<endl<<endl;
+    cout<<"Tenes $"<<plata<<"."<<endl<<endl;
+    cout<<"Nivel de hambre: "<<hambre<<"/10"<<endl<<endl;
+    cout<<"Comprar..."<<endl;
+     cout<<"\n1. Hamburguesa  ($25)"<<endl;
+    cout<<"2. Papas fritas  ($15)"<<endl;
+    cout<<"3. Tarta de verdura  ($30)"<<endl;
+    cout<<"4. Caviar c/ salsa de mariscos  ($400)"<<endl;
+    cout<<"5. Helado  ($10)"<<endl;
+    cout<<"\n0. Salir"<<endl;
+    cin>>comidas;
+    while(comidas!=1&&comidas!=2&&comidas!=3&&comidas!=4&&comidas!=5&&comidas!=0){
+       cout<<"\nEl numero ingresado es invalido."<<endl;
+     cin>>comidas;
+    }  
+  
+   switch(comidas){
+       case 1:
+       if((plata-25)<0){
+           cout<<"\nNo tenes suficiente plata."<<endl;
+       }
+       else if ((plata-25)>=0){
+           cout<<"\nCompraste una hamburguesa."<<endl;
+               cout<<"[H] "<<hambre<<" --> ";
+               hambre=hambre-2;
+               if (hambre<0){
+    hambre=0;
+    }
+               cout<<hambre<<" | [Sa] " <<salud<<" --> ";
+               salud=salud-0.5;
+               cout<<salud<<endl;
+              cout<<"Costo: -$25"<<endl;
+               plata=plata-25;
+               usleep(2000000);
+       }
+       break;
+       case 2:
+       if((plata-15)<0){
+           cout<<"\nNo tenes suficiente plata."<<endl;
+           }
+          else if ((plata-15)>=0){
+           cout<<"\nCompraste papas fritas."<<endl;
+               cout<<"[H] "<<hambre<<" --> ";
+               hambre=hambre-1;
+               if (hambre<0){
+    hambre=0;
+    }
+               cout<<hambre<<" | [Sa] " <<salud<<" --> ";
+               salud=salud-0.25;
+               cout<<salud<<endl;
+              cout<<"Costo: -$15"<<endl;
+               plata=plata-15;
+               usleep(2000000);
+          }
+       break;
+       case 3:
+       if((plata-30)<0){
+           cout<<"\nNo tenes suficiente plata."<<endl;
+           }
+         else if((plata-30)>=0){  
+       cout<<"\nCompraste una tarta de verduras."<<endl;
+               cout<<"[H] "<<hambre<<" --> ";
+               hambre=hambre-1;
+               if (hambre<0){
+    hambre=0;
+    }
+               cout<<hambre<<" | [Sa] " <<salud<<" --> ";
+               salud=salud+0.5;
+                if (salud>10){
+        salud=10;
+    }
+               cout<<salud<<endl;
+               cout<<"Costo: -$30"<<endl;
+               plata=plata-30;
+               usleep(2000000);
+          }
+          
+       break;
+       case 4:
+       if((plata-400)<0){
+           cout<<"\nNo tenes suficiente plata"<<endl;
+           }
+       else if((plata-400)>=0){
+           cout<<"\nCompraste caviar c/ salsa de mariscos."<<endl;
+               cout<<"[H] "<<hambre<<" --> ";
+               hambre=0;
+               cout<<hambre<<" | [Sa] " <<salud<<" --> ";
+               salud=10;
+               cout<<salud<<endl;
+               cout<<"Costo: -$400"<<endl;
+               plata=plata-400;
+               usleep(2000000);
+       }
+       break;
+       case 5:
+       if((plata-10)<0){
+           cout<<"\nNo tenes suficiente plata"<<endl;
+           }
+       else if((plata-10)>=0){
+       cout<<"\nCompraste un helado."<<endl;
+               cout<<"[H] "<<hambre<<" --> ";
+               hambre=hambre-0.5;
+               if (hambre<0){
+    hambre=0;
+    }
+               cout<<hambre<<" | [Sa] " <<salud<<" --> ";
+               salud=salud-0.25;
+               cout<<salud<<endl;
+               cout<<"Costo: -$10"<<endl;
+               plata=plata-10;
+               usleep(2000000);
+       }
+       break;
+       
+   }
+    } //while final comidas
+    } //if comidaobebida= comida fin del if
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    else if (comidaobebida==2){
+        int bebidas=10;
+        while(bebidas!=0){
+    
+     cout<<"\n\n--BEBIDAS--"<<endl<<endl;
+      cout<<"Tenes $"<<plata<<"."<<endl<<endl;
+    cout<<"Nivel de sed: "<<sed<<"/10"<<endl<<endl;
+     cout<<"Comprar..."<<endl;
+     cout<<"\n1. Agua Villavicencio  ($15)"<<endl;
+    cout<<"2. Agua Smart Water  ($30)"<<endl;
+    cout<<"3. Sprite  ($20)"<<endl;
+    cout<<"4. Cerveza  ($25)"<<endl;
+    cout<<"5. Red Bull  ($50)"<<endl;
+    cout<<"\n0. Salir"<<endl;
+    cin>>bebidas;
+    while(bebidas!=1&&bebidas!=2&&bebidas!=3&&bebidas!=4&&bebidas!=5&&bebidas!=0){
+         cout<<"Comprar..."<<endl;
+     cout<<"\n1. Agua Villavicencio  ($15)"<<endl;
+    cout<<"2. Agua Smart Water  ($30)"<<endl;
+    cout<<"3. Sprite  ($20)"<<endl;
+    cout<<"4. Cerveza  ($25)"<<endl;
+    cout<<"5. Red Bull  ($50)"<<endl;
+    cout<<"\n0. Salir"<<endl;
+     cin>>bebidas;
+    }
+    switch(bebidas){
+       case 1:
+       if((plata-15)<0){
+           cout<<"\nNo tenes suficiente plata."<<endl;
+       }
+       else if ((plata-15)>=0){
+           cout<<"\nCompraste un agua Villavicencio."<<endl;
+               cout<<"[Se] "<<sed<<" --> ";
+               sed=sed-1;
+               if (sed<0){
+    sed=0;
+    }
+               cout<<sed<<" | [Sa] " <<salud<<" --> ";
+               salud=salud+0.25;
+                if (salud>10){
+        salud=10;
+        usleep(2000000);
+    }
+               cout<<salud<<endl;
+               cout<<"Costo: -$15"<<endl;
+               plata=plata-15;
+       }
+       break;
+       case 2:
+       if((plata-30)<0){
+           cout<<"\nNo tenes suficiente plata."<<endl;
+           }
+          else if ((plata-30)>=0){
+           cout<<"\nCompraste un agua Smart Water."<<endl;
+               cout<<"[Se] "<<sed<<" --> ";
+               sed=sed-1;
+               if (sed<0){
+    sed=0;
+    }
+               cout<<sed<<" | [Sa] " <<salud<<" --> ";
+               salud=salud+1;
+                if (salud>10){
+        salud=10;
+        usleep(2000000);
+    }
+               cout<<salud<<endl;
+               cout<<"Costo: -$30"<<endl;
+               plata=plata-30;
+          }
+       break;
+       case 3:
+       if((plata-20)<0){
+           cout<<"\nNo tenes suficiente plata."<<endl;
+           }
+          else if ((plata-20)>=0){
+           cout<<"\nCompraste una sprite."<<endl;
+               cout<<"[Se] "<<sed<<" --> ";
+               sed=sed-1.5;
+               if (sed<0){
+    sed=0;
+    }
+               cout<<sed<<" | [Sa] " <<salud<<" --> ";
+               salud=salud-0.25;
+               cout<<salud<<endl;
+               cout<<"Costo: -$20"<<endl;
+               plata=plata-20;
+               usleep(2000000);
+          }
+          
+       break;
+       case 4:
+       if((plata-25)<0){
+           cout<<"\nNo tenes suficiente plata."<<endl;
+           }
+          else if ((plata-25)>=0){
+           cout<<"\nCompraste un agua Smart Water."<<endl;
+               cout<<"[Se] "<<sed<<" --> ";
+               sed=sed-2;
+               if (sed<0){
+    sed=0;
+    }
+               cout<<sed<<" | [Sa] " <<salud<<" --> ";
+               salud=salud-0.25;
+               cout<<salud<<endl;
+               cout<<"Costo: -$25"<<endl;
+               plata=plata-25;
+               usleep(2000000);
+          }
+       break;
+       case 5:
+      if((plata-50)<0){
+           cout<<"\nNo tenes suficiente plata."<<endl;
+           }
+          else if ((plata-50)>=0){
+           cout<<"\nCompraste un agua Smart Water."<<endl;
+               cout<<"[Se] "<<sed<<" --> ";
+               sed=sed-2;
+               if (sed<0){
+    sed=0;
+    }
+               cout<<sed<<" | [Sa] "<<salud<<" --> ";
+               salud=salud-0.5;
+               cout<<salud<<" | [E] "<<energia<<" --> ";
+               energia=energia+2;
+               if(energia>10){
+                   energia=10;
+               }
+               cout<<energia<<endl;
+               cout<<"Costo: -$50"<<endl;
+               plata=plata-50;
+               usleep(2000000);
+          }
+       break;
+       
+   }
+    }//mientras que bebida sea dif a salir
+    }//else comidaobebida==2
+    }//mientras que comida o bebida sea diferente a salir fin del while
+    comidaobebida=10;
+                
+                
+                
+                    break;
+
+                case 4: //funcion4 -banco-
+                    break;
+                case 5: //funcion -casa-
+                break;
+                
+
+            }
+
+
+
+
+
+
+//casino
+
+    while(ruletartaimportante=="S"||ruletartaimportante=="s"){
+        int rul1=-1, rul2=-1,rul3=-1,rul4=-1,rul5=-1,rul6=-1,rul7=-1,rul8=-1,rul9=-1,rul10=-1,rul11=-1,rul12=-1,rul13=-1,rul14=-1,rul15=-1,rul16=-1,rul17=-1,rul18=-1,rul19=-1,rul20=-1,rul21=-1,rul22=-1,rul23=-1,rul24=-1,rul25=-1,rul26=-1,rul27=-1,rul28=-1,rul29=-1,rul30=-1,rul31=-1,rul32=-1,rul33=-1,rul34=-1,rul35=-1,rul36=-1;
+        int rulap1=0,rulap2=0,rulap3=0,rulap4=0,rulap5=0,rulap6=0,rulap7=0,rulap8=0,rulap9=0,rulap10=0,rulap11=0,rulap12=0,rulap13=0,rulap14=0,rulap15=0,rulap16=0,rulap17=0,rulap18=0,rulap19=0,rulap20=0,rulap21=0,rulap22=0,rulap23=0,rulap24=0,rulap25=0,rulap26=0,rulap27=0,rulap28=0,rulap29=0,rulap30=0,rulap31=0,rulap32=0,rulap33=0,rulap34=0,rulap35=0,rulap36=0;
+        int APruletaparoimpar=0;
+        int APruletarojoonegro=0;
+        cout<<"-----RULETA-----"<<endl<<endl;
+        cout<<"-La ruleta tiene 36 casilleros con 1 numero en cada uno. "<<endl;
+        cout<<"-Le podes apostar a mas de un numero, a su tipo (par o impar) y al color casillero del numero que va a tocar (rojo o negro)."<<endl<<endl;
+        cout<<"\nIngrese 1 para continuar."<<endl;
+        cout<<"Ingrese 0 para salir."<<endl;
+        cin>>salircasino;
+        while(salircasino!=1&&salircasino!=0){
+            cout<<"El numero ingresado es invalido."<<endl;
+            cin>>salircasino;
+        }
+        if(salircasino==1){
+        cout<<endl<<endl<<endl;
+
+        cout<<"A que numero le vas a apostar?"<<endl;
+        cout<<"1-36"<<endl;
+        cout<<"Ingrese 0 si NO quieres apostarle a un numero."<<endl;
+        cin>> rul1;
+
+        while(rul1>36||rul1<0){
+            cout<<"Ingrese un numero del 1 al 36 para apostar."<<endl;
+            cout<<"Ingrese 0 si NO quieres apostarle a un numero."<<endl;
+            cin>>rul1;
+        }
+        if(plata>0&&rul1!=0&&rul2!=0&&rul3!=0&&rul4!=0&&rul5!=0&&rul6!=0&&rul7!=0&&rul8!=0&&rul9!=0&&rul10!=0&&rul11!=0&&rul12!=0&&rul13!=0&&rul14!=0&&rul15!=0&&rul16!=0&&rul17!=0&&rul18!=0&&rul19!=0&&rul20!=0&&rul21!=0&&rul22!=0&&rul23!=0&&rul24!=0&&rul25!=0&&rul26!=0&&rul27!=0&&rul28!=0&&rul29!=0&&rul30!=0&&rul31!=0&&rul32!=0&&rul33!=0&&rul34!=0&&rul35!=0&&rul36!=0){
+
+            cout <<"\nLe apostaste al numero "<<rul1<<"."<<endl<<endl; //rul1
+            cout<< "Cuanta plata queres apostar?"<<endl;
+            cout<< "Tu plata es: $"<<plata<<endl;
+            cout<<"Si le pegas, lo apostado se multiplicara x35."<<endl;
+            cin>>rulap1;
+            while(rulap1>plata){
+                cout<<"No tenes suficiente plata."<<endl;
+                cout<< "Cuanta plata queres apostar?"<<endl;
+                cout<< "Tu plata es: $"<<plata<<endl;
+                cin>>rulap1;
+            }
+            cout<<"\nLe apostaste $"<<rulap1<<" al numero "<<rul1<<"."<<endl<<endl;
+            plata=plata-rulap1;
+            cout<<"A que otro numero le vas a apostar?"<<endl;    //rul2
+            cout<<"1-36"<<endl;
+            cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+            cin>> rul2;
+            while(rul2>36||rul2<0||rul2==rul1){
+                cout<<"\nIngrese un numero del 1 al 36 que no haya ingresado anteriormente para apostar."<<endl;
+                cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+                cin>>rul2;
+            }
+        }
+        if(plata>0&&rul1!=0&&rul2!=0&&rul3!=0&&rul4!=0&&rul5!=0&&rul6!=0&&rul7!=0&&rul8!=0&&rul9!=0&&rul10!=0&&rul11!=0&&rul12!=0&&rul13!=0&&rul14!=0&&rul15!=0&&rul16!=0&&rul17!=0&&rul18!=0&&rul19!=0&&rul20!=0&&rul21!=0&&rul22!=0&&rul23!=0&&rul24!=0&&rul25!=0&&rul26!=0&&rul27!=0&&rul28!=0&&rul29!=0&&rul30!=0&&rul31!=0&&rul32!=0&&rul33!=0&&rul34!=0&&rul35!=0&&rul36!=0){
+            cout <<"\nLe apostaste al numero "<<rul2<<"."<<endl<<endl;
+            cout<< "Cuanta plata queres apostar?"<<endl;
+            cout<< "Tu plata es: $"<<plata<<endl;
+            cin>>rulap2;
+            while(rulap2>plata){
+                cout<<"No tenes suficiente plata."<<endl;
+                cout<< "Cuanta plata queres apostar?"<<endl;
+                cout<< "Tu plata es: $"<<plata<<endl;
+                cin>>rulap2;
+            }
+            cout<<"\nLe apostaste $"<<rulap2<<" al numero "<<rul2<<"."<<endl<<endl;
+            plata=plata-rulap2;
+
+            cout<<"A que otro numero le vas a apostar?"<<endl;    //rul3
+            cout<<"1-36"<<endl;
+            cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+            cin>> rul3;
+            while(rul3>36||rul3<0||rul3==rul1||rul3==rul2){
+                cout<<"\nIngrese un numero del 1 al 36 que no haya ingresado anteriormente para apostar."<<endl;
+                cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+                cin>>rul3;
+            }
+        }
+        if(plata>0&&rul1!=0&&rul2!=0&&rul3!=0&&rul4!=0&&rul5!=0&&rul6!=0&&rul7!=0&&rul8!=0&&rul9!=0&&rul10!=0&&rul11!=0&&rul12!=0&&rul13!=0&&rul14!=0&&rul15!=0&&rul16!=0&&rul17!=0&&rul18!=0&&rul19!=0&&rul20!=0&&rul21!=0&&rul22!=0&&rul23!=0&&rul24!=0&&rul25!=0&&rul26!=0&&rul27!=0&&rul28!=0&&rul29!=0&&rul30!=0&&rul31!=0&&rul32!=0&&rul33!=0&&rul34!=0&&rul35!=0&&rul36!=0){
+            cout <<"\nLe apostaste al numero "<<rul3<<"."<<endl<<endl;
+            cout<< "Cuanta plata queres apostar?"<<endl;
+            cout<< "Tu plata es: $"<<plata<<endl;
+            cin>>rulap3;
+            while(rulap3>plata){
+                cout<<"No tenes suficiente plata."<<endl;
+                cout<< "Cuanta plata queres apostar?"<<endl;
+                cout<< "Tu plata es: $"<<plata<<endl;
+                cin>>rulap3;
+            }
+            cout<<"\nLe apostaste $"<<rulap3<<" al numero "<<rul3<<"."<<endl<<endl;
+            plata=plata-rulap3;
+
+            cout<<"A que otro numero le vas a apostar?"<<endl;    //rul4
+            cout<<"1-36"<<endl;
+            cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+            cin>> rul4;
+            while(rul4>36||rul4<0||rul4==rul1||rul4==rul2||rul4==rul3){
+                cout<<"\nIngrese un numero del 1 al 36 que no haya ingresado anteriormente para apostar."<<endl;
+                cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+                cin>>rul4;
+            }
+        }
+        if(plata>0&&rul1!=0&&rul2!=0&&rul3!=0&&rul4!=0&&rul5!=0&&rul6!=0&&rul7!=0&&rul8!=0&&rul9!=0&&rul10!=0&&rul11!=0&&rul12!=0&&rul13!=0&&rul14!=0&&rul15!=0&&rul16!=0&&rul17!=0&&rul18!=0&&rul19!=0&&rul20!=0&&rul21!=0&&rul22!=0&&rul23!=0&&rul24!=0&&rul25!=0&&rul26!=0&&rul27!=0&&rul28!=0&&rul29!=0&&rul30!=0&&rul31!=0&&rul32!=0&&rul33!=0&&rul34!=0&&rul35!=0&&rul36!=0){
+            cout <<"\nLe apostaste al numero "<<rul4<<"."<<endl<<endl;
+            cout<< "Cuanta plata queres apostar?"<<endl;
+            cout<< "Tu plata es: $"<<plata<<endl;
+            cin>>rulap4;
+            while(rulap4>plata){
+                cout<<"No tenes suficiente plata."<<endl;
+                cout<< "Cuanta plata queres apostar?"<<endl;
+                cout<< "Tu plata es: $"<<plata<<endl;
+                cin>>rulap4;
+            }
+            cout<<"\nLe apostaste $"<<rulap4<<" al numero "<<rul4<<"."<<endl<<endl;
+            plata=plata-rulap4;
+
+            cout<<"A que otro numero le vas a apostar?"<<endl;    //rul5
+            cout<<"1-36"<<endl;
+            cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+            cin>> rul5;
+            while(rul5>36||rul5<0||rul5==rul1||rul5==rul2||rul5==rul3||rul5==rul4){
+                cout<<"\nIngrese un numero del 1 al 36 que no haya ingresado anteriormente para apostar."<<endl;
+                cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+                cin>>rul5;
+            }
+        }
+        if(plata>0&&rul1!=0&&rul2!=0&&rul3!=0&&rul4!=0&&rul5!=0&&rul6!=0&&rul7!=0&&rul8!=0&&rul9!=0&&rul10!=0&&rul11!=0&&rul12!=0&&rul13!=0&&rul14!=0&&rul15!=0&&rul16!=0&&rul17!=0&&rul18!=0&&rul19!=0&&rul20!=0&&rul21!=0&&rul22!=0&&rul23!=0&&rul24!=0&&rul25!=0&&rul26!=0&&rul27!=0&&rul28!=0&&rul29!=0&&rul30!=0&&rul31!=0&&rul32!=0&&rul33!=0&&rul34!=0&&rul35!=0&&rul36!=0){
+            cout <<"\nLe apostaste al numero "<<rul5<<"."<<endl<<endl;
+            cout<< "Cuanta plata queres apostar?"<<endl;
+            cout<< "Tu plata es: $"<<plata<<endl;
+            cin>>rulap5;
+            while(rulap5>plata){
+                cout<<"No tenes suficiente plata."<<endl;
+                cout<< "Cuanta plata queres apostar?"<<endl;
+                cout<< "Tu plata es: $"<<plata<<endl;
+                cin>>rulap5;
+            }
+            cout<<"\nLe apostaste $"<<rulap5<<" al numero "<<rul5<<"."<<endl<<endl;
+            plata=plata-rulap5;
+
+            cout<<"A que otro numero le vas a apostar?"<<endl;    //rul6
+            cout<<"1-36"<<endl;
+            cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+            cin>> rul6;
+            while(rul6>36||rul6<0||rul6==rul1||rul6==rul2||rul6==rul3||rul6==rul4||rul6==rul5){
+                cout<<"\nIngrese un numero del 1 al 36 que no haya ingresado anteriormente para apostar."<<endl;
+                cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+                cin>>rul6;
+            }
+        }
+        if(plata>0&&rul1!=0&&rul2!=0&&rul3!=0&&rul4!=0&&rul5!=0&&rul6!=0&&rul7!=0&&rul8!=0&&rul9!=0&&rul10!=0&&rul11!=0&&rul12!=0&&rul13!=0&&rul14!=0&&rul15!=0&&rul16!=0&&rul17!=0&&rul18!=0&&rul19!=0&&rul20!=0&&rul21!=0&&rul22!=0&&rul23!=0&&rul24!=0&&rul25!=0&&rul26!=0&&rul27!=0&&rul28!=0&&rul29!=0&&rul30!=0&&rul31!=0&&rul32!=0&&rul33!=0&&rul34!=0&&rul35!=0&&rul36!=0){
+            cout <<"\nLe apostaste al numero "<<rul6<<"."<<endl<<endl;
+            cout<< "Cuanta plata queres apostar?"<<endl;
+            cout<< "Tu plata es: $"<<plata<<endl;
+            cin>>rulap6;
+            while(rulap6>plata){
+                cout<<"No tenes suficiente plata."<<endl;
+                cout<< "Cuanta plata queres apostar?"<<endl;
+                cout<< "Tu plata es: $"<<plata<<endl;
+                cin>>rulap6;
+            }
+            cout<<"\nLe apostaste $"<<rulap6<<" al numero "<<rul6<<"."<<endl<<endl;
+            plata=plata-rulap6;
+
+            cout<<"A que otro numero le vas a apostar?"<<endl;    //rul7
+            cout<<"1-36"<<endl;
+            cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+            cin>> rul7;
+            while(rul7>36||rul7<0||rul7==rul1||rul7==rul2||rul7==rul3||rul7==rul4||rul7==rul5||rul7==rul6){
+                cout<<"\nIngrese un numero del 1 al 36 que no haya ingresado anteriormente para apostar."<<endl;
+                cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+                cin>>rul7;
+            }
+        }
+        if(plata>0&&rul1!=0&&rul2!=0&&rul3!=0&&rul4!=0&&rul5!=0&&rul6!=0&&rul7!=0&&rul8!=0&&rul9!=0&&rul10!=0&&rul11!=0&&rul12!=0&&rul13!=0&&rul14!=0&&rul15!=0&&rul16!=0&&rul17!=0&&rul18!=0&&rul19!=0&&rul20!=0&&rul21!=0&&rul22!=0&&rul23!=0&&rul24!=0&&rul25!=0&&rul26!=0&&rul27!=0&&rul28!=0&&rul29!=0&&rul30!=0&&rul31!=0&&rul32!=0&&rul33!=0&&rul34!=0&&rul35!=0&&rul36!=0){
+            cout <<"\nLe apostaste al numero "<<rul7<<"."<<endl<<endl;
+            cout<< "Cuanta plata queres apostar?"<<endl;
+            cout<< "Tu plata es: $"<<plata<<endl;
+            cin>>rulap7;
+            while(rulap7>plata){
+                cout<<"No tenes suficiente plata."<<endl;
+                cout<< "Cuanta plata queres apostar?"<<endl;
+                cout<< "Tu plata es: $"<<plata<<endl;
+                cin>>rulap7;
+            }
+            cout<<"\nLe apostaste $"<<rulap7<<" al numero "<<rul7<<"."<<endl<<endl;
+            plata=plata-rulap7;
+
+            cout<<"A que otro numero le vas a apostar?"<<endl;    //rul8
+            cout<<"1-36"<<endl;
+            cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+            cin>> rul8;
+            while(rul8>36||rul8<0||rul8==rul1||rul8==rul2||rul8==rul3||rul8==rul4||rul8==rul5||rul8==rul6||rul8==rul7){
+                cout<<"\nIngrese un numero del 1 al 36 que no haya ingresado anteriormente para apostar."<<endl;
+                cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+                cin>>rul8;
+            }
+        }
+        if(plata>0&&rul1!=0&&rul2!=0&&rul3!=0&&rul4!=0&&rul5!=0&&rul6!=0&&rul7!=0&&rul8!=0&&rul9!=0&&rul10!=0&&rul11!=0&&rul12!=0&&rul13!=0&&rul14!=0&&rul15!=0&&rul16!=0&&rul17!=0&&rul18!=0&&rul19!=0&&rul20!=0&&rul21!=0&&rul22!=0&&rul23!=0&&rul24!=0&&rul25!=0&&rul26!=0&&rul27!=0&&rul28!=0&&rul29!=0&&rul30!=0&&rul31!=0&&rul32!=0&&rul33!=0&&rul34!=0&&rul35!=0&&rul36!=0){
+            cout <<"\nLe apostaste al numero "<<rul8<<"."<<endl<<endl;
+            cout<< "Cuanta plata queres apostar?"<<endl;
+            cout<< "Tu plata es: $"<<plata<<endl;
+            cin>>rulap8;
+            while(rulap8>plata){
+                cout<<"No tenes suficiente plata."<<endl;
+                cout<< "Cuanta plata queres apostar?"<<endl;
+                cout<< "Tu plata es: $"<<plata<<endl;
+                cin>>rulap8;
+            }
+            cout<<"\nLe apostaste $"<<rulap8<<" al numero "<<rul8<<"."<<endl<<endl;
+            plata=plata-rulap8;
+
+            cout<<"A que otro numero le vas a apostar?"<<endl;    //rul9
+            cout<<"1-36"<<endl;
+            cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+            cin>> rul9;
+            while(rul9>36||rul9<0||rul9==rul1||rul9==rul2||rul9==rul3||rul9==rul4||rul9==rul5||rul9==rul6||rul9==rul7||rul9==rul8){
+                cout<<"\nIngrese un numero del 1 al 36 que no haya ingresado anteriormente para apostar."<<endl;
+                cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+                cin>>rul9;
+            }
+        }
+        if(plata>0&&rul1!=0&&rul2!=0&&rul3!=0&&rul4!=0&&rul5!=0&&rul6!=0&&rul7!=0&&rul8!=0&&rul9!=0&&rul10!=0&&rul11!=0&&rul12!=0&&rul13!=0&&rul14!=0&&rul15!=0&&rul16!=0&&rul17!=0&&rul18!=0&&rul19!=0&&rul20!=0&&rul21!=0&&rul22!=0&&rul23!=0&&rul24!=0&&rul25!=0&&rul26!=0&&rul27!=0&&rul28!=0&&rul29!=0&&rul30!=0&&rul31!=0&&rul32!=0&&rul33!=0&&rul34!=0&&rul35!=0&&rul36!=0){
+            cout <<"\nLe apostaste al numero "<<rul9<<"."<<endl<<endl;
+            cout<< "Cuanta plata queres apostar?"<<endl;
+            cout<< "Tu plata es: $"<<plata<<endl;
+            cin>>rulap9;
+            while(rulap9>plata){
+                cout<<"No tenes suficiente plata."<<endl;
+                cout<< "Cuanta plata queres apostar?"<<endl;
+                cout<< "Tu plata es: $"<<plata<<endl;
+                cin>>rulap9;
+            }
+            cout<<"\nLe apostaste $"<<rulap9<<" al numero "<<rul9<<"."<<endl<<endl;
+            plata=plata-rulap9;
+
+            cout<<"A que otro numero le vas a apostar?"<<endl;    //rul10
+            cout<<"1-36"<<endl;
+            cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+            cin>> rul10;
+            while(rul10>36||rul10<0||rul10==rul1||rul10==rul2||rul10==rul3||rul10==rul4||rul10==rul5||rul10==rul6||rul10==rul7||rul10==rul8||rul10==rul9){
+                cout<<"\nIngrese un numero del 1 al 36 que no haya ingresado anteriormente para apostar."<<endl;
+                cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+                cin>>rul10;
+            }
+        }
+        if(plata>0&&rul1!=0&&rul2!=0&&rul3!=0&&rul4!=0&&rul5!=0&&rul6!=0&&rul7!=0&&rul8!=0&&rul9!=0&&rul10!=0&&rul11!=0&&rul12!=0&&rul13!=0&&rul14!=0&&rul15!=0&&rul16!=0&&rul17!=0&&rul18!=0&&rul19!=0&&rul20!=0&&rul21!=0&&rul22!=0&&rul23!=0&&rul24!=0&&rul25!=0&&rul26!=0&&rul27!=0&&rul28!=0&&rul29!=0&&rul30!=0&&rul31!=0&&rul32!=0&&rul33!=0&&rul34!=0&&rul35!=0&&rul36!=0){
+            cout <<"\nLe apostaste al numero "<<rul10<<"."<<endl<<endl;
+            cout<< "Cuanta plata queres apostar?"<<endl;
+            cout<< "Tu plata es: $"<<plata<<endl;
+            cin>>rulap10;
+            while(rulap10>plata){
+                cout<<"No tenes suficiente plata."<<endl;
+                cout<< "Cuanta plata queres apostar?"<<endl;
+                cout<< "Tu plata es: $"<<plata<<endl;
+                cin>>rulap10;
+            }
+            cout<<"\nLe apostaste $"<<rulap10<<" al numero "<<rul10<<"."<<endl<<endl;
+            plata=plata-rulap10;
+
+            cout<<"A que otro numero le vas a apostar?"<<endl;    //rul11
+            cout<<"1-36"<<endl;
+            cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+            cin>> rul11;
+            while(rul11>36||rul11<0||rul11==rul1||rul11==rul2||rul11==rul3||rul11==rul4||rul11==rul5||rul11==rul6||rul11==rul7||rul11==rul8||rul11==rul9||rul11==rul10){
+                cout<<"\nIngrese un numero del 1 al 36 que no haya ingresado anteriormente para apostar."<<endl;
+                cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+                cin>>rul11;
+            }
+        }
+        if(plata>0&&rul1!=0&&rul2!=0&&rul3!=0&&rul4!=0&&rul5!=0&&rul6!=0&&rul7!=0&&rul8!=0&&rul9!=0&&rul10!=0&&rul11!=0&&rul12!=0&&rul13!=0&&rul14!=0&&rul15!=0&&rul16!=0&&rul17!=0&&rul18!=0&&rul19!=0&&rul20!=0&&rul21!=0&&rul22!=0&&rul23!=0&&rul24!=0&&rul25!=0&&rul26!=0&&rul27!=0&&rul28!=0&&rul29!=0&&rul30!=0&&rul31!=0&&rul32!=0&&rul33!=0&&rul34!=0&&rul35!=0&&rul36!=0){
+            cout <<"\nLe apostaste al numero "<<rul11<<"."<<endl<<endl;
+            cout<< "Cuanta plata queres apostar?"<<endl;
+            cout<< "Tu plata es: $"<<plata<<endl;
+            cin>>rulap11;
+            while(rulap11>plata){
+                cout<<"No tenes suficiente plata."<<endl;
+                cout<< "Cuanta plata queres apostar?"<<endl;
+                cout<< "Tu plata es: $"<<plata<<endl;
+                cin>>rulap11;
+            }
+            cout<<"\nLe apostaste $"<<rulap11<<" al numero "<<rul11<<"."<<endl<<endl;
+            plata=plata-rulap11;
+
+            cout<<"A que otro numero le vas a apostar?"<<endl;    //rul12
+            cout<<"1-36"<<endl;
+            cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+            cin>> rul12;
+            while(rul12>36||rul12<0||rul12==rul1||rul12==rul2||rul12==rul3||rul12==rul4||rul12==rul5||rul12==rul6||rul12==rul7||rul12==rul8||rul12==rul9||rul12==rul10||rul12==rul11){
+                cout<<"\nIngrese un numero del 1 al 36 que no haya ingresado anteriormente para apostar."<<endl;
+                cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+                cin>>rul12;
+            }
+        }
+        if(plata>0&&rul1!=0&&rul2!=0&&rul3!=0&&rul4!=0&&rul5!=0&&rul6!=0&&rul7!=0&&rul8!=0&&rul9!=0&&rul10!=0&&rul11!=0&&rul12!=0&&rul13!=0&&rul14!=0&&rul15!=0&&rul16!=0&&rul17!=0&&rul18!=0&&rul19!=0&&rul20!=0&&rul21!=0&&rul22!=0&&rul23!=0&&rul24!=0&&rul25!=0&&rul26!=0&&rul27!=0&&rul28!=0&&rul29!=0&&rul30!=0&&rul31!=0&&rul32!=0&&rul33!=0&&rul34!=0&&rul35!=0&&rul36!=0){
+            cout <<"\nLe apostaste al numero "<<rul12<<"."<<endl<<endl;
+            cout<< "Cuanta plata queres apostar?"<<endl;
+            cout<< "Tu plata es: $"<<plata<<endl;
+            cin>>rulap12;
+            while(rulap12>plata){
+                cout<<"No tenes suficiente plata."<<endl;
+                cout<< "Cuanta plata queres apostar?"<<endl;
+                cout<< "Tu plata es: $"<<plata<<endl;
+                cin>>rulap12;
+            }
+            cout<<"\nLe apostaste $"<<rulap12<<" al numero "<<rul12<<"."<<endl<<endl;
+            plata=plata-rulap12;
+
+            cout<<"A que otro numero le vas a apostar?"<<endl;    //rul13
+            cout<<"1-36"<<endl;
+            cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+            cin>> rul13;
+            while(rul13>36||rul13<0||rul13==rul1||rul13==rul2||rul13==rul3||rul13==rul4||rul13==rul5||rul13==rul6||rul13==rul7||rul13==rul8||rul13==rul9||rul13==rul10||rul13==rul11||rul13==rul12){
+                cout<<"\nIngrese un numero del 1 al 36 que no haya ingresado anteriormente para apostar."<<endl;
+                cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+                cin>>rul13;
+            }
+        }
+        if(plata>0&&rul1!=0&&rul2!=0&&rul3!=0&&rul4!=0&&rul5!=0&&rul6!=0&&rul7!=0&&rul8!=0&&rul9!=0&&rul10!=0&&rul11!=0&&rul12!=0&&rul13!=0&&rul14!=0&&rul15!=0&&rul16!=0&&rul17!=0&&rul18!=0&&rul19!=0&&rul20!=0&&rul21!=0&&rul22!=0&&rul23!=0&&rul24!=0&&rul25!=0&&rul26!=0&&rul27!=0&&rul28!=0&&rul29!=0&&rul30!=0&&rul31!=0&&rul32!=0&&rul33!=0&&rul34!=0&&rul35!=0&&rul36!=0){
+            cout <<"\nLe apostaste al numero "<<rul13<<"."<<endl<<endl;
+            cout<< "Cuanta plata queres apostar?"<<endl;
+            cout<< "Tu plata es: $"<<plata<<endl;
+            cin>>rulap13;
+            while(rulap13>plata){
+                cout<<"No tenes suficiente plata."<<endl;
+                cout<< "Cuanta plata queres apostar?"<<endl;
+                cout<< "Tu plata es: $"<<plata<<endl;
+                cin>>rulap13;
+            }
+            cout<<"\nLe apostaste $"<<rulap13<<" al numero "<<rul13<<"."<<endl<<endl;
+            plata=plata-rulap13;
+
+            cout<<"A que otro numero le vas a apostar?"<<endl;    //rul14
+            cout<<"1-36"<<endl;
+            cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+            cin>> rul14;
+            while(rul14>36||rul14<0||rul14==rul1||rul14==rul2||rul14==rul3||rul14==rul4||rul14==rul5||rul14==rul6||rul14==rul7||rul14==rul8||rul14==rul9||rul14==rul10||rul14==rul11||rul14==rul12||rul14==rul13){
+                cout<<"\nIngrese un numero del 1 al 36 que no haya ingresado anteriormente para apostar."<<endl;
+                cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+                cin>>rul14;
+            }
+        }
+        if(plata>0&&rul1!=0&&rul2!=0&&rul3!=0&&rul4!=0&&rul5!=0&&rul6!=0&&rul7!=0&&rul8!=0&&rul9!=0&&rul10!=0&&rul11!=0&&rul12!=0&&rul13!=0&&rul14!=0&&rul15!=0&&rul16!=0&&rul17!=0&&rul18!=0&&rul19!=0&&rul20!=0&&rul21!=0&&rul22!=0&&rul23!=0&&rul24!=0&&rul25!=0&&rul26!=0&&rul27!=0&&rul28!=0&&rul29!=0&&rul30!=0&&rul31!=0&&rul32!=0&&rul33!=0&&rul34!=0&&rul35!=0&&rul36!=0){
+            cout <<"\nLe apostaste al numero "<<rul14<<"."<<endl<<endl;
+            cout<< "Cuanta plata queres apostar?"<<endl;
+            cout<< "Tu plata es: $"<<plata<<endl;
+            cin>>rulap14;
+            while(rulap14>plata){
+                cout<<"No tenes suficiente plata."<<endl;
+                cout<< "Cuanta plata queres apostar?"<<endl;
+                cout<< "Tu plata es: $"<<plata<<endl;
+                cin>>rulap14;
+            }
+            cout<<"\nLe apostaste $"<<rulap14<<" al numero "<<rul14<<"."<<endl<<endl;
+            plata=plata-rulap14;
+
+            cout<<"A que otro numero le vas a apostar?"<<endl;    //rul15
+            cout<<"1-36"<<endl;
+            cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+            cin>> rul15;
+            while(rul15>36||rul15<0||rul15==rul1||rul15==rul2||rul15==rul3||rul15==rul4||rul15==rul5||rul15==rul6||rul15==rul7||rul15==rul8||rul15==rul9||rul15==rul10||rul15==rul11||rul15==rul12||rul15==rul13||rul15==rul14){
+                cout<<"\nIngrese un numero del 1 al 36 que no haya ingresado anteriormente para apostar."<<endl;
+                cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+                cin>>rul15;
+            }
+        }
+        if(plata>0&&rul1!=0&&rul2!=0&&rul3!=0&&rul4!=0&&rul5!=0&&rul6!=0&&rul7!=0&&rul8!=0&&rul9!=0&&rul10!=0&&rul11!=0&&rul12!=0&&rul13!=0&&rul14!=0&&rul15!=0&&rul16!=0&&rul17!=0&&rul18!=0&&rul19!=0&&rul20!=0&&rul21!=0&&rul22!=0&&rul23!=0&&rul24!=0&&rul25!=0&&rul26!=0&&rul27!=0&&rul28!=0&&rul29!=0&&rul30!=0&&rul31!=0&&rul32!=0&&rul33!=0&&rul34!=0&&rul35!=0&&rul36!=0){
+            cout <<"\nLe apostaste al numero "<<rul15<<"."<<endl<<endl;
+            cout<< "Cuanta plata queres apostar?"<<endl;
+            cout<< "Tu plata es: $"<<plata<<endl;
+            cin>>rulap15;
+            while(rulap15>plata){
+                cout<<"No tenes suficiente plata."<<endl;
+                cout<< "Cuanta plata queres apostar?"<<endl;
+                cout<< "Tu plata es: $"<<plata<<endl;
+                cin>>rulap15;
+            }
+            cout<<"\nLe apostaste $"<<rulap15<<" al numero "<<rul15<<"."<<endl<<endl;
+            plata=plata-rulap15;
+
+            cout<<"A que otro numero le vas a apostar?"<<endl;    //rul16
+            cout<<"1-36"<<endl;
+            cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+            cin>> rul16;
+            while(rul16>36||rul16<0||rul16==rul1||rul16==rul2||rul16==rul3||rul16==rul4||rul16==rul5||rul16==rul6||rul16==rul7||rul16==rul8||rul16==rul9||rul16==rul10||rul16==rul11||rul16==rul12||rul16==rul13||rul16==rul14||rul16==rul15){
+                cout<<"\nIngrese un numero del 1 al 36 que no haya ingresado anteriormente para apostar."<<endl;
+                cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+                cin>>rul16;
+            }
+        }
+        if(plata>0&&rul1!=0&&rul2!=0&&rul3!=0&&rul4!=0&&rul5!=0&&rul6!=0&&rul7!=0&&rul8!=0&&rul9!=0&&rul10!=0&&rul11!=0&&rul12!=0&&rul13!=0&&rul14!=0&&rul15!=0&&rul16!=0&&rul17!=0&&rul18!=0&&rul19!=0&&rul20!=0&&rul21!=0&&rul22!=0&&rul23!=0&&rul24!=0&&rul25!=0&&rul26!=0&&rul27!=0&&rul28!=0&&rul29!=0&&rul30!=0&&rul31!=0&&rul32!=0&&rul33!=0&&rul34!=0&&rul35!=0&&rul36!=0){
+            cout <<"\nLe apostaste al numero "<<rul16<<"."<<endl<<endl;
+            cout<< "Cuanta plata queres apostar?"<<endl;
+            cout<< "Tu plata es: $"<<plata<<endl;
+            cin>>rulap16;
+            while(rulap16>plata){
+                cout<<"No tenes suficiente plata."<<endl;
+                cout<< "Cuanta plata queres apostar?"<<endl;
+                cout<< "Tu plata es: $"<<plata<<endl;
+                cin>>rulap16;
+            }
+            cout<<"\nLe apostaste $"<<rulap16<<" al numero "<<rul16<<"."<<endl<<endl;
+            plata=plata-rulap16;
+
+            cout<<"A que otro numero le vas a apostar?"<<endl;    //rul17
+            cout<<"1-36"<<endl;
+            cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+            cin>> rul17;
+            while(rul17>36||rul17<0||rul17==rul1||rul17==rul2||rul17==rul3||rul17==rul4||rul17==rul5||rul17==rul6||rul17==rul7||rul17==rul8||rul17==rul9||rul17==rul10||rul17==rul11||rul17==rul12||rul17==rul13||rul17==rul14||rul17==rul15||rul17==rul16){
+                cout<<"\nIngrese un numero del 1 al 36 que no haya ingresado anteriormente para apostar."<<endl;
+                cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+                cin>>rul17;
+            }
+        }
+        if(plata>0&&rul1!=0&&rul2!=0&&rul3!=0&&rul4!=0&&rul5!=0&&rul6!=0&&rul7!=0&&rul8!=0&&rul9!=0&&rul10!=0&&rul11!=0&&rul12!=0&&rul13!=0&&rul14!=0&&rul15!=0&&rul16!=0&&rul17!=0&&rul18!=0&&rul19!=0&&rul20!=0&&rul21!=0&&rul22!=0&&rul23!=0&&rul24!=0&&rul25!=0&&rul26!=0&&rul27!=0&&rul28!=0&&rul29!=0&&rul30!=0&&rul31!=0&&rul32!=0&&rul33!=0&&rul34!=0&&rul35!=0&&rul36!=0){
+            cout <<"\nLe apostaste al numero "<<rul17<<"."<<endl<<endl;
+            cout<< "Cuanta plata queres apostar?"<<endl;
+            cout<< "Tu plata es: $"<<plata<<endl;
+            cin>>rulap17;
+            while(rulap17>plata){
+                cout<<"No tenes suficiente plata."<<endl;
+                cout<< "Cuanta plata queres apostar?"<<endl;
+                cout<< "Tu plata es: $"<<plata<<endl;
+                cin>>rulap17;
+            }
+            cout<<"\nLe apostaste $"<<rulap17<<" al numero "<<rul17<<"."<<endl<<endl;
+            plata=plata-rulap17;
+
+            cout<<"A que otro numero le vas a apostar?"<<endl;    //rul18
+            cout<<"1-36"<<endl;
+            cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+            cin>> rul18;
+            while(rul18>36||rul18<0||rul18==rul1||rul18==rul2||rul18==rul3||rul18==rul4||rul18==rul5||rul18==rul6||rul18==rul7||rul18==rul8||rul18==rul9||rul18==rul10||rul18==rul11||rul18==rul12||rul18==rul13||rul18==rul14||rul18==rul15||rul18==rul16||rul18==rul17){
+                cout<<"\nIngrese un numero del 1 al 36 que no haya ingresado anteriormente para apostar."<<endl;
+                cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+                cin>>rul18;
+            }
+        }
+        if(plata>0&&rul1!=0&&rul2!=0&&rul3!=0&&rul4!=0&&rul5!=0&&rul6!=0&&rul7!=0&&rul8!=0&&rul9!=0&&rul10!=0&&rul11!=0&&rul12!=0&&rul13!=0&&rul14!=0&&rul15!=0&&rul16!=0&&rul17!=0&&rul18!=0&&rul19!=0&&rul20!=0&&rul21!=0&&rul22!=0&&rul23!=0&&rul24!=0&&rul25!=0&&rul26!=0&&rul27!=0&&rul28!=0&&rul29!=0&&rul30!=0&&rul31!=0&&rul32!=0&&rul33!=0&&rul34!=0&&rul35!=0&&rul36!=0){
+            cout <<"\nLe apostaste al numero "<<rul18<<"."<<endl<<endl;
+            cout<< "Cuanta plata queres apostar?"<<endl;
+            cout<< "Tu plata es: $"<<plata<<endl;
+            cin>>rulap18;
+            while(rulap18>plata){
+                cout<<"No tenes suficiente plata."<<endl;
+                cout<< "Cuanta plata queres apostar?"<<endl;
+                cout<< "Tu plata es: $"<<plata<<endl;
+                cin>>rulap18;
+            }
+            cout<<"\nLe apostaste $"<<rulap18<<" al numero "<<rul18<<"."<<endl<<endl;
+            plata=plata-rulap18;
+
+            cout<<"A que otro numero le vas a apostar?"<<endl;    //rul19
+            cout<<"1-36"<<endl;
+            cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+            cin>> rul19;
+            while(rul19>36||rul19<0||rul19==rul1||rul19==rul2||rul19==rul3||rul19==rul4||rul19==rul5||rul19==rul6||rul19==rul7||rul19==rul8||rul19==rul9||rul19==rul10||rul19==rul11||rul19==rul12||rul19==rul13||rul19==rul14||rul19==rul15||rul19==rul16||rul19==rul17||rul19==rul18){
+                cout<<"\nIngrese un numero del 1 al 36 que no haya ingresado anteriormente para apostar."<<endl;
+                cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+                cin>>rul19;
+            }
+        }
+        if(plata>0&&rul1!=0&&rul2!=0&&rul3!=0&&rul4!=0&&rul5!=0&&rul6!=0&&rul7!=0&&rul8!=0&&rul9!=0&&rul10!=0&&rul11!=0&&rul12!=0&&rul13!=0&&rul14!=0&&rul15!=0&&rul16!=0&&rul17!=0&&rul18!=0&&rul19!=0&&rul20!=0&&rul21!=0&&rul22!=0&&rul23!=0&&rul24!=0&&rul25!=0&&rul26!=0&&rul27!=0&&rul28!=0&&rul29!=0&&rul30!=0&&rul31!=0&&rul32!=0&&rul33!=0&&rul34!=0&&rul35!=0&&rul36!=0){
+            cout <<"\nLe apostaste al numero "<<rul19<<"."<<endl<<endl;
+            cout<< "Cuanta plata queres apostar?"<<endl;
+            cout<< "Tu plata es: $"<<plata<<endl;
+            cin>>rulap19;
+            while(rulap19>plata){
+                cout<<"No tenes suficiente plata."<<endl;
+                cout<< "Cuanta plata queres apostar?"<<endl;
+                cout<< "Tu plata es: $"<<plata<<endl;
+                cin>>rulap19;
+            }
+            cout<<"\nLe apostaste $"<<rulap19<<" al numero "<<rul19<<"."<<endl<<endl;
+            plata=plata-rulap19;
+
+            cout<<"A que otro numero le vas a apostar?"<<endl;    //rul20
+            cout<<"1-36"<<endl;
+            cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+            cin>> rul20;
+            while(rul20>36||rul20<0||rul20==rul1||rul20==rul2||rul20==rul3||rul20==rul4||rul20==rul5||rul20==rul6||rul20==rul7||rul20==rul8||rul20==rul9||rul20==rul10||rul20==rul11||rul20==rul12||rul20==rul13||rul20==rul14||rul20==rul15||rul20==rul16||rul20==rul17||rul20==rul18||rul20==rul19){
+                cout<<"\nIngrese un numero del 1 al 36 que no haya ingresado anteriormente para apostar."<<endl;
+                cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+                cin>>rul20;
+            }
+        }
+        if(plata>0&&rul1!=0&&rul2!=0&&rul3!=0&&rul4!=0&&rul5!=0&&rul6!=0&&rul7!=0&&rul8!=0&&rul9!=0&&rul10!=0&&rul11!=0&&rul12!=0&&rul13!=0&&rul14!=0&&rul15!=0&&rul16!=0&&rul17!=0&&rul18!=0&&rul19!=0&&rul20!=0&&rul21!=0&&rul22!=0&&rul23!=0&&rul24!=0&&rul25!=0&&rul26!=0&&rul27!=0&&rul28!=0&&rul29!=0&&rul30!=0&&rul31!=0&&rul32!=0&&rul33!=0&&rul34!=0&&rul35!=0&&rul36!=0){
+            cout <<"\nLe apostaste al numero "<<rul20<<"."<<endl<<endl;
+            cout<< "Cuanta plata queres apostar?"<<endl;
+            cout<< "Tu plata es: $"<<plata<<endl;
+            cin>>rulap20;
+            while(rulap20>plata){
+                cout<<"No tenes suficiente plata."<<endl;
+                cout<< "Cuanta plata queres apostar?"<<endl;
+                cout<< "Tu plata es: $"<<plata<<endl;
+                cin>>rulap20;
+            }
+            cout<<"\nLe apostaste $"<<rulap20<<" al numero "<<rul20<<"."<<endl<<endl;
+            plata=plata-rulap20;
+
+            cout<<"A que otro numero le vas a apostar?"<<endl;    //rul21
+            cout<<"1-36"<<endl;
+            cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+            cin>> rul21;
+            while(rul21>36||rul21<0||rul21==rul1||rul21==rul2||rul21==rul3||rul21==rul4||rul21==rul5||rul21==rul6||rul21==rul7||rul21==rul8||rul21==rul9||rul21==rul10||rul21==rul11||rul21==rul12||rul21==rul13||rul21==rul14||rul21==rul15||rul21==rul16||rul21==rul17||rul21==rul18||rul21==rul19||rul21==rul20){
+                cout<<"\nIngrese un numero del 1 al 36 que no haya ingresado anteriormente para apostar."<<endl;
+                cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+                cin>>rul21;
+            }
+        }
+        if(plata>0&&rul1!=0&&rul2!=0&&rul3!=0&&rul4!=0&&rul5!=0&&rul6!=0&&rul7!=0&&rul8!=0&&rul9!=0&&rul10!=0&&rul11!=0&&rul12!=0&&rul13!=0&&rul14!=0&&rul15!=0&&rul16!=0&&rul17!=0&&rul18!=0&&rul19!=0&&rul20!=0&&rul21!=0&&rul22!=0&&rul23!=0&&rul24!=0&&rul25!=0&&rul26!=0&&rul27!=0&&rul28!=0&&rul29!=0&&rul30!=0&&rul31!=0&&rul32!=0&&rul33!=0&&rul34!=0&&rul35!=0&&rul36!=0){
+            cout <<"\nLe apostaste al numero "<<rul21<<"."<<endl<<endl;
+            cout<< "Cuanta plata queres apostar?"<<endl;
+            cout<< "Tu plata es: $"<<plata<<endl;
+            cin>>rulap21;
+            while(rulap21>plata){
+                cout<<"No tenes suficiente plata."<<endl;
+                cout<< "Cuanta plata queres apostar?"<<endl;
+                cout<< "Tu plata es: $"<<plata<<endl;
+                cin>>rulap21;
+            }
+            cout<<"\nLe apostaste $"<<rulap21<<" al numero "<<rul21<<"."<<endl<<endl;
+            plata=plata-rulap21;
+
+            cout<<"A que otro numero le vas a apostar?"<<endl;    //rul22
+            cout<<"1-36"<<endl;
+            cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+            cin>> rul22;
+            while(rul22>36||rul22<0||rul22==rul1||rul22==rul2||rul22==rul3||rul22==rul4||rul22==rul5||rul22==rul6||rul22==rul7||rul22==rul8||rul22==rul9||rul22==rul10||rul22==rul11||rul22==rul12||rul22==rul13||rul22==rul14||rul22==rul15||rul22==rul16||rul22==rul17||rul22==rul18||rul22==rul19||rul22==rul20||rul22==rul21){
+                cout<<"\nIngrese un numero del 1 al 36 que no haya ingresado anteriormente para apostar."<<endl;
+                cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+                cin>>rul22;
+            }
+        }
+        if(plata>0&&rul1!=0&&rul2!=0&&rul3!=0&&rul4!=0&&rul5!=0&&rul6!=0&&rul7!=0&&rul8!=0&&rul9!=0&&rul10!=0&&rul11!=0&&rul12!=0&&rul13!=0&&rul14!=0&&rul15!=0&&rul16!=0&&rul17!=0&&rul18!=0&&rul19!=0&&rul20!=0&&rul21!=0&&rul22!=0&&rul23!=0&&rul24!=0&&rul25!=0&&rul26!=0&&rul27!=0&&rul28!=0&&rul29!=0&&rul30!=0&&rul31!=0&&rul32!=0&&rul33!=0&&rul34!=0&&rul35!=0&&rul36!=0){
+            cout <<"\nLe apostaste al numero "<<rul22<<"."<<endl<<endl;
+            cout<< "Cuanta plata queres apostar?"<<endl;
+            cout<< "Tu plata es: $"<<plata<<endl;
+            cin>>rulap22;
+            while(rulap22>plata){
+                cout<<"No tenes suficiente plata."<<endl;
+                cout<< "Cuanta plata queres apostar?"<<endl;
+                cout<< "Tu plata es: $"<<plata<<endl;
+                cin>>rulap22;
+            }
+            cout<<"\nLe apostaste $"<<rulap22<<" al numero "<<rul22<<"."<<endl<<endl;
+            plata=plata-rulap22;
+
+            cout<<"A que otro numero le vas a apostar?"<<endl;    //rul23
+            cout<<"1-36"<<endl;
+            cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+            cin>> rul23;
+            while(rul23>36||rul23<0||rul23==rul1||rul23==rul2||rul23==rul3||rul23==rul4||rul23==rul5||rul23==rul6||rul23==rul7||rul23==rul8||rul23==rul9||rul23==rul10||rul23==rul11||rul23==rul12||rul23==rul13||rul23==rul14||rul23==rul15||rul23==rul16||rul23==rul17||rul23==rul18||rul23==rul19||rul23==rul20||rul23==rul21||rul23==rul22){
+                cout<<"\nIngrese un numero del 1 al 36 que no haya ingresado anteriormente para apostar."<<endl;
+                cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+                cin>>rul23;
+            }
+        }
+        if(plata>0&&rul1!=0&&rul2!=0&&rul3!=0&&rul4!=0&&rul5!=0&&rul6!=0&&rul7!=0&&rul8!=0&&rul9!=0&&rul10!=0&&rul11!=0&&rul12!=0&&rul13!=0&&rul14!=0&&rul15!=0&&rul16!=0&&rul17!=0&&rul18!=0&&rul19!=0&&rul20!=0&&rul21!=0&&rul22!=0&&rul23!=0&&rul24!=0&&rul25!=0&&rul26!=0&&rul27!=0&&rul28!=0&&rul29!=0&&rul30!=0&&rul31!=0&&rul32!=0&&rul33!=0&&rul34!=0&&rul35!=0&&rul36!=0){
+            cout <<"\nLe apostaste al numero "<<rul23<<"."<<endl<<endl;
+            cout<< "Cuanta plata queres apostar?"<<endl;
+            cout<< "Tu plata es: $"<<plata<<endl;
+            cin>>rulap23;
+            while(rulap23>plata){
+                cout<<"No tenes suficiente plata."<<endl;
+                cout<< "Cuanta plata queres apostar?"<<endl;
+                cout<< "Tu plata es: $"<<plata<<endl;
+                cin>>rulap23;
+            }
+            cout<<"\nLe apostaste $"<<rulap23<<" al numero "<<rul23<<"."<<endl<<endl;
+            plata=plata-rulap23;
+
+            cout<<"A que otro numero le vas a apostar?"<<endl;    //rul24
+            cout<<"1-36"<<endl;
+            cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+            cin>> rul24;
+            while(rul24>36||rul24<0||rul24==rul1||rul24==rul2||rul24==rul3||rul24==rul4||rul24==rul5||rul24==rul6||rul24==rul7||rul24==rul8||rul24==rul9||rul24==rul10||rul24==rul11||rul24==rul12||rul24==rul13||rul24==rul14||rul24==rul15||rul24==rul16||rul24==rul17||rul24==rul18||rul24==rul19||rul24==rul20||rul24==rul21||rul24==rul22||rul24==rul23){
+                cout<<"\nIngrese un numero del 1 al 36 que no haya ingresado anteriormente para apostar."<<endl;
+                cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+                cin>>rul24;
+            }
+        }
+        if(plata>0&&rul1!=0&&rul2!=0&&rul3!=0&&rul4!=0&&rul5!=0&&rul6!=0&&rul7!=0&&rul8!=0&&rul9!=0&&rul10!=0&&rul11!=0&&rul12!=0&&rul13!=0&&rul14!=0&&rul15!=0&&rul16!=0&&rul17!=0&&rul18!=0&&rul19!=0&&rul20!=0&&rul21!=0&&rul22!=0&&rul23!=0&&rul24!=0&&rul25!=0&&rul26!=0&&rul27!=0&&rul28!=0&&rul29!=0&&rul30!=0&&rul31!=0&&rul32!=0&&rul33!=0&&rul34!=0&&rul35!=0&&rul36!=0){
+            cout <<"\nLe apostaste al numero "<<rul24<<"."<<endl<<endl;
+            cout<< "Cuanta plata queres apostar?"<<endl;
+            cout<< "Tu plata es: $"<<plata<<endl;
+            cin>>rulap24;
+            while(rulap24>plata){
+                cout<<"No tenes suficiente plata."<<endl;
+                cout<< "Cuanta plata queres apostar?"<<endl;
+                cout<< "Tu plata es: $"<<plata<<endl;
+                cin>>rulap24;
+            }
+            cout<<"\nLe apostaste $"<<rulap24<<" al numero "<<rul24<<"."<<endl<<endl;
+            plata=plata-rulap24;
+
+            cout<<"A que otro numero le vas a apostar?"<<endl;    //rul25
+            cout<<"1-36"<<endl;
+            cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+            cin>> rul25;
+            while(rul25>36||rul25<0||rul25==rul1||rul25==rul2||rul25==rul3||rul25==rul4||rul25==rul5||rul25==rul6||rul25==rul7||rul25==rul8||rul25==rul9||rul25==rul10||rul25==rul11||rul25==rul12||rul25==rul13||rul25==rul14||rul25==rul15||rul25==rul16||rul25==rul17||rul25==rul18||rul25==rul19||rul25==rul20||rul25==rul21||rul25==rul22||rul25==rul23||rul25==rul24){
+                cout<<"\nIngrese un numero del 1 al 36 que no haya ingresado anteriormente para apostar."<<endl;
+                cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+                cin>>rul25;
+            }
+        }
+        if(plata>0&&rul1!=0&&rul2!=0&&rul3!=0&&rul4!=0&&rul5!=0&&rul6!=0&&rul7!=0&&rul8!=0&&rul9!=0&&rul10!=0&&rul11!=0&&rul12!=0&&rul13!=0&&rul14!=0&&rul15!=0&&rul16!=0&&rul17!=0&&rul18!=0&&rul19!=0&&rul20!=0&&rul21!=0&&rul22!=0&&rul23!=0&&rul24!=0&&rul25!=0&&rul26!=0&&rul27!=0&&rul28!=0&&rul29!=0&&rul30!=0&&rul31!=0&&rul32!=0&&rul33!=0&&rul34!=0&&rul35!=0&&rul36!=0){
+            cout <<"\nLe apostaste al numero "<<rul25<<"."<<endl<<endl;
+            cout<< "Cuanta plata queres apostar?"<<endl;
+            cout<< "Tu plata es: $"<<plata<<endl;
+            cin>>rulap25;
+            while(rulap25>plata){
+                cout<<"No tenes suficiente plata."<<endl;
+                cout<< "Cuanta plata queres apostar?"<<endl;
+                cout<< "Tu plata es: $"<<plata<<endl;
+                cin>>rulap25;
+            }
+            cout<<"\nLe apostaste $"<<rulap25<<" al numero "<<rul25<<"."<<endl<<endl;
+            plata=plata-rulap25;
+
+            cout<<"A que otro numero le vas a apostar?"<<endl;    //rul26
+            cout<<"1-36"<<endl;
+            cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+            cin>> rul26;
+            while(rul26>36||rul26<0||rul26==rul1||rul26==rul2||rul26==rul3||rul26==rul4||rul26==rul5||rul26==rul6||rul26==rul7||rul26==rul8||rul26==rul9||rul26==rul10||rul26==rul11||rul26==rul12||rul26==rul13||rul26==rul14||rul26==rul15||rul26==rul16||rul26==rul17||rul26==rul18||rul26==rul19||rul26==rul20||rul26==rul21||rul26==rul22||rul26==rul23||rul26==rul24||rul26==rul25){
+                cout<<"\nIngrese un numero del 1 al 36 que no haya ingresado anteriormente para apostar."<<endl;
+                cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+                cin>>rul26;
+            }
+        }
+        if(plata>0&&rul1!=0&&rul2!=0&&rul3!=0&&rul4!=0&&rul5!=0&&rul6!=0&&rul7!=0&&rul8!=0&&rul9!=0&&rul10!=0&&rul11!=0&&rul12!=0&&rul13!=0&&rul14!=0&&rul15!=0&&rul16!=0&&rul17!=0&&rul18!=0&&rul19!=0&&rul20!=0&&rul21!=0&&rul22!=0&&rul23!=0&&rul24!=0&&rul25!=0&&rul26!=0&&rul27!=0&&rul28!=0&&rul29!=0&&rul30!=0&&rul31!=0&&rul32!=0&&rul33!=0&&rul34!=0&&rul35!=0&&rul36!=0){
+            cout <<"\nLe apostaste al numero "<<rul26<<"."<<endl<<endl;
+            cout<< "Cuanta plata queres apostar?"<<endl;
+            cout<< "Tu plata es: $"<<plata<<endl;
+            cin>>rulap26;
+            while(rulap26>plata){
+                cout<<"No tenes suficiente plata."<<endl;
+                cout<< "Cuanta plata queres apostar?"<<endl;
+                cout<< "Tu plata es: $"<<plata<<endl;
+                cin>>rulap26;
+            }
+            cout<<"\nLe apostaste $"<<rulap26<<" al numero "<<rul26<<"."<<endl<<endl;
+            plata=plata-rulap26;
+
+            cout<<"A que otro numero le vas a apostar?"<<endl;    //rul27
+            cout<<"1-36"<<endl;
+            cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+            cin>> rul27;
+            while(rul27>36||rul27<0||rul27==rul1||rul27==rul2||rul27==rul3||rul27==rul4||rul27==rul5||rul27==rul6||rul27==rul7||rul27==rul8||rul27==rul9||rul27==rul10||rul27==rul11||rul27==rul12||rul27==rul13||rul27==rul14||rul27==rul15||rul27==rul16||rul27==rul17||rul27==rul18||rul27==rul19||rul27==rul20||rul27==rul21||rul27==rul22||rul27==rul23||rul27==rul24||rul27==rul25||rul27==rul26){
+                cout<<"\nIngrese un numero del 1 al 36 que no haya ingresado anteriormente para apostar."<<endl;
+                cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+                cin>>rul27;
+            }
+        }
+        if(plata>0&&rul1!=0&&rul2!=0&&rul3!=0&&rul4!=0&&rul5!=0&&rul6!=0&&rul7!=0&&rul8!=0&&rul9!=0&&rul10!=0&&rul11!=0&&rul12!=0&&rul13!=0&&rul14!=0&&rul15!=0&&rul16!=0&&rul17!=0&&rul18!=0&&rul19!=0&&rul20!=0&&rul21!=0&&rul22!=0&&rul23!=0&&rul24!=0&&rul25!=0&&rul26!=0&&rul27!=0&&rul28!=0&&rul29!=0&&rul30!=0&&rul31!=0&&rul32!=0&&rul33!=0&&rul34!=0&&rul35!=0&&rul36!=0){
+            cout <<"\nLe apostaste al numero "<<rul27<<"."<<endl<<endl;
+            cout<< "Cuanta plata queres apostar?"<<endl;
+            cout<< "Tu plata es: $"<<plata<<endl;
+            cin>>rulap27;
+            while(rulap27>plata){
+                cout<<"No tenes suficiente plata."<<endl;
+                cout<< "Cuanta plata queres apostar?"<<endl;
+                cout<< "Tu plata es: $"<<plata<<endl;
+                cin>>rulap27;
+            }
+            cout<<"\nLe apostaste $"<<rulap27<<" al numero "<<rul27<<"."<<endl<<endl;
+            plata=plata-rulap27;
+
+            cout<<"A que otro numero le vas a apostar?"<<endl;    //rul28
+            cout<<"1-36"<<endl;
+            cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+            cin>> rul28;
+            while(rul28>36||rul28<0||rul28==rul1||rul28==rul2||rul28==rul3||rul28==rul4||rul28==rul5||rul28==rul6||rul28==rul7||rul28==rul8||rul28==rul9||rul28==rul10||rul28==rul11||rul28==rul12||rul28==rul13||rul28==rul14||rul28==rul15||rul28==rul16||rul28==rul17||rul28==rul18||rul28==rul19||rul28==rul20||rul28==rul21||rul28==rul22||rul28==rul23||rul28==rul24||rul28==rul25||rul28==rul26||rul28==rul27){
+                cout<<"\nIngrese un numero del 1 al 36 que no haya ingresado anteriormente para apostar."<<endl;
+                cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+                cin>>rul28;
+            }
+        }
+        if(plata>0&&rul1!=0&&rul2!=0&&rul3!=0&&rul4!=0&&rul5!=0&&rul6!=0&&rul7!=0&&rul8!=0&&rul9!=0&&rul10!=0&&rul11!=0&&rul12!=0&&rul13!=0&&rul14!=0&&rul15!=0&&rul16!=0&&rul17!=0&&rul18!=0&&rul19!=0&&rul20!=0&&rul21!=0&&rul22!=0&&rul23!=0&&rul24!=0&&rul25!=0&&rul26!=0&&rul27!=0&&rul28!=0&&rul29!=0&&rul30!=0&&rul31!=0&&rul32!=0&&rul33!=0&&rul34!=0&&rul35!=0&&rul36!=0){
+            cout <<"\nLe apostaste al numero "<<rul28<<"."<<endl<<endl;
+            cout<< "Cuanta plata queres apostar?"<<endl;
+            cout<< "Tu plata es: $"<<plata<<endl;
+            cin>>rulap28;
+            while(rulap28>plata){
+                cout<<"No tenes suficiente plata."<<endl;
+                cout<< "Cuanta plata queres apostar?"<<endl;
+                cout<< "Tu plata es: $"<<plata<<endl;
+                cin>>rulap28;
+            }
+            cout<<"\nLe apostaste $"<<rulap28<<" al numero "<<rul28<<"."<<endl<<endl;
+            plata=plata-rulap28;
+
+            cout<<"A que otro numero le vas a apostar?"<<endl;    //rul29
+            cout<<"1-36"<<endl;
+            cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+            cin>> rul29;
+            while(rul29>36||rul29<0||rul29==rul1||rul29==rul2||rul29==rul3||rul29==rul4||rul29==rul5||rul29==rul6||rul29==rul7||rul29==rul8||rul29==rul9||rul29==rul10||rul29==rul11||rul29==rul12||rul29==rul13||rul29==rul14||rul29==rul15||rul29==rul16||rul29==rul17||rul29==rul18||rul29==rul19||rul29==rul20||rul29==rul21||rul29==rul22||rul29==rul23||rul29==rul24||rul29==rul25||rul29==rul26||rul29==rul27||rul29==rul28){
+                cout<<"\nIngrese un numero del 1 al 36 que no haya ingresado anteriormente para apostar."<<endl;
+                cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+                cin>>rul29;
+            }
+        }
+        if(plata>0&&rul1!=0&&rul2!=0&&rul3!=0&&rul4!=0&&rul5!=0&&rul6!=0&&rul7!=0&&rul8!=0&&rul9!=0&&rul10!=0&&rul11!=0&&rul12!=0&&rul13!=0&&rul14!=0&&rul15!=0&&rul16!=0&&rul17!=0&&rul18!=0&&rul19!=0&&rul20!=0&&rul21!=0&&rul22!=0&&rul23!=0&&rul24!=0&&rul25!=0&&rul26!=0&&rul27!=0&&rul28!=0&&rul29!=0&&rul30!=0&&rul31!=0&&rul32!=0&&rul33!=0&&rul34!=0&&rul35!=0&&rul36!=0){
+            cout <<"\nLe apostaste al numero "<<rul29<<"."<<endl<<endl;
+            cout<< "Cuanta plata queres apostar?"<<endl;
+            cout<< "Tu plata es: $"<<plata<<endl;
+            cin>>rulap29;
+            while(rulap29>plata){
+                cout<<"No tenes suficiente plata."<<endl;
+                cout<< "Cuanta plata queres apostar?"<<endl;
+                cout<< "Tu plata es: $"<<plata<<endl;
+                cin>>rulap29;
+            }
+            cout<<"\nLe apostaste $"<<rulap29<<" al numero "<<rul29<<"."<<endl<<endl;
+            plata=plata-rulap29;
+
+            cout<<"A que otro numero le vas a apostar?"<<endl;    //rul30
+            cout<<"1-36"<<endl;
+            cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+            cin>> rul30;
+            while(rul30>36||rul30<0||rul30==(rul1||rul30==rul2||rul30==rul3||rul30==rul4||rul30==rul5||rul30==rul6||rul30==rul7||rul30==rul8||rul30==rul9||rul30==rul10||rul30==rul11||rul30==rul12||rul30==rul13||rul30==rul14||rul30==rul15||rul30==rul16||rul30==rul17||rul30==rul18||rul30==rul19||rul30==rul20||rul30==rul21||rul30==rul22||rul30==rul23||rul30==rul24||rul30==rul25||rul30==rul26||rul30==rul27||rul30==rul28||rul30==rul29)){
+                cout<<"\nIngrese un numero del 1 al 36 que no haya ingresado anteriormente para apostar."<<endl;
+                cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+                cin>>rul30;
+            }
+        }
+        if(plata>0&&rul1!=0&&rul2!=0&&rul3!=0&&rul4!=0&&rul5!=0&&rul6!=0&&rul7!=0&&rul8!=0&&rul9!=0&&rul10!=0&&rul11!=0&&rul12!=0&&rul13!=0&&rul14!=0&&rul15!=0&&rul16!=0&&rul17!=0&&rul18!=0&&rul19!=0&&rul20!=0&&rul21!=0&&rul22!=0&&rul23!=0&&rul24!=0&&rul25!=0&&rul26!=0&&rul27!=0&&rul28!=0&&rul29!=0&&rul30!=0&&rul31!=0&&rul32!=0&&rul33!=0&&rul34!=0&&rul35!=0&&rul36!=0){
+            cout <<"\nLe apostaste al numero "<<rul30<<"."<<endl<<endl;
+            cout<< "Cuanta plata queres apostar?"<<endl;
+            cout<< "Tu plata es: $"<<plata<<endl;
+            cin>>rulap30;
+            while(rulap30>plata){
+                cout<<"No tenes suficiente plata."<<endl;
+                cout<< "Cuanta plata queres apostar?"<<endl;
+                cout<< "Tu plata es: $"<<plata<<endl;
+                cin>>rulap30;
+            }
+            cout<<"\nLe apostaste $"<<rulap30<<" al numero "<<rul30<<"."<<endl<<endl;
+            plata=plata-rulap30;
+
+            cout<<"A que otro numero le vas a apostar?"<<endl;    //rul31
+            cout<<"1-36"<<endl;
+            cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+            cin>> rul31;
+            while(rul31>36||rul31<0||rul31==rul1||rul31==rul2||rul31==rul3||rul31==rul4||rul31==rul5||rul31==rul6||rul31==rul7||rul31==rul8||rul31==rul9||rul31==rul10||rul31==rul11||rul31==rul12||rul31==rul13||rul31==rul14||rul31==rul15||rul31==rul16||rul31==rul17||rul31==rul18||rul31==rul19||rul31==rul20||rul31==rul21||rul31==rul22||rul31==rul23||rul31==rul24||rul31==rul25||rul31==rul26||rul31==rul27||rul31==rul28||rul31==rul29||rul31==rul30){
+                cout<<"\nIngrese un numero del 1 al 36 que no haya ingresado anteriormente para apostar."<<endl;
+                cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+                cin>>rul31;
+            }
+        }
+        if(plata>0&&rul1!=0&&rul2!=0&&rul3!=0&&rul4!=0&&rul5!=0&&rul6!=0&&rul7!=0&&rul8!=0&&rul9!=0&&rul10!=0&&rul11!=0&&rul12!=0&&rul13!=0&&rul14!=0&&rul15!=0&&rul16!=0&&rul17!=0&&rul18!=0&&rul19!=0&&rul20!=0&&rul21!=0&&rul22!=0&&rul23!=0&&rul24!=0&&rul25!=0&&rul26!=0&&rul27!=0&&rul28!=0&&rul29!=0&&rul30!=0&&rul31!=0&&rul32!=0&&rul33!=0&&rul34!=0&&rul35!=0&&rul36!=0){
+            cout <<"\nLe apostaste al numero "<<rul31<<"."<<endl<<endl;
+            cout<< "Cuanta plata queres apostar?"<<endl;
+            cout<< "Tu plata es: $"<<plata<<endl;
+            cin>>rulap31;
+            while(rulap31>plata){
+                cout<<"No tenes suficiente plata."<<endl;
+                cout<< "Cuanta plata queres apostar?"<<endl;
+                cout<< "Tu plata es: $"<<plata<<endl;
+                cin>>rulap31;
+            }
+            cout<<"\nLe apostaste $"<<rulap31<<" al numero "<<rul31<<"."<<endl<<endl;
+            plata=plata-rulap31;
+
+            cout<<"A que otro numero le vas a apostar?"<<endl;    //rul32
+            cout<<"1-36"<<endl;
+            cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+            cin>> rul32;
+            while(rul32>36||rul32<0||rul32==rul1||rul32==rul2||rul32==rul3||rul32==rul4||rul32==rul5||rul32==rul6||rul32==rul7||rul32==rul8||rul32==rul9||rul32==rul10||rul32==rul11||rul32==rul12||rul32==rul13||rul32==rul14||rul32==rul15||rul32==rul16||rul32==rul17||rul32==rul18||rul32==rul19||rul32==rul20||rul32==rul21||rul32==rul22||rul32==rul23||rul32==rul24||rul32==rul25||rul32==rul26||rul32==rul27||rul32==rul28||rul32==rul29||rul32==rul30||rul32==rul31){
+                cout<<"\nIngrese un numero del 1 al 36 que no haya ingresado anteriormente para apostar."<<endl;
+                cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+                cin>>rul32;
+            }
+        }
+        if(plata>0&&rul1!=0&&rul2!=0&&rul3!=0&&rul4!=0&&rul5!=0&&rul6!=0&&rul7!=0&&rul8!=0&&rul9!=0&&rul10!=0&&rul11!=0&&rul12!=0&&rul13!=0&&rul14!=0&&rul15!=0&&rul16!=0&&rul17!=0&&rul18!=0&&rul19!=0&&rul20!=0&&rul21!=0&&rul22!=0&&rul23!=0&&rul24!=0&&rul25!=0&&rul26!=0&&rul27!=0&&rul28!=0&&rul29!=0&&rul30!=0&&rul31!=0&&rul32!=0&&rul33!=0&&rul34!=0&&rul35!=0&&rul36!=0){
+            cout <<"\nLe apostaste al numero "<<rul32<<"."<<endl<<endl;
+            cout<< "Cuanta plata queres apostar?"<<endl;
+            cout<< "Tu plata es: $"<<plata<<endl;
+            cin>>rulap32;
+            while(rulap32>plata){
+                cout<<"No tenes suficiente plata."<<endl;
+                cout<< "Cuanta plata queres apostar?"<<endl;
+                cout<< "Tu plata es: $"<<plata<<endl;
+                cin>>rulap32;
+            }
+            cout<<"\nLe apostaste $"<<rulap32<<" al numero "<<rul32<<"."<<endl<<endl;
+            plata=plata-rulap32;
+
+            cout<<"A que otro numero le vas a apostar?"<<endl;    //rul33
+            cout<<"1-36"<<endl;
+            cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+            cin>> rul33;
+            while(rul33>36||rul33<0||rul33==rul1||rul33==rul2||rul33==rul3||rul33==rul4||rul33==rul5||rul33==rul6||rul33==rul7||rul33==rul8||rul33==rul9||rul33==rul10||rul33==rul11||rul33==rul12||rul33==rul13||rul33==rul14||rul33==rul15||rul33==rul16||rul33==rul17||rul33==rul18||rul33==rul19||rul33==rul20||rul33==rul21||rul33==rul22||rul33==rul23||rul33==rul24||rul33==rul25||rul33==rul26||rul33==rul27||rul33==rul28||rul33==rul29||rul33==rul30||rul33==rul31||rul33==rul32){
+                cout<<"\nIngrese un numero del 1 al 36 que no haya ingresado anteriormente para apostar."<<endl;
+                cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+                cin>>rul33;
+            }
+        }
+        if(plata>0&&rul1!=0&&rul2!=0&&rul3!=0&&rul4!=0&&rul5!=0&&rul6!=0&&rul7!=0&&rul8!=0&&rul9!=0&&rul10!=0&&rul11!=0&&rul12!=0&&rul13!=0&&rul14!=0&&rul15!=0&&rul16!=0&&rul17!=0&&rul18!=0&&rul19!=0&&rul20!=0&&rul21!=0&&rul22!=0&&rul23!=0&&rul24!=0&&rul25!=0&&rul26!=0&&rul27!=0&&rul28!=0&&rul29!=0&&rul30!=0&&rul31!=0&&rul32!=0&&rul33!=0&&rul34!=0&&rul35!=0&&rul36!=0){
+            cout <<"\nLe apostaste al numero "<<rul33<<"."<<endl<<endl;
+            cout<< "Cuanta plata queres apostar?"<<endl;
+            cout<< "Tu plata es: $"<<plata<<endl;
+            cin>>rulap33;
+            while(rulap33>plata){
+                cout<<"No tenes suficiente plata."<<endl;
+                cout<< "Cuanta plata queres apostar?"<<endl;
+                cout<< "Tu plata es: $"<<plata<<endl;
+                cin>>rulap33;
+            }
+            cout<<"\nLe apostaste $"<<rulap33<<" al numero "<<rul33<<"."<<endl<<endl;
+            plata=plata-rulap33;
+
+            cout<<"A que otro numero le vas a apostar?"<<endl;    //rul34
+            cout<<"1-36"<<endl;
+            cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+            cin>> rul34;
+            while(rul34>36||rul34<0||rul34==rul1||rul34==rul2||rul34==rul3||rul34==rul4||rul34==rul5||rul34==rul6||rul34==rul7||rul34==rul8||rul34==rul9||rul34==rul10||rul34==rul11||rul34==rul12||rul34==rul13||rul34==rul14||rul34==rul15||rul34==rul16||rul34==rul17||rul34==rul18||rul34==rul19||rul34==rul20||rul34==rul21||rul34==rul22||rul34==rul23||rul34==rul24||rul34==rul25||rul34==rul26||rul34==rul27||rul34==rul28||rul34==rul29||rul34==rul30||rul34==rul31||rul34==rul32||rul34==rul33){
+                cout<<"\nIngrese un numero del 1 al 36 que no haya ingresado anteriormente para apostar."<<endl;
+                cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+                cin>>rul34;
+            }
+        }
+        if(plata>0&&rul1!=0&&rul2!=0&&rul3!=0&&rul4!=0&&rul5!=0&&rul6!=0&&rul7!=0&&rul8!=0&&rul9!=0&&rul10!=0&&rul11!=0&&rul12!=0&&rul13!=0&&rul14!=0&&rul15!=0&&rul16!=0&&rul17!=0&&rul18!=0&&rul19!=0&&rul20!=0&&rul21!=0&&rul22!=0&&rul23!=0&&rul24!=0&&rul25!=0&&rul26!=0&&rul27!=0&&rul28!=0&&rul29!=0&&rul30!=0&&rul31!=0&&rul32!=0&&rul33!=0&&rul34!=0&&rul35!=0&&rul36!=0){
+            cout <<"\nLe apostaste al numero "<<rul34<<"."<<endl<<endl;
+            cout<< "Cuanta plata queres apostar?"<<endl;
+            cout<< "Tu plata es: $"<<plata<<endl;
+            cin>>rulap34;
+            while(rulap34>plata){
+                cout<<"No tenes suficiente plata."<<endl;
+                cout<< "Cuanta plata queres apostar?"<<endl;
+                cout<< "Tu plata es: $"<<plata<<endl;
+                cin>>rulap34;
+            }
+            cout<<"\nLe apostaste $"<<rulap34<<" al numero "<<rul34<<"."<<endl<<endl;
+            plata=plata-rulap34;
+
+            cout<<"A que otro numero le vas a apostar?"<<endl;    //rul35
+            cout<<"1-36"<<endl;
+            cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+            cin>> rul35;
+            while(rul35>36||rul35<0||rul35==rul1||rul35==rul2||rul35==rul3||rul35==rul4||rul35==rul5||rul35==rul6||rul35==rul7||rul35==rul8||rul35==rul9||rul35==rul10||rul35==rul11||rul35==rul12||rul35==rul13||rul35==rul14||rul35==rul15||rul35==rul16||rul35==rul17||rul35==rul18||rul35==rul19||rul35==rul20||rul35==rul21||rul35==rul22||rul35==rul23||rul35==rul24||rul35==rul25||rul35==rul26||rul35==rul27||rul35==rul28||rul35==rul29||rul35==rul30||rul35==rul31||rul35==rul32||rul35==rul33||rul35==rul34){
+                cout<<"\nIngrese un numero del 1 al 36 que no haya ingresado anteriormente para apostar."<<endl;
+                cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+                cin>>rul35;
+            }
+        }
+        if(plata>0&&rul1!=0&&rul2!=0&&rul3!=0&&rul4!=0&&rul5!=0&&rul6!=0&&rul7!=0&&rul8!=0&&rul9!=0&&rul10!=0&&rul11!=0&&rul12!=0&&rul13!=0&&rul14!=0&&rul15!=0&&rul16!=0&&rul17!=0&&rul18!=0&&rul19!=0&&rul20!=0&&rul21!=0&&rul22!=0&&rul23!=0&&rul24!=0&&rul25!=0&&rul26!=0&&rul27!=0&&rul28!=0&&rul29!=0&&rul30!=0&&rul31!=0&&rul32!=0&&rul33!=0&&rul34!=0&&rul35!=0&&rul36!=0){
+            cout <<"\nLe apostaste al numero "<<rul35<<"."<<endl<<endl;
+            cout<< "Cuanta plata queres apostar?"<<endl;
+            cout<< "Tu plata es: $"<<plata<<endl;
+            cin>>rulap35;
+            while(rulap35>plata){
+                cout<<"No tenes suficiente plata."<<endl;
+                cout<< "Cuanta plata queres apostar?"<<endl;
+                cout<< "Tu plata es: $"<<plata<<endl;
+                cin>>rulap35;
+            }
+            cout<<"\nLe apostaste $"<<rulap35<<" al numero "<<rul35<<"."<<endl<<endl;
+            plata=plata-rulap35;
+
+            cout<<"A que otro numero le vas a apostar?"<<endl;    //rul36
+            cout<<"1-36"<<endl;
+            cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+            cin>> rul36;
+            while(rul36>36||rul36<0||rul36==rul1||rul36==rul2||rul36==rul3||rul36==rul4||rul36==rul5||rul36==rul6||rul36==rul7||rul36==rul8||rul36==rul9||rul36==rul10||rul36==rul11||rul36==rul12||rul36==rul13||rul36==rul14||rul36==rul15||rul36==rul16||rul36==rul17||rul36==rul18||rul36==rul19||rul36==rul20||rul36==rul21||rul36==rul22||rul36==rul23||rul36==rul24||rul36==rul25||rul36==rul26||rul36==rul27||rul36==rul28||rul36==rul29||rul36==rul30||rul36==rul31||rul36==rul32||rul36==rul33||rul36==rul34||rul36==rul35){
+                cout<<"\nIngrese un numero del 1 al 36 que no haya ingresado anteriormente para apostar."<<endl;
+                cout<<"Ingrese 0 si NO quieres apostarle a otro numero."<<endl;
+                cin>>rul36;
+            }
+        }
+        if(plata>0&&rul1!=0&&rul2!=0&&rul3!=0&&rul4!=0&&rul5!=0&&rul6!=0&&rul7!=0&&rul8!=0&&rul9!=0&&rul10!=0&&rul11!=0&&rul12!=0&&rul13!=0&&rul14!=0&&rul15!=0&&rul16!=0&&rul17!=0&&rul18!=0&&rul19!=0&&rul20!=0&&rul21!=0&&rul22!=0&&rul23!=0&&rul24!=0&&rul25!=0&&rul26!=0&&rul27!=0&&rul28!=0&&rul29!=0&&rul30!=0&&rul31!=0&&rul32!=0&&rul33!=0&&rul34!=0&&rul35!=0&&rul36!=0){
+            cout <<"\nLe apostaste al numero "<<rul36<<"."<<endl<<endl;
+            cout<< "Cuanta plata queres apostar?"<<endl;
+            cout<< "Tu plata es: $"<<plata<<endl;
+            cin>>rulap36;
+            while(rulap36>plata){
+                cout<<"No tenes suficiente plata."<<endl;
+                cout<< "Cuanta plata queres apostar?"<<endl;
+                cout<< "Tu plata es: $"<<plata<<endl;
+                cin>>rulap36;
+            }
+            cout<<"\nLe apostaste $"<<rulap36<<" al numero "<<rul36<<"."<<endl<<endl;
+            plata=plata-rulap36;
+        }
+
+        if(plata>0&&(rul1==0||rul2==0||rul3==0||rul4==0||rul5==0||rul6==0||rul7==0||rul8==0||rul9==0||rul10==0||rul11==0||rul12==0||rul13==0||rul14==0||rul15==0||rul16==0||rul17==0||rul18==0||rul19==0||rul20==0||rul21==0||rul22==0||rul23==0||rul24==0||rul25==0||rul26==0||rul27==0||rul28==0||rul29==0||rul30==0||rul31==0||rul32==0||rul33==0||rul34==0||rul35==0||rul36!=0)){
+            cout<<"\n--APUESTA OMITIDA--"<<endl;
+
+            cout<<"\n\nEl numero va a ser par o impar?"<<endl;
+            cout<<"Ingrese par o impar."<<endl;
+            cout<<"Ingrese omitir para omitir la apuesta."<<endl;
+            cin>>ruletaparoimpar;
+            while(ruletaparoimpar!="par"&&ruletaparoimpar!="impar"&&ruletaparoimpar!="omitir"){
+                cout<<"Ingrese par, impar u omitir."<<endl;
+                cin>>ruletaparoimpar;
+            }
+            if(ruletaparoimpar!="omitir"){
+                cout<<"\nLe apostaste a que el numero es: "<<ruletaparoimpar<<endl<<endl;
+                cout<< "Cuanta plata queres apostar?"<<endl;
+                cout<< "Tu plata es: $"<<plata<<endl;
+                cout<<"Si le pegas, lo apostado se multiplicara x2."<<endl;
+                cin>>APruletaparoimpar;
+
+                while(APruletaparoimpar>plata){
+                    cout<<"No tenes suficiente plata."<<endl;
+                    cout<< "Cuanta plata queres apostar?"<<endl;
+                    cout<< "Tu plata es: $"<<plata<<endl;
+                    cin>>APruletaparoimpar;
+                }
+                plata=plata-APruletaparoimpar;
+                cout<<"\nLe apostaste $"<<APruletaparoimpar<<" a que el numero es "<<ruletaparoimpar<<"."<<endl<<endl;
+            }
+            if(ruletaparoimpar=="omitir"){
+                cout<<"\nOmitiste esta apuesta."<<endl;
+            }
+            if(plata>0){
+                cout<<"\nEl numero va a estar en un casillero rojo o en uno negro?"<<endl;
+                cout<<"Ingrese negro o rojo."<<endl;
+                cout<<"Ingrese omitir para omitir la apuesta."<<endl;
+                cin>>ruletarojoonegro;
+                while(ruletarojoonegro!="negro"&&ruletarojoonegro!="rojo"&&ruletarojoonegro!="omitir"){
+                    cout<<"Ingrese negro, rojo u omitir."<<endl;
+                    cin>>ruletarojoonegro;
+                }
+                if(ruletarojoonegro!="omitir"){
+                    cout<<"\nLe apostaste a que el casillero va a ser "<<ruletarojoonegro<<endl<<endl;
+                    cout<< "Cuanta plata queres apostar?"<<endl;
+                    cout<< "Tu plata es: $"<<plata<<endl;
+                    cout<<"Si le pegas, lo apostado se multiplicara x2."<<endl;
+                    cin>>APruletarojoonegro;
+
+                    while(APruletarojoonegro>plata){
+                        cout<<"No tenes suficiente plata."<<endl;
+                        cout<< "Cuanta plata queres apostar?"<<endl;
+                        cout<< "Tu plata es: $"<<plata<<endl;
+                        cin>>APruletarojoonegro;
+                    }
+                    plata=plata-APruletarojoonegro;
+                    cout<<"\nLe apostaste $"<<APruletarojoonegro<<" a que el numero es "<<ruletarojoonegro<<"."<<endl<<endl;
+                }
+                if(ruletarojoonegro=="omitir"){
+                    cout<<"\nOmitiste esta apuesta."<<endl;
+                }
+            }
+            else{
+                cout<<"--FIN DE APUESTAS--"<<endl;
+                cout<<"--TE QUEDASTE SIN PLATA--"<<endl;
+            }
+        } //apuesta omitida fin
+        else{
+            cout<<"--FIN DE APUESTAS--"<<endl;
+            cout<<"--TE QUEDASTE SIN PLATA--"<<endl;
+        }
+
+
+        //
+        cout<<"\nAPUESTA FINAL:"<<endl<<endl;
+        if(rul1==0){
+            cout<<"Numero: OMITIDO" << " ($"<<rulap1<<")"<<endl;
+        }
+        else if(rul2==0){
+            cout<<"Numero: "<<rul1<<" ($"<<rulap1<<")"<<endl;
+        }
+        else if(rul3==0){
+            cout<<"Numeros: "<<rul1<<" ($"<<rulap1<<")"<<endl;
+            cout<<"         "<<rul2<<" ($"<<rulap2<<")"<<endl;
+        }
+        else if(rul4==0){
+            cout<<"Numeros: "<<rul1<<" ($"<<rulap1<<")"<<endl;
+            cout<<"         "<<rul2<<" ($"<<rulap2<<")"<<endl;
+            cout<<"         "<<rul3<<" ($"<<rulap3<<")"<<endl;
+        }
+        else if(rul5==0){
+            cout<<"Numeros: "<<rul1<<" ($"<<rulap1<<")"<<endl;
+            cout<<"         "<<rul2<<" ($"<<rulap2<<")"<<endl;
+            cout<<"         "<<rul3<<" ($"<<rulap3<<")"<<endl;
+            cout<<"         "<<rul4<<" ($"<<rulap4<<")"<<endl;
+        }
+        else if(rul6==0){
+            cout<<"Numeros: "<<rul1<<" ($"<<rulap1<<")"<<endl;
+            cout<<"         "<<rul2<<" ($"<<rulap2<<")"<<endl;
+            cout<<"         "<<rul3<<" ($"<<rulap3<<")"<<endl;
+            cout<<"         "<<rul4<<" ($"<<rulap4<<")"<<endl;
+            cout<<"         "<<rul5<<" ($"<<rulap5<<")"<<endl;
+        }
+        else if(rul7==0){
+            cout<<"Numeros: "<<rul1<<" ($"<<rulap1<<")"<<endl;
+            cout<<"         "<<rul2<<" ($"<<rulap2<<")"<<endl;
+            cout<<"         "<<rul3<<" ($"<<rulap3<<")"<<endl;
+            cout<<"         "<<rul4<<" ($"<<rulap4<<")"<<endl;
+            cout<<"         "<<rul5<<" ($"<<rulap5<<")"<<endl;
+            cout<<"         "<<rul6<<" ($"<<rulap6<<")"<<endl;
+        }
+        else if(rul8==0){
+            cout<<"Numeros: "<<rul1<<" ($"<<rulap1<<")"<<endl;
+            cout<<"         "<<rul2<<" ($"<<rulap2<<")"<<endl;
+            cout<<"         "<<rul3<<" ($"<<rulap3<<")"<<endl;
+            cout<<"         "<<rul4<<" ($"<<rulap4<<")"<<endl;
+            cout<<"         "<<rul5<<" ($"<<rulap5<<")"<<endl;
+            cout<<"         "<<rul6<<" ($"<<rulap6<<")"<<endl;
+            cout<<"         "<<rul7<<" ($"<<rulap7<<")"<<endl;
+        }
+        else if(rul9==0){
+            cout<<"Numeros: "<<rul1<<" ($"<<rulap1<<")"<<endl;
+            cout<<"         "<<rul2<<" ($"<<rulap2<<")"<<endl;
+            cout<<"         "<<rul3<<" ($"<<rulap3<<")"<<endl;
+            cout<<"         "<<rul4<<" ($"<<rulap4<<")"<<endl;
+            cout<<"         "<<rul5<<" ($"<<rulap5<<")"<<endl;
+            cout<<"         "<<rul6<<" ($"<<rulap6<<")"<<endl;
+            cout<<"         "<<rul7<<" ($"<<rulap7<<")"<<endl;
+            cout<<"         "<<rul8<<" ($"<<rulap8<<")"<<endl;
+        }
+        else if(rul10==0){
+            cout<<"Numeros: "<<rul1<<" ($"<<rulap1<<")"<<endl;
+            cout<<"         "<<rul2<<" ($"<<rulap2<<")"<<endl;
+            cout<<"         "<<rul3<<" ($"<<rulap3<<")"<<endl;
+            cout<<"         "<<rul4<<" ($"<<rulap4<<")"<<endl;
+            cout<<"         "<<rul5<<" ($"<<rulap5<<")"<<endl;
+            cout<<"         "<<rul6<<" ($"<<rulap6<<")"<<endl;
+            cout<<"         "<<rul7<<" ($"<<rulap7<<")"<<endl;
+            cout<<"         "<<rul8<<" ($"<<rulap8<<")"<<endl;
+            cout<<"         "<<rul9<<" ($"<<rulap9<<")"<<endl;
+        }
+        else if(rul11==0){
+            cout<<"Numeros: "<<rul1<<" ($"<<rulap1<<")"<<endl;
+            cout<<"         "<<rul2<<" ($"<<rulap2<<")"<<endl;
+            cout<<"         "<<rul3<<" ($"<<rulap3<<")"<<endl;
+            cout<<"         "<<rul4<<" ($"<<rulap4<<")"<<endl;
+            cout<<"         "<<rul5<<" ($"<<rulap5<<")"<<endl;
+            cout<<"         "<<rul6<<" ($"<<rulap6<<")"<<endl;
+            cout<<"         "<<rul7<<" ($"<<rulap7<<")"<<endl;
+            cout<<"         "<<rul8<<" ($"<<rulap8<<")"<<endl;
+            cout<<"         "<<rul9<<" ($"<<rulap9<<")"<<endl;
+            cout<<"         "<<rul10<<" ($"<<rulap10<<")"<<endl;
+        }
+        else if(rul12==0){
+            cout<<"Numeros: "<<rul1<<" ($"<<rulap1<<")"<<endl;
+            cout<<"         "<<rul2<<" ($"<<rulap2<<")"<<endl;
+            cout<<"         "<<rul3<<" ($"<<rulap3<<")"<<endl;
+            cout<<"         "<<rul4<<" ($"<<rulap4<<")"<<endl;
+            cout<<"         "<<rul5<<" ($"<<rulap5<<")"<<endl;
+            cout<<"         "<<rul6<<" ($"<<rulap6<<")"<<endl;
+            cout<<"         "<<rul7<<" ($"<<rulap7<<")"<<endl;
+            cout<<"         "<<rul8<<" ($"<<rulap8<<")"<<endl;
+            cout<<"         "<<rul9<<" ($"<<rulap9<<")"<<endl;
+            cout<<"         "<<rul10<<" ($"<<rulap10<<")"<<endl;
+            cout<<"         "<<rul11<<" ($"<<rulap11<<")"<<endl;
+        }
+        else if(rul13==0){
+            cout<<"Numeros: "<<rul1<<" ($"<<rulap1<<")"<<endl;
+            cout<<"         "<<rul2<<" ($"<<rulap2<<")"<<endl;
+            cout<<"         "<<rul3<<" ($"<<rulap3<<")"<<endl;
+            cout<<"         "<<rul4<<" ($"<<rulap4<<")"<<endl;
+            cout<<"         "<<rul5<<" ($"<<rulap5<<")"<<endl;
+            cout<<"         "<<rul6<<" ($"<<rulap6<<")"<<endl;
+            cout<<"         "<<rul7<<" ($"<<rulap7<<")"<<endl;
+            cout<<"         "<<rul8<<" ($"<<rulap8<<")"<<endl;
+            cout<<"         "<<rul9<<" ($"<<rulap9<<")"<<endl;
+            cout<<"         "<<rul10<<" ($"<<rulap10<<")"<<endl;
+            cout<<"         "<<rul11<<" ($"<<rulap11<<")"<<endl;
+            cout<<"         "<<rul12<<" ($"<<rulap12<<")"<<endl;
+
+        }
+        else if(rul14==0){
+            cout<<"Numeros: "<<rul1<<" ($"<<rulap1<<")"<<endl;
+            cout<<"         "<<rul2<<" ($"<<rulap2<<")"<<endl;
+            cout<<"         "<<rul3<<" ($"<<rulap3<<")"<<endl;
+            cout<<"         "<<rul4<<" ($"<<rulap4<<")"<<endl;
+            cout<<"         "<<rul5<<" ($"<<rulap5<<")"<<endl;
+            cout<<"         "<<rul6<<" ($"<<rulap6<<")"<<endl;
+            cout<<"         "<<rul7<<" ($"<<rulap7<<")"<<endl;
+            cout<<"         "<<rul8<<" ($"<<rulap8<<")"<<endl;
+            cout<<"         "<<rul9<<" ($"<<rulap9<<")"<<endl;
+            cout<<"         "<<rul10<<" ($"<<rulap10<<")"<<endl;
+            cout<<"         "<<rul11<<" ($"<<rulap11<<")"<<endl;
+            cout<<"         "<<rul12<<" ($"<<rulap12<<")"<<endl;
+            cout<<"         "<<rul13<<" ($"<<rulap13<<")"<<endl;
+        }
+
+
+        //ruletaparoimpar & ruletarojoonegro
+        if(ruletaparoimpar=="omitir"){
+            cout<<"\nTipo: OMITIDO" <<" ($"<<APruletaparoimpar<<")"<<endl;
+        }
+        else {
+            cout<<"\nTipo: "<<ruletaparoimpar<<" ($"<<APruletaparoimpar<<")"<<endl;
+        }
+        if(ruletarojoonegro=="omitir"){
+            cout<<"\nCasillero: OMITIDO"<<" ($"<<APruletarojoonegro<<")"<<endl;
+        }
+        else{
+            cout<<"\nCasillero: "<<ruletarojoonegro<<" ($"<<APruletarojoonegro<<")"<<endl;
+        }
+        int rultotalapostado=APruletarojoonegro+APruletaparoimpar+rulap1+rulap2+rulap3+rulap4+rulap5+rulap6+rulap7+rulap8+rulap9+rulap10+rulap11+rulap12+rulap13+rulap14+rulap15+rulap16+rulap17+rulap18+rulap19+rulap20+rulap21+rulap22+rulap23+rulap24+rulap25+rulap26+rulap27+rulap28+rulap29+rulap30+rulap31+rulap32+rulap33+rulap34+rulap35+rulap36;
+        cout<<"\nTOTAL APOSTADO: $"<<rultotalapostado<<endl;
+        cout<<"\nIngrese cualquier caracter para ver el resultado"<<endl;
+        cin>>INGRESECUALQUIERCARACTER1;
+        int NUMERORULETA;
+        srand (time(NULL));
+        NUMERORULETA= rand() % 36 + 1;
+        int PAROIMPAR;
+        if(NUMERORULETA%2==0){
+            PAROIMPAR=1;
+        }
+        else if(NUMERORULETA%2!=0) {
+            PAROIMPAR=2;
+        }
+        int ROJOONEGRO;
+        srand (time(NULL));
+        ROJOONEGRO= rand() % 2 + 1;
+        usleep (500000);
+        cout<<"El numero que salio es: "<<endl;
+        usleep (500000);
+        cout<<"..."<<endl;
+        usleep (500000);
+        cout<<".."<<endl;
+        usleep (500000);
+        cout<<"."<<endl;
+        usleep (500000);
+        cout<<NUMERORULETA<<endl;
+        usleep (1500000);
+        cout<<"El tipo que salio es: "<<endl;
+        usleep (500000);
+        cout<<"..."<<endl;
+        usleep (500000);
+        cout<<".."<<endl;
+        usleep (500000);
+        cout<<"."<<endl;
+        usleep (500000);
+        if (PAROIMPAR==1){
+            cout<<"PAR"<<endl;  //PAROIMPAR==1--par
+        }
+        else if(PAROIMPAR==2){
+            cout<<"IMPAR"<<endl;  //PAROIMPAR==2--impar
+        }
+        usleep (1500000);
+        cout<<"El color que salio es: "<<endl;
+        usleep (500000);
+        cout<<"..."<<endl;
+        usleep (500000);
+        cout<<".."<<endl;
+        usleep (500000);
+        cout<<"."<<endl;
+        usleep (500000);
+        if (ROJOONEGRO==1){
+            cout<<"ROJO"<<endl;    //ROJOONEGRO==1--rojo
+        }
+        else if(ROJOONEGRO==2){
+            cout<<"NEGRO"<<endl; //ROJOONEGRO==2--negro
+        }
+        usleep (1150000);
+
+        // perdidas
+        int rulp=0;
+        if(rul1!=NUMERORULETA&&rul1!=0&&rul1!=-1){
+            rulp=rulp-rulap1;
+        }
+        if(rul2!=NUMERORULETA&&rul2!=0&&rul2!=-1){
+            rulp=rulp-rulap2;
+        }
+        if(rul3!=NUMERORULETA&&rul3!=0&&rul3!=-1){
+            rulp=rulp-rulap3;
+        }
+        if(rul4!=NUMERORULETA&&rul4!=0&&rul4!=-1){
+            rulp=rulp-rulap4;
+        }
+        if(rul5!=NUMERORULETA&&rul5!=0&&rul5!=-1){
+            rulp=rulp-rulap5;
+        }
+        if(rul6!=NUMERORULETA&&rul6!=0&&rul6!=-1){
+            rulp=rulp-rulap6;
+        }
+        if(rul7!=NUMERORULETA&&rul7!=0&&rul7!=-1){
+            rulp=rulp-rulap7;
+        }
+        if(rul8!=NUMERORULETA&&rul8!=0&&rul8!=-1){
+            rulp=rulp-rulap8;
+        }
+        if(rul9!=NUMERORULETA&&rul9!=0&&rul9!=-1){
+            rulp=rulp-rulap9;
+        }
+        if(rul10!=NUMERORULETA&&rul10!=0&&rul10!=-1){
+            rulp=rulp-rulap10;
+        }
+
+
+
+
+
+
+        //SEGUIR...
+
+
+
+
+
+
+
+
+
+
+        //GANANCIAS
+        int rulg=0;
+        if(rul1==NUMERORULETA){
+            rulg=rulap1*35;
+        }
+        if(rul2==NUMERORULETA){
+            rulg=rulap2*35;
+        }
+        if(rul3==NUMERORULETA){
+            rulg=rulap3*35;
+        }
+        if(rul4==NUMERORULETA){
+            rulg=rulap4*35;
+        }
+        if(rul5==NUMERORULETA){
+            rulg=rulap5*35;10;
+        }
+        if(rul6==NUMERORULETA){
+            rulg=rulap6*35;
+        }
+        if(rul7==NUMERORULETA){
+            rulg=rulap7*35;
+        }
+        if(rul8==NUMERORULETA){
+            rulg=rulap8*35;
+        }
+        if(rul9==NUMERORULETA){
+            rulg=rulap9*35;
+        }
+        if(rul10==NUMERORULETA){
+            rulg=rulap10*35;
+        }
+
+        //SEGUIR...
+
+        if((PAROIMPAR==1&&ruletaparoimpar=="par")||(PAROIMPAR==2&&ruletaparoimpar=="impar")){
+            rulg=rulg+APruletaparoimpar*2;
+        }
+
+        if((ROJOONEGRO==1&&ruletarojoonegro=="rojo")||(ROJOONEGRO==2&&ruletarojoonegro=="negro")){
+            rulg=rulg+APruletarojoonegro*2; //error?
+        }
+        if((PAROIMPAR!=1&&ruletaparoimpar=="par")||(PAROIMPAR!=2&&ruletaparoimpar=="impar")){
+            rulp=rulp-APruletaparoimpar;
+        }
+
+        if((ROJOONEGRO!=1&&ruletarojoonegro=="rojo")||(ROJOONEGRO!=2&&ruletarojoonegro=="negro")){
+            rulp=rulp-APruletarojoonegro;    
+        }
+
+        int rulppositivo=rulp-rulp*2;
+
+        plata=plata+rulg;
+
+
+
+
+
+        cout<<"\n\n---GANANCIAS/PERDIDAS---"<<endl;
+        cout<<"\nAPOSTADO: $"<<rultotalapostado<<endl;
+        if((rulg-rultotalapostado)>0){
+            cout<<"\nGANANCIA: +$"<<rulg-rultotalapostado<<endl;
+        }
+        else{
+            cout<<"\nPERDIDA: $"<<rulg-rultotalapostado<<endl;
+        }
+
+        cout<<"\n\nTU PLATA: $"<<plata<<endl;
+
+        if(plata==0){
+            cout<<"\n\n------TE QUEDASTE SIN PLATA------"<<endl;
+            cout<<"------Te expulsan del casino :c------"<<endl;
+            ruletartaimportante="PERDITE";
+        }
+        else if(plata>0){
+            cout<<"\n\nQueres seguir apostando?"<<endl;
+            cout<<"Podes salir del casino y dejar de apostar momentaneamente si decis que no."<<endl;
+            cout<<"S/N"<<endl;
+            cin>>ruletartaimportante;
+            while(ruletartaimportante!="s"&&ruletartaimportante!="S"&&ruletartaimportante!="N"&&ruletartaimportante!="n"){
+                cout<<"S/N"<<endl;
+                cin>>ruletartaimportante;
+            }
+            cout<<endl<<endl;
+        }
+
+            if(ruletartaimportante=="N"||ruletartaimportante=="n"){
+                cout<<"Sales del casino."<<endl<<endl;
+            }
+
+
+
+        
+    }
+    salircasino=10;
+    ruletartaimportante="N";
+    cout<<"\nSales del casino."<<endl;
+    }//while casino==s
+     
+     
+     
+     
+      }//while principal (donde perdes)
+      if(plata<1){
+          cout<<"\n\nTe quedaste sin plata."<<endl;
+          usleep(1500000);
+          cout<<"Ya no podes satisfacer tus necesidades basicas."<<endl;
+          usleep(1500000);
+          cout<<" -----HAS MUERTO-----"<<endl;
+          cout<<"\n\n-----FIN DEL JUEGO-----"<<endl;
+      }
+      else if(salud<1){
+          cout<<"\n\nTe quedaste sin salud."<<endl;
+          usleep(1500000);
+          cout<<"Los doctores dicen que no vas a sobrevivir la noche."<<endl;
+          usleep(1500000);
+          cout<<"\n-----HAS MUERTO-----"<<endl;
+          cout<<"\n\n-----FIN DEL JUEGO-----"<<endl;
+      }
+      else if(suenio>9){
+          cout<<"\n\nNo has dormido en dias."<<endl;
+          usleep(1500000);
+          cout<<"Te desplomas y entras en un sueño eterno."<<endl;
+          usleep(1500000);
+          cout<<"\n-----HAS MUERTO-----"<<endl;
+          cout<<"\n\n-----FIN DEL JUEGO-----"<<endl;
+      }
+      else if(hambre>9){
+          cout<<"\n\nNo has comido en dias."<<endl;
+          usleep(1500000);
+          cout<<"Ya no tenes fuerzas para continuar."<<endl;
+          usleep(1500000);
+          cout<<"\n-----HAS MUERTO-----"<<endl;
+          cout<<"\n\n-----FIN DEL JUEGO-----"<<endl;
+      }
+      else if(sed>9){
+           cout<<"\n\nNo te has hidratado en dias."<<endl;
+          usleep(1500000);
+          cout<<"Ya no tenes fuerzas para continuar."<<endl;
+          usleep(1500000);
+          cout<<"\n-----HAS MUERTO-----"<<endl;
+          cout<<"\n\n-----FIN DEL JUEGO-----"<<endl;
+      }
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+    
+
+    //PERIDDA: -$
+    //GANANCIA: $
+//TOTAL GANADO/PERIDO
+//PLATA ACTUAL (dps de apuesta)
+
+
+}
+
+//para apuesta: APruletajuego
+//para juego: ruletajuego
+//corregir saltos de linea
+//+ srand (time(NULL));
+//  NUMERORULETA= rand() % 36 + 1; PARA COLOR Y TIPO
+
+
+
+
+//SEGUIR C cout<<"         "<<rul4<<" ($"<<rulap4<<")"<<endl;
+//rulap=0 con TODAS
+//SEGUIR CON rulp (PERDIDAS)  (NO descontar, ya descontadas)
+//SEGUIR CON rulg (GANANCIAS)
+
+//PLATA APOSTADA:
+//PERIDDA: -$
+//GANANCIA: $
+//TOTAL GANADO/PERIDO
+//PLATA ACTUAL (dps de apuesta)
