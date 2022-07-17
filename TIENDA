@@ -1,4 +1,5 @@
- while (comidaobebida!=0){ //mientras que comidaobebida sea diferente a salir 
+   while (comidaobebida!=0){ //mientras que comidaobebida sea diferente a salir 
+    cout<<"\n-----TIENDA-----"<<endl;
     cout<<"\nQue queres comprar?"<<endl;
     cout<<"\n1.  COMIDAS"<<endl;
     cout<<"2.  BEBIDAS"<<endl;
@@ -33,6 +34,7 @@
        case 1:
        if((plata-25)<0){
            cout<<"\nNo tenes suficiente plata."<<endl;
+           usleep(1000000);
        }
        else if ((plata-25)>=0){
            cout<<"\nCompraste una hamburguesa."<<endl;
@@ -53,6 +55,7 @@
        case 2:
        if((plata-15)<0){
            cout<<"\nNo tenes suficiente plata."<<endl;
+           usleep(1000000);
            }
           else if ((plata-15)>=0){
            cout<<"\nCompraste papas fritas."<<endl;
@@ -73,6 +76,7 @@
        case 3:
        if((plata-30)<0){
            cout<<"\nNo tenes suficiente plata."<<endl;
+           usleep(1000000);
            }
          else if((plata-30)>=0){  
        cout<<"\nCompraste una tarta de verduras."<<endl;
@@ -97,6 +101,7 @@
        case 4:
        if((plata-400)<0){
            cout<<"\nNo tenes suficiente plata"<<endl;
+           usleep(1000000);
            }
        else if((plata-400)>=0){
            cout<<"\nCompraste caviar c/ salsa de mariscos."<<endl;
@@ -114,6 +119,7 @@
        case 5:
        if((plata-10)<0){
            cout<<"\nNo tenes suficiente plata"<<endl;
+           usleep(1000000);
            }
        else if((plata-10)>=0){
        cout<<"\nCompraste un helado."<<endl;
@@ -175,6 +181,7 @@
        case 1:
        if((plata-15)<0){
            cout<<"\nNo tenes suficiente plata."<<endl;
+           usleep(1000000);
        }
        else if ((plata-15)>=0){
            cout<<"\nCompraste un agua Villavicencio."<<endl;
@@ -188,16 +195,17 @@
                salud=salud+0.25;
                 if (salud>10){
         salud=10;
-        usleep(2000000);
     }
                cout<<salud<<endl;
                cout<<"Costo: -$15"<<endl;
                plata=plata-15;
+               usleep(2000000);
        }
        break;
        case 2:
        if((plata-30)<0){
            cout<<"\nNo tenes suficiente plata."<<endl;
+           usleep(1000000);
            }
           else if ((plata-30)>=0){
            cout<<"\nCompraste un agua Smart Water."<<endl;
@@ -221,6 +229,7 @@
        case 3:
        if((plata-20)<0){
            cout<<"\nNo tenes suficiente plata."<<endl;
+           usleep(1000000);
            }
           else if ((plata-20)>=0){
            cout<<"\nCompraste una sprite."<<endl;
@@ -242,6 +251,7 @@
        case 4:
        if((plata-25)<0){
            cout<<"\nNo tenes suficiente plata."<<endl;
+           usleep(1000000);
            }
           else if ((plata-25)>=0){
            cout<<"\nCompraste una cerveza."<<endl;
@@ -262,6 +272,7 @@
        case 5:
       if((plata-50)<0){
            cout<<"\nNo tenes suficiente plata."<<endl;
+           usleep(1000000);
            }
           else if ((plata-50)>=0){
            cout<<"\nCompraste una Red Bull."<<endl;
