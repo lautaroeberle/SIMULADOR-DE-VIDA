@@ -1,0 +1,117 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <iostream>
+#include <unistd.h>
+using namespace std;
+
+int main()
+{
+    
+    int plata=10000;
+   
+    int salud=5;
+    int suenio=5;
+    float energia=5;
+    float hambre=2, sed=2;
+    srand (time(NULL));
+    int quehacercasa=10;
+    int salircasa=10;
+    while(quehacercasa!=0){
+    cout<<"\n\n-----CASA-----"<<endl;
+    cout<<"\nNivel de energia: "<<energia<<endl;
+    cout<<"Nivel de sueño: "<<suenio<<endl;
+    cout<<"Nivel de hambre: "<<hambre<<endl;
+    cout<<"Nivel de sueño: "<<sed<<endl;
+    cout<<"\nQue queres hacer?"<<endl;
+    cout<<"\n\n1.   DORMIR"<<endl;
+    cout<<"2.   PROXIMAMENTE"<<endl;
+    cout<<"\n0.   SALIR"<<endl;
+    cin>>quehacercasa;
+    while(quehacercasa!=1&&quehacercasa!=0){
+        cout<<"\nNumero invalido."<<endl;
+        cin>>quehacercasa;
+    }
+    switch(quehacercasa){
+        case 1:  cout<<"\nTe acostas en la cama..."<<endl;
+           usleep(1500000);
+           cout<<"\n--DURMIENDO--"<<endl;
+           usleep(500000);
+           cout<<"....."<<endl;
+           usleep(500000);
+           cout<<"...."<<endl;
+           usleep(500000);
+           cout<<"..."<<endl;
+           usleep(500000);
+           cout<<".."<<endl;
+           usleep(500000);
+           cout<<"."<<endl;
+           usleep(500000);
+           
+           int cuantodormiste;
+           cuantodormiste= rand() % 3 + 1;
+           switch(cuantodormiste){
+               case 1:
+               cout<<"\nDormiste 5 horas."<<endl;
+               cout<<"[E] "<<energia<<" --> ";
+               energia=energia+3;
+               if (energia>10){
+    energia=10;
+    }
+               cout<<energia<<" | [Su] " <<suenio<<" --> ";
+               suenio=suenio-3;
+               if(suenio<0){
+                   suenio=0;
+               }
+               cout<<suenio<<endl;
+               cout<<"[H] "<<hambre<<" --> ";hambre=hambre+2.5;cout<<hambre<<" | [Se] "<<sed<<" --> ";sed=sed+2.5;cout<<sed<<endl;
+               
+               
+           
+        break;
+        case 2: 
+        cout<<"\nDormiste 6 horas."<<endl;
+               cout<<"[E] "<<energia<<" --> ";
+               energia=energia+4;
+               if (energia>10){
+    energia=10;
+    }
+               cout<<energia<<" | [Su] " <<suenio<<" --> ";
+               suenio=suenio-4;
+               if(suenio<0){
+                   suenio=0;
+               }
+               cout<<suenio<<endl;
+                cout<<"[H] "<<hambre<<" --> ";hambre=hambre+2.5;cout<<hambre<<" | [Se] "<<sed<<" --> ";sed=sed+2.5;cout<<sed<<endl;
+           
+        break;
+        case 3: 
+        cout<<"\nDormiste 7 horas."<<endl;
+               cout<<"[E] "<<energia<<" --> ";
+               energia=energia+5;
+               if (energia>10){
+    energia=10;
+    }
+               cout<<energia<<" | [Su] " <<suenio<<" --> ";
+               suenio=suenio-5;
+               if(suenio<0){
+                   suenio=0;
+               }
+               cout<<suenio<<endl;
+                cout<<"[H] "<<hambre<<" --> ";hambre=hambre+2.5;cout<<hambre<<" | [Se] "<<sed<<" --> ";sed=sed+2.5;cout<<sed<<endl;
+             
+               
+           
+        break;
+    }
+    }
+    }//salir casa
+    return 0;
+}
+
+        
