@@ -136,29 +136,37 @@ int main(){
             while(salud>0&&plata>0&&suenio<10&&hambre<10&&sed<10){
             cout<<"\n\nTe encontras en la calle..."<<endl;
             cout<<"Elegi tu destino:"<<endl;
-            cout<<"1.   -TRABAJO-"<<endl;
-            cout<<"2.   -CASINO-"<<endl;
-            cout<<"3.   -TIENDA-"<<endl;
-            cout<<"4.   -BANCO-"<<endl;
-            cout<<"5.   -CASA- "<<endl;
-           
+            cout<<"1.   -GIMNASIO-"<<endl;
+            cout<<"2.   -TRABAJO-"<<endl;
+            cout<<"3.   -CASINO-"<<endl;
+            cout<<"4.   -TIENDA-"<<endl;
+            cout<<"5.   -BANCO-"<<endl;
+            cout<<"6.   -CASA- "<<endl;
+            cout<<"\n10.   -LOGROS-"<<endl;   
             cin>>adondeir;
-            while(adondeir!=1&&adondeir!=2&&adondeir!=3&&adondeir!=4){
+            while(adondeir!=1&&adondeir!=2&&adondeir!=3&&adondeir!=4&&adondeir!=5&&adondeir!=6&&adondeir!=10){
                cout<<"El numero ingresado es invalido."<<endl;
                 cin>>adondeir;
             }
 
             switch(adondeir){
-                case 1: //funciontrabajo
+                case 1: //funciongimnasio
                 break;
 
 
 
-                case 2: ruletartaimportante="S";
+                case 2: //funciontrabajo
                     break;
 
-                case 3: //tienda
-                while (comidaobebida!=0){ //mientras que comidaobebida sea diferente a salir 
+                case 3: ruletartaimportante="S";
+               
+                
+                
+                
+                    break;
+
+                case 4: //tienda
+                 while (comidaobebida!=0){ //mientras que comidaobebida sea diferente a salir 
     cout<<"\nQue queres comprar?"<<endl;
     cout<<"\n1.  COMIDAS"<<endl;
     cout<<"2.  BEBIDAS"<<endl;
@@ -440,16 +448,14 @@ int main(){
     }//else comidaobebida==2
     }//mientras que comida o bebida sea diferente a salir fin del while
     comidaobebida=10;
-                
-                
-                
                     break;
-
-                case 4: //funcion4 -banco-
-                    break;
-                case 5: //funcion -casa-
+                    
+                    
+                case 5: //funciuon banco
                 break;
-                
+                case 6://funcion -casa-
+                break;
+                case 10;//logros
 
             }
 
