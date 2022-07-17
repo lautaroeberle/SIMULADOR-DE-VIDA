@@ -36,8 +36,10 @@ int main(){
     string ruletaparoimpar, ruletarojoonegro, rtaruleta;
     string INGRESECUALQUIERCARACTER1,INGRESECUALQUIERCARACTER2, confirmarnombreyedad="n"; 
     string ruletartaimportante="N";
-    int salud=5, energia=5, hambre=4, sed=4, suenio=2;
+    float salud=5, energia=5, hambre=4, sed=4, suenio=2;
    int comidaobebida=10;
+   int quehacercasa=10;
+    int salircasa=10;
 
     cout<<"Bienvenido al simulador de vida."<<endl;
     usleep (1000000);
@@ -97,6 +99,7 @@ int main(){
         usleep (1500000);
         cout<<"\nTrabajo:"<<endl;
         cout<<"Podras ganar plata en él."<<endl;
+        cout<<"Una sesion trabajo puede ser extremadamente poco exitosa, poco exitosa, regular, exitosa o extremadamente exitosa. De esto dependera cuanta plata ganes en la sesion."<<endl; 
         cout<<"* consume E - probabilidad de disminuir S * "<<endl;
         usleep (1500000);
         cout<<"\nCasa"<<endl;
@@ -116,11 +119,14 @@ int main(){
     cout<<"\nIngresa tu nombre."<<endl;
     string nombre;
     cin>>nombre;
+    cout<<"Ingresa tu apellido."<<endl;
+    string apellido;
+    cin>>apellido;
     cout<<"Ingresa tu edad."<<endl;
     int edad;
     cin>>edad;
     usleep(1000000);
-    cout<<"Nombre: "<<nombre<<endl;
+    cout<<"Nombre completo: "<<nombre<<" "<<apellido<<endl;
     cout<<"Edad: "<<edad<<endl;
     usleep(1000000);
     cout<<"Confirmar nombre y edad?"<<endl;
@@ -142,9 +148,10 @@ int main(){
             cout<<"4.   -TIENDA-"<<endl;
             cout<<"5.   -BANCO-"<<endl;
             cout<<"6.   -CASA- "<<endl;
-            cout<<"\n10.   -LOGROS-"<<endl;   
+            cout<<"\n10.   -PERFIL-"<<endl;   
+            cout<<"11.   -LOGROS-"<<endl;
             cin>>adondeir;
-            while(adondeir!=1&&adondeir!=2&&adondeir!=3&&adondeir!=4&&adondeir!=5&&adondeir!=6&&adondeir!=10){
+            while(adondeir!=1&&adondeir!=2&&adondeir!=3&&adondeir!=4&&adondeir!=5&&adondeir!=6&&adondeir!=10&&adondeir!=11){
                cout<<"El numero ingresado es invalido."<<endl;
                 cin>>adondeir;
             }
@@ -167,6 +174,7 @@ int main(){
 
                 case 4: //tienda
                  while (comidaobebida!=0){ //mientras que comidaobebida sea diferente a salir 
+    cout<<"\n-----TIENDA-----"<<endl;
     cout<<"\nQue queres comprar?"<<endl;
     cout<<"\n1.  COMIDAS"<<endl;
     cout<<"2.  BEBIDAS"<<endl;
@@ -201,9 +209,11 @@ int main(){
        case 1:
        if((plata-25)<0){
            cout<<"\nNo tenes suficiente plata."<<endl;
+           usleep(1000000);
        }
        else if ((plata-25)>=0){
            cout<<"\nCompraste una hamburguesa."<<endl;
+           usleep(1000000);
                cout<<"[H] "<<hambre<<" --> ";
                hambre=hambre-2;
                if (hambre<0){
@@ -220,9 +230,11 @@ int main(){
        case 2:
        if((plata-15)<0){
            cout<<"\nNo tenes suficiente plata."<<endl;
+           usleep(1000000);
            }
           else if ((plata-15)>=0){
            cout<<"\nCompraste papas fritas."<<endl;
+           usleep(1000000);
                cout<<"[H] "<<hambre<<" --> ";
                hambre=hambre-1;
                if (hambre<0){
@@ -239,9 +251,11 @@ int main(){
        case 3:
        if((plata-30)<0){
            cout<<"\nNo tenes suficiente plata."<<endl;
+           usleep(1000000);
            }
          else if((plata-30)>=0){  
        cout<<"\nCompraste una tarta de verduras."<<endl;
+       usleep(1000000);
                cout<<"[H] "<<hambre<<" --> ";
                hambre=hambre-1;
                if (hambre<0){
@@ -262,9 +276,11 @@ int main(){
        case 4:
        if((plata-400)<0){
            cout<<"\nNo tenes suficiente plata"<<endl;
+           usleep(1000000);
            }
        else if((plata-400)>=0){
            cout<<"\nCompraste caviar c/ salsa de mariscos."<<endl;
+           usleep(1000000);
                cout<<"[H] "<<hambre<<" --> ";
                hambre=0;
                cout<<hambre<<" | [Sa] " <<salud<<" --> ";
@@ -278,9 +294,11 @@ int main(){
        case 5:
        if((plata-10)<0){
            cout<<"\nNo tenes suficiente plata"<<endl;
+           usleep(1000000);
            }
        else if((plata-10)>=0){
        cout<<"\nCompraste un helado."<<endl;
+       usleep(1000000);
                cout<<"[H] "<<hambre<<" --> ";
                hambre=hambre-0.5;
                if (hambre<0){
@@ -338,9 +356,11 @@ int main(){
        case 1:
        if((plata-15)<0){
            cout<<"\nNo tenes suficiente plata."<<endl;
+           usleep(1000000);
        }
        else if ((plata-15)>=0){
            cout<<"\nCompraste un agua Villavicencio."<<endl;
+           usleep(1000000);
                cout<<"[Se] "<<sed<<" --> ";
                sed=sed-1;
                if (sed<0){
@@ -350,19 +370,21 @@ int main(){
                salud=salud+0.25;
                 if (salud>10){
         salud=10;
-        usleep(2000000);
     }
                cout<<salud<<endl;
                cout<<"Costo: -$15"<<endl;
                plata=plata-15;
+               usleep(2000000);
        }
        break;
        case 2:
        if((plata-30)<0){
            cout<<"\nNo tenes suficiente plata."<<endl;
+           usleep(1000000);
            }
           else if ((plata-30)>=0){
            cout<<"\nCompraste un agua Smart Water."<<endl;
+           usleep(1000000);
                cout<<"[Se] "<<sed<<" --> ";
                sed=sed-1;
                if (sed<0){
@@ -382,9 +404,11 @@ int main(){
        case 3:
        if((plata-20)<0){
            cout<<"\nNo tenes suficiente plata."<<endl;
+           usleep(1000000);
            }
           else if ((plata-20)>=0){
            cout<<"\nCompraste una sprite."<<endl;
+           usleep(1000000);
                cout<<"[Se] "<<sed<<" --> ";
                sed=sed-1.5;
                if (sed<0){
@@ -402,9 +426,11 @@ int main(){
        case 4:
        if((plata-25)<0){
            cout<<"\nNo tenes suficiente plata."<<endl;
+           usleep(1000000);
            }
           else if ((plata-25)>=0){
-           cout<<"\nCompraste un agua Smart Water."<<endl;
+           cout<<"\nCompraste una cerveza."<<endl;
+           usleep(1000000);
                cout<<"[Se] "<<sed<<" --> ";
                sed=sed-2;
                if (sed<0){
@@ -421,9 +447,11 @@ int main(){
        case 5:
       if((plata-50)<0){
            cout<<"\nNo tenes suficiente plata."<<endl;
+           usleep(1000000);
            }
           else if ((plata-50)>=0){
-           cout<<"\nCompraste un agua Smart Water."<<endl;
+           cout<<"\nCompraste una Red Bull."<<endl;
+           usleep(1000000);
                cout<<"[Se] "<<sed<<" --> ";
                sed=sed-2;
                if (sed<0){
@@ -453,9 +481,111 @@ int main(){
                     
                 case 5: //funciuon banco
                 break;
-                case 6://funcion -casa-
+               
+               
+                case 6: //casa
+         quehacercasa=10;       
+    while(quehacercasa!=0){
+        
+    cout<<"\n\n-----CASA-----"<<endl;
+    cout<<"\nNivel de energia: "<<energia<<endl;
+    cout<<"Nivel de sueño: "<<suenio<<endl;
+    cout<<"Nivel de hambre: "<<hambre<<endl;
+    cout<<"Nivel de sueño: "<<sed<<endl;
+    cout<<"\nQue queres hacer?"<<endl;
+    cout<<"\n\n1.   DORMIR"<<endl;
+    cout<<"2.   PROXIMAMENTE"<<endl;
+    cout<<"\n0.   SALIR"<<endl;
+    cin>>quehacercasa;
+    while(quehacercasa!=1&&quehacercasa!=0){
+        cout<<"\nNumero invalido."<<endl;
+        cin>>quehacercasa;
+    }
+    switch(quehacercasa){
+        case 1:  cout<<"\nTe acostas en la cama..."<<endl;
+           usleep(1500000);
+           cout<<"\n--DURMIENDO--"<<endl;
+           usleep(500000);
+           cout<<"....."<<endl;
+           usleep(500000);
+           cout<<"...."<<endl;
+           usleep(500000);
+           cout<<"..."<<endl;
+           usleep(500000);
+           cout<<".."<<endl;
+           usleep(500000);
+           cout<<"."<<endl;
+           usleep(500000);
+           
+           int cuantodormiste;
+           cuantodormiste= rand() % 3 + 1;
+           switch(cuantodormiste){
+               case 1:
+               cout<<"\nDormiste 5 horas."<<endl;
+               cout<<"[E] "<<energia<<" --> ";
+               energia=energia+3;
+               if (energia>10){
+    energia=10;
+    }
+               cout<<energia<<" | [Su] " <<suenio<<" --> ";
+               suenio=suenio-3;
+               if(suenio<0){
+                   suenio=0;
+               }
+               cout<<suenio<<endl;
+               cout<<"[H] "<<hambre<<" --> ";hambre=hambre+2.5;cout<<hambre<<" | [Se] "<<sed<<" --> ";sed=sed+2.5;cout<<sed<<endl;
+               
+               
+           
+        break;
+        case 2: 
+        cout<<"\nDormiste 6 horas."<<endl;
+               cout<<"[E] "<<energia<<" --> ";
+               energia=energia+4;
+               if (energia>10){
+    energia=10;
+    }
+               cout<<energia<<" | [Su] " <<suenio<<" --> ";
+               suenio=suenio-4;
+               if(suenio<0){
+                   suenio=0;
+               }
+               cout<<suenio<<endl;
+                cout<<"[H] "<<hambre<<" --> ";hambre=hambre+2.5;cout<<hambre<<" | [Se] "<<sed<<" --> ";sed=sed+2.5;cout<<sed<<endl;
+           
+        break;
+        case 3: 
+        cout<<"\nDormiste 7 horas."<<endl;
+               cout<<"[E] "<<energia<<" --> ";
+               energia=energia+5;
+               if (energia>10){
+    energia=10;
+    }
+               cout<<energia<<" | [Su] " <<suenio<<" --> ";
+               suenio=suenio-5;
+               if(suenio<0){
+                   suenio=0;
+               }
+               cout<<suenio<<endl;
+                cout<<"[H] "<<hambre<<" --> ";hambre=hambre+2.5;cout<<hambre<<" | [Se] "<<sed<<" --> ";sed=sed+2.5;cout<<sed<<endl;
+             
+               
+           
+        break;
+    }
+    usleep(1000000);
+    }
+    }//salir casa
                 break;
-                case 10;//logros
+               
+               
+                case 10://perfil
+                break;
+               
+               
+                case 11://logros
+                break;
+            
 
             }
 
@@ -465,12 +595,13 @@ int main(){
 
 
 //casino
-
+   
     while(ruletartaimportante=="S"||ruletartaimportante=="s"){
         int rul1=-1, rul2=-1,rul3=-1,rul4=-1,rul5=-1,rul6=-1,rul7=-1,rul8=-1,rul9=-1,rul10=-1,rul11=-1,rul12=-1,rul13=-1,rul14=-1,rul15=-1,rul16=-1,rul17=-1,rul18=-1,rul19=-1,rul20=-1,rul21=-1,rul22=-1,rul23=-1,rul24=-1,rul25=-1,rul26=-1,rul27=-1,rul28=-1,rul29=-1,rul30=-1,rul31=-1,rul32=-1,rul33=-1,rul34=-1,rul35=-1,rul36=-1;
         int rulap1=0,rulap2=0,rulap3=0,rulap4=0,rulap5=0,rulap6=0,rulap7=0,rulap8=0,rulap9=0,rulap10=0,rulap11=0,rulap12=0,rulap13=0,rulap14=0,rulap15=0,rulap16=0,rulap17=0,rulap18=0,rulap19=0,rulap20=0,rulap21=0,rulap22=0,rulap23=0,rulap24=0,rulap25=0,rulap26=0,rulap27=0,rulap28=0,rulap29=0,rulap30=0,rulap31=0,rulap32=0,rulap33=0,rulap34=0,rulap35=0,rulap36=0;
         int APruletaparoimpar=0;
         int APruletarojoonegro=0;
+        ruletartaimportante="S";
         cout<<"-----RULETA-----"<<endl<<endl;
         cout<<"-La ruleta tiene 36 casilleros con 1 numero en cada uno. "<<endl;
         cout<<"-Le podes apostar a mas de un numero, a su tipo (par o impar) y al color casillero del numero que va a tocar (rojo o negro)."<<endl<<endl;
@@ -1760,9 +1891,10 @@ int main(){
 
         
     }
-    salircasino=10;
-    ruletartaimportante="N";
-    cout<<"\nSales del casino."<<endl;
+    if(salircasino==0){
+        ruletartaimportante="N";
+    }
+    
     }//while casino==s
      
      
