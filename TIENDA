@@ -1,0 +1,282 @@
+ while (comidaobebida!=0){ //mientras que comidaobebida sea diferente a salir 
+    cout<<"\nQue queres comprar?"<<endl;
+    cout<<"\n1.  COMIDAS"<<endl;
+    cout<<"2.  BEBIDAS"<<endl;
+    cout<<"\n0.  SALIR"<<endl;
+    
+    cin>>comidaobebida; //toma valor 1
+    while(comidaobebida!=1&&comidaobebida!=2&&comidaobebida!=0){
+        cout<<"\nEl numero ingresado es invalido."<<endl;
+    cin>>comidaobebida;
+    }
+    
+    if(comidaobebida==1){
+       int comidas=10;
+    while(comidas!=0){  //while salir de comidas
+    cout<<"\n\n--COMIDAS--"<<endl<<endl;
+    cout<<"Tenes $"<<plata<<"."<<endl<<endl;
+    cout<<"Nivel de hambre: "<<hambre<<"/10"<<endl<<endl;
+    cout<<"Comprar..."<<endl;
+     cout<<"\n1. Hamburguesa  ($25)"<<endl;
+    cout<<"2. Papas fritas  ($15)"<<endl;
+    cout<<"3. Tarta de verdura  ($30)"<<endl;
+    cout<<"4. Caviar c/ salsa de mariscos  ($400)"<<endl;
+    cout<<"5. Helado  ($10)"<<endl;
+    cout<<"\n0. Salir"<<endl;
+    cin>>comidas;
+    while(comidas!=1&&comidas!=2&&comidas!=3&&comidas!=4&&comidas!=5&&comidas!=0){
+       cout<<"\nEl numero ingresado es invalido."<<endl;
+     cin>>comidas;
+    }  
+  
+   switch(comidas){
+       case 1:
+       if((plata-25)<0){
+           cout<<"\nNo tenes suficiente plata."<<endl;
+       }
+       else if ((plata-25)>=0){
+           cout<<"\nCompraste una hamburguesa."<<endl;
+               cout<<"[H] "<<hambre<<" --> ";
+               hambre=hambre-2;
+               if (hambre<0){
+    hambre=0;
+    }
+               cout<<hambre<<" | [Sa] " <<salud<<" --> ";
+               salud=salud-0.5;
+               cout<<salud<<endl;
+              cout<<"Costo: -$25"<<endl;
+               plata=plata-25;
+               usleep(2000000);
+       }
+       break;
+       case 2:
+       if((plata-15)<0){
+           cout<<"\nNo tenes suficiente plata."<<endl;
+           }
+          else if ((plata-15)>=0){
+           cout<<"\nCompraste papas fritas."<<endl;
+               cout<<"[H] "<<hambre<<" --> ";
+               hambre=hambre-1;
+               if (hambre<0){
+    hambre=0;
+    }
+               cout<<hambre<<" | [Sa] " <<salud<<" --> ";
+               salud=salud-0.25;
+               cout<<salud<<endl;
+              cout<<"Costo: -$15"<<endl;
+               plata=plata-15;
+               usleep(2000000);
+          }
+       break;
+       case 3:
+       if((plata-30)<0){
+           cout<<"\nNo tenes suficiente plata."<<endl;
+           }
+         else if((plata-30)>=0){  
+       cout<<"\nCompraste una tarta de verduras."<<endl;
+               cout<<"[H] "<<hambre<<" --> ";
+               hambre=hambre-1;
+               if (hambre<0){
+    hambre=0;
+    }
+               cout<<hambre<<" | [Sa] " <<salud<<" --> ";
+               salud=salud+0.5;
+                if (salud>10){
+        salud=10;
+    }
+               cout<<salud<<endl;
+               cout<<"Costo: -$30"<<endl;
+               plata=plata-30;
+               usleep(2000000);
+          }
+          
+       break;
+       case 4:
+       if((plata-400)<0){
+           cout<<"\nNo tenes suficiente plata"<<endl;
+           }
+       else if((plata-400)>=0){
+           cout<<"\nCompraste caviar c/ salsa de mariscos."<<endl;
+               cout<<"[H] "<<hambre<<" --> ";
+               hambre=0;
+               cout<<hambre<<" | [Sa] " <<salud<<" --> ";
+               salud=10;
+               cout<<salud<<endl;
+               cout<<"Costo: -$400"<<endl;
+               plata=plata-400;
+               usleep(2000000);
+       }
+       break;
+       case 5:
+       if((plata-10)<0){
+           cout<<"\nNo tenes suficiente plata"<<endl;
+           }
+       else if((plata-10)>=0){
+       cout<<"\nCompraste un helado."<<endl;
+               cout<<"[H] "<<hambre<<" --> ";
+               hambre=hambre-0.5;
+               if (hambre<0){
+    hambre=0;
+    }
+               cout<<hambre<<" | [Sa] " <<salud<<" --> ";
+               salud=salud-0.25;
+               cout<<salud<<endl;
+               cout<<"Costo: -$10"<<endl;
+               plata=plata-10;
+               usleep(2000000);
+       }
+       break;
+       
+   }
+    } //while final comidas
+    } //if comidaobebida= comida fin del if
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    else if (comidaobebida==2){
+        int bebidas=10;
+        while(bebidas!=0){
+    
+     cout<<"\n\n--BEBIDAS--"<<endl<<endl;
+      cout<<"Tenes $"<<plata<<"."<<endl<<endl;
+    cout<<"Nivel de sed: "<<sed<<"/10"<<endl<<endl;
+     cout<<"Comprar..."<<endl;
+     cout<<"\n1. Agua Villavicencio  ($15)"<<endl;
+    cout<<"2. Agua Smart Water  ($30)"<<endl;
+    cout<<"3. Sprite  ($20)"<<endl;
+    cout<<"4. Cerveza  ($25)"<<endl;
+    cout<<"5. Red Bull  ($50)"<<endl;
+    cout<<"\n0. Salir"<<endl;
+    cin>>bebidas;
+    while(bebidas!=1&&bebidas!=2&&bebidas!=3&&bebidas!=4&&bebidas!=5&&bebidas!=0){
+         cout<<"Comprar..."<<endl;
+     cout<<"\n1. Agua Villavicencio  ($15)"<<endl;
+    cout<<"2. Agua Smart Water  ($30)"<<endl;
+    cout<<"3. Sprite  ($20)"<<endl;
+    cout<<"4. Cerveza  ($25)"<<endl;
+    cout<<"5. Red Bull  ($50)"<<endl;
+    cout<<"\n0. Salir"<<endl;
+     cin>>bebidas;
+    }
+    switch(bebidas){
+       case 1:
+       if((plata-15)<0){
+           cout<<"\nNo tenes suficiente plata."<<endl;
+       }
+       else if ((plata-15)>=0){
+           cout<<"\nCompraste un agua Villavicencio."<<endl;
+               cout<<"[Se] "<<sed<<" --> ";
+               sed=sed-1;
+               if (sed<0){
+    sed=0;
+    }
+               cout<<sed<<" | [Sa] " <<salud<<" --> ";
+               salud=salud+0.25;
+                if (salud>10){
+        salud=10;
+        usleep(2000000);
+    }
+               cout<<salud<<endl;
+               cout<<"Costo: -$15"<<endl;
+               plata=plata-15;
+       }
+       break;
+       case 2:
+       if((plata-30)<0){
+           cout<<"\nNo tenes suficiente plata."<<endl;
+           }
+          else if ((plata-30)>=0){
+           cout<<"\nCompraste un agua Smart Water."<<endl;
+               cout<<"[Se] "<<sed<<" --> ";
+               sed=sed-1;
+               if (sed<0){
+    sed=0;
+    }
+               cout<<sed<<" | [Sa] " <<salud<<" --> ";
+               salud=salud+1;
+                if (salud>10){
+        salud=10;
+        usleep(2000000);
+    }
+               cout<<salud<<endl;
+               cout<<"Costo: -$30"<<endl;
+               plata=plata-30;
+          }
+       break;
+       case 3:
+       if((plata-20)<0){
+           cout<<"\nNo tenes suficiente plata."<<endl;
+           }
+          else if ((plata-20)>=0){
+           cout<<"\nCompraste una sprite."<<endl;
+               cout<<"[Se] "<<sed<<" --> ";
+               sed=sed-1.5;
+               if (sed<0){
+    sed=0;
+    }
+               cout<<sed<<" | [Sa] " <<salud<<" --> ";
+               salud=salud-0.25;
+               cout<<salud<<endl;
+               cout<<"Costo: -$20"<<endl;
+               plata=plata-20;
+               usleep(2000000);
+          }
+          
+       break;
+       case 4:
+       if((plata-25)<0){
+           cout<<"\nNo tenes suficiente plata."<<endl;
+           }
+          else if ((plata-25)>=0){
+           cout<<"\nCompraste un agua Smart Water."<<endl;
+               cout<<"[Se] "<<sed<<" --> ";
+               sed=sed-2;
+               if (sed<0){
+    sed=0;
+    }
+               cout<<sed<<" | [Sa] " <<salud<<" --> ";
+               salud=salud-0.25;
+               cout<<salud<<endl;
+               cout<<"Costo: -$25"<<endl;
+               plata=plata-25;
+               usleep(2000000);
+          }
+       break;
+       case 5:
+      if((plata-50)<0){
+           cout<<"\nNo tenes suficiente plata."<<endl;
+           }
+          else if ((plata-50)>=0){
+           cout<<"\nCompraste un agua Smart Water."<<endl;
+               cout<<"[Se] "<<sed<<" --> ";
+               sed=sed-2;
+               if (sed<0){
+    sed=0;
+    }
+               cout<<sed<<" | [Sa] "<<salud<<" --> ";
+               salud=salud-0.5;
+               cout<<salud<<" | [E] "<<energia<<" --> ";
+               energia=energia+2;
+               if(energia>10){
+                   energia=10;
+               }
+               cout<<energia<<endl;
+               cout<<"Costo: -$50"<<endl;
+               plata=plata-50;
+               usleep(2000000);
+          }
+       break;
+       
+   }
+    }//mientras que bebida sea dif a salir
+    }//else comidaobebida==2
+    }//mientras que comida o bebida sea diferente a salir fin del while
+    comidaobebida=10;
