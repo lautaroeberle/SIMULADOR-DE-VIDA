@@ -36,6 +36,7 @@
        }
        else if ((plata-25)>=0){
            cout<<"\nCompraste una hamburguesa."<<endl;
+           usleep(1000000);
                cout<<"[H] "<<hambre<<" --> ";
                hambre=hambre-2;
                if (hambre<0){
@@ -55,6 +56,7 @@
            }
           else if ((plata-15)>=0){
            cout<<"\nCompraste papas fritas."<<endl;
+           usleep(1000000);
                cout<<"[H] "<<hambre<<" --> ";
                hambre=hambre-1;
                if (hambre<0){
@@ -74,6 +76,7 @@
            }
          else if((plata-30)>=0){  
        cout<<"\nCompraste una tarta de verduras."<<endl;
+       usleep(1000000);
                cout<<"[H] "<<hambre<<" --> ";
                hambre=hambre-1;
                if (hambre<0){
@@ -97,6 +100,7 @@
            }
        else if((plata-400)>=0){
            cout<<"\nCompraste caviar c/ salsa de mariscos."<<endl;
+           usleep(1000000);
                cout<<"[H] "<<hambre<<" --> ";
                hambre=0;
                cout<<hambre<<" | [Sa] " <<salud<<" --> ";
@@ -113,6 +117,7 @@
            }
        else if((plata-10)>=0){
        cout<<"\nCompraste un helado."<<endl;
+       usleep(1000000);
                cout<<"[H] "<<hambre<<" --> ";
                hambre=hambre-0.5;
                if (hambre<0){
@@ -173,6 +178,7 @@
        }
        else if ((plata-15)>=0){
            cout<<"\nCompraste un agua Villavicencio."<<endl;
+           usleep(1000000);
                cout<<"[Se] "<<sed<<" --> ";
                sed=sed-1;
                if (sed<0){
@@ -195,6 +201,7 @@
            }
           else if ((plata-30)>=0){
            cout<<"\nCompraste un agua Smart Water."<<endl;
+           usleep(1000000);
                cout<<"[Se] "<<sed<<" --> ";
                sed=sed-1;
                if (sed<0){
@@ -217,6 +224,7 @@
            }
           else if ((plata-20)>=0){
            cout<<"\nCompraste una sprite."<<endl;
+           usleep(1000000);
                cout<<"[Se] "<<sed<<" --> ";
                sed=sed-1.5;
                if (sed<0){
@@ -236,7 +244,8 @@
            cout<<"\nNo tenes suficiente plata."<<endl;
            }
           else if ((plata-25)>=0){
-           cout<<"\nCompraste un agua Smart Water."<<endl;
+           cout<<"\nCompraste una cerveza."<<endl;
+           usleep(1000000);
                cout<<"[Se] "<<sed<<" --> ";
                sed=sed-2;
                if (sed<0){
@@ -255,7 +264,8 @@
            cout<<"\nNo tenes suficiente plata."<<endl;
            }
           else if ((plata-50)>=0){
-           cout<<"\nCompraste un agua Smart Water."<<endl;
+           cout<<"\nCompraste una Red Bull."<<endl;
+           usleep(1000000);
                cout<<"[Se] "<<sed<<" --> ";
                sed=sed-2;
                if (sed<0){
