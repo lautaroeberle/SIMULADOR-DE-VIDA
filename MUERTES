@@ -1,0 +1,40 @@
+if(plata<1){
+          cout<<"\n\nTe quedaste sin plata."<<endl;
+          usleep(1500000);
+          cout<<"Ya no podes satisfacer tus necesidades basicas."<<endl;
+          usleep(1500000);
+          cout<<" -----HAS MUERTO-----"<<endl;
+          cout<<"\n\n-----FIN DEL JUEGO-----"<<endl;
+      }
+      else if(salud<1){
+          cout<<"\n\nTe quedaste sin salud."<<endl;
+          usleep(1500000);
+          cout<<"Los doctores dicen que no vas a sobrevivir la noche."<<endl;
+          usleep(1500000);
+          cout<<"\n-----HAS MUERTO-----"<<endl;
+          cout<<"\n\n-----FIN DEL JUEGO-----"<<endl;
+      }
+      else if(suenio>9){
+          cout<<"\n\nNo has dormido en dias."<<endl;
+          usleep(1500000);
+          cout<<"Te desplomas y entras en un sueño eterno."<<endl;
+          usleep(1500000);
+          cout<<"\n-----HAS MUERTO-----"<<endl;
+          cout<<"\n\n-----FIN DEL JUEGO-----"<<endl;
+      }
+      else if(hambre>9){
+          cout<<"\n\nNo has comido en dias."<<endl;
+          usleep(1500000);
+          cout<<"Ya no tenes fuerzas para continuar."<<endl;
+          usleep(1500000);
+          cout<<"\n-----HAS MUERTO-----"<<endl;
+          cout<<"\n\n-----FIN DEL JUEGO-----"<<endl;
+      }
+      else if(sed>9){
+           cout<<"\n\nNo te has hidratado en dias."<<endl;
+          usleep(1500000);
+          cout<<"Ya no tenes fuerzas para continuar."<<endl;
+          usleep(1500000);
+          cout<<"\n-----HAS MUERTO-----"<<endl;
+          cout<<"\n\n-----FIN DEL JUEGO-----"<<endl;
+      }
