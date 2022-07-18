@@ -1,37 +1,13 @@
-
-//SALUD(FUNCION RANDOM DE ENFERMEDADES)-COMIDA(BAJA CUANDO SE TERMINA EL DIA)-PLATA-ENERGIA(RECUPERAS ENERGIA DURMIENDO)-sueño-gym
-
-
-
-
-
-
-//para apuesta: APruletajuego
-//para juego: ruletajuego
-//corregir saltos de linea
-//+ srand (time(NULL));
-//  NUMERORULETA= rand() % 36 + 1; PARA COLOR Y TIPO
-
-
-
-
-//SEGUIR CON  cout<<"         "<<rul4<<" ($"<<rulap4<<")"<<endl;
-//rulap=0 con TODAS
-//SEGUIR CON rulp (PERDIDAS)  (NO descontar, ya descontadas)
-//SEGUIR CON rulg (GANANCIAS)
-
-//PLATA APOSTADA:
-//PERIDDA: -$
-//GANANCIA: $
-//TOTAL GANADO/PERIDO
-//PLATA ACTUAL (dps de apuesta)
 #include<iostream>
+#ifdef _WIN32
+#include <windows.h>
+#else
 #include<unistd.h>
+#endif
 using namespace std;
 int main(){
 
     int plata=100;
-
     int adondeir=0, salircasino=10;
     string ruletaparoimpar, ruletarojoonegro, rtaruleta;
     string INGRESECUALQUIERCARACTER1,INGRESECUALQUIERCARACTER2, confirmarnombreyedad="n"; 
@@ -39,6 +15,8 @@ int main(){
     float salud=5, energia=5, hambre=4, sed=4, suenio=2;
    int comidaobebida=10;
    int quehacercasa=10;
+   int quehacerbanco=10;
+   int platatrabajo=1100, montoaretirar=0;
     int salircasa=10;
     int dias=1;
 
@@ -481,7 +459,63 @@ int main(){
                     break;
                     
                     
-                case 5: //funciuon banco
+                case 5: 
+                quehacerbanco=10;
+                while(quehacerbanco!=0){
+    cout<<"\n-----BANCO-----"<<endl;
+    cout<<"\nQue queres hacer?"<<endl;
+    cout<<"\n1.   RETIRAR PLATA"<<endl;
+    cout<<"2.   PEDIR UN PRESTAMO"<<endl;
+    cout<<"\n0.   SALIR"<<endl;
+    cin>>quehacerbanco;
+    while(quehacerbanco!=1&&quehacerbanco!=2&&quehacerbanco!=0){
+        cout<<"\nNumero invalido"<<endl;
+        cin>>quehacerbanco;
+    }
+    switch(quehacerbanco){
+        case 1:
+        cout<<"\n--CAJERO--"<<endl;
+        cout<<"\nTu plata: $"<<plata<<endl;
+        cout<<"Plata disponible en el banco: $"<<platatrabajo<<endl;
+        cout<<"\nQue monto desea retirar?"<<endl;
+        cin>>montoaretirar;
+        while(montoaretirar>platatrabajo||montoaretirar<0){
+            cout<<"\nSaldo insuficiente."<<endl;
+            cin>>montoaretirar;
+        }
+        cout<<"\nBeep Beep..."<<endl;
+        usleep(500000);
+           cout<<"..."<<endl;
+           usleep(500000);
+           cout<<".."<<endl;
+           usleep(500000);
+           cout<<"."<<endl;
+           usleep(500000);
+           if(montoaretirar==0){
+               cout<<"\nERROR. Retiro cancelado."<<endl;
+                usleep(1000000);
+           }
+           else {
+               cout<<"\nMonto retirado satisfactoriamente."<<endl;
+           usleep(1000000);
+           plata=plata+montoaretirar;
+           platatrabajo=platatrabajo-montoaretirar;
+           }
+        
+        break;
+        
+        
+        
+        case 2:
+        cout<<"--Prestamo--"<<endl;
+         cout<<"\n?"<<endl;
+        
+        
+        
+        
+        break;
+    }
+    }//salir banco while
                 break;
                
                
@@ -604,7 +638,8 @@ int main(){
         int APruletaparoimpar=0;
         int APruletarojoonegro=0;
         ruletartaimportante="S";
-        cout<<"-----RULETA-----"<<endl<<endl;
+        cout<<"-----CASINO-----"<<endl<<endl;
+        cout<<"\nVas a jugar a la ruleta..."<<endl;
         cout<<"-La ruleta tiene 36 casilleros con 1 numero en cada uno. "<<endl;
         cout<<"-Le podes apostar a mas de un numero, a su tipo (par o impar) y al color casillero del numero que va a tocar (rojo o negro)."<<endl<<endl;
         cout<<"\nIngrese 1 para continuar."<<endl;
@@ -616,19 +651,16 @@ int main(){
         }
         if(salircasino==1){
         cout<<endl<<endl<<endl;
-
         cout<<"A que numero le vas a apostar?"<<endl;
         cout<<"1-36"<<endl;
         cout<<"Ingrese 0 si NO quieres apostarle a un numero."<<endl;
         cin>> rul1;
-
         while(rul1>36||rul1<0){
             cout<<"Ingrese un numero del 1 al 36 para apostar."<<endl;
             cout<<"Ingrese 0 si NO quieres apostarle a un numero."<<endl;
             cin>>rul1;
         }
         if(plata>0&&rul1!=0&&rul2!=0&&rul3!=0&&rul4!=0&&rul5!=0&&rul6!=0&&rul7!=0&&rul8!=0&&rul9!=0&&rul10!=0&&rul11!=0&&rul12!=0&&rul13!=0&&rul14!=0&&rul15!=0&&rul16!=0&&rul17!=0&&rul18!=0&&rul19!=0&&rul20!=0&&rul21!=0&&rul22!=0&&rul23!=0&&rul24!=0&&rul25!=0&&rul26!=0&&rul27!=0&&rul28!=0&&rul29!=0&&rul30!=0&&rul31!=0&&rul32!=0&&rul33!=0&&rul34!=0&&rul35!=0&&rul36!=0){
-
             cout <<"\nLe apostaste al numero "<<rul1<<"."<<endl<<endl; //rul1
             cout<< "Cuanta plata queres apostar?"<<endl;
             cout<< "Tu plata es: $"<<plata<<endl;
@@ -636,8 +668,6 @@ int main(){
             cin>>rulap1;
             while(rulap1>plata){
                 cout<<"No tenes suficiente plata."<<endl;
-                cout<< "Cuanta plata queres apostar?"<<endl;
-                cout<< "Tu plata es: $"<<plata<<endl;
                 cin>>rulap1;
             }
             cout<<"\nLe apostaste $"<<rulap1<<" al numero "<<rul1<<"."<<endl<<endl;
@@ -659,8 +689,6 @@ int main(){
             cin>>rulap2;
             while(rulap2>plata){
                 cout<<"No tenes suficiente plata."<<endl;
-                cout<< "Cuanta plata queres apostar?"<<endl;
-                cout<< "Tu plata es: $"<<plata<<endl;
                 cin>>rulap2;
             }
             cout<<"\nLe apostaste $"<<rulap2<<" al numero "<<rul2<<"."<<endl<<endl;
@@ -683,8 +711,6 @@ int main(){
             cin>>rulap3;
             while(rulap3>plata){
                 cout<<"No tenes suficiente plata."<<endl;
-                cout<< "Cuanta plata queres apostar?"<<endl;
-                cout<< "Tu plata es: $"<<plata<<endl;
                 cin>>rulap3;
             }
             cout<<"\nLe apostaste $"<<rulap3<<" al numero "<<rul3<<"."<<endl<<endl;
@@ -707,8 +733,6 @@ int main(){
             cin>>rulap4;
             while(rulap4>plata){
                 cout<<"No tenes suficiente plata."<<endl;
-                cout<< "Cuanta plata queres apostar?"<<endl;
-                cout<< "Tu plata es: $"<<plata<<endl;
                 cin>>rulap4;
             }
             cout<<"\nLe apostaste $"<<rulap4<<" al numero "<<rul4<<"."<<endl<<endl;
@@ -731,8 +755,6 @@ int main(){
             cin>>rulap5;
             while(rulap5>plata){
                 cout<<"No tenes suficiente plata."<<endl;
-                cout<< "Cuanta plata queres apostar?"<<endl;
-                cout<< "Tu plata es: $"<<plata<<endl;
                 cin>>rulap5;
             }
             cout<<"\nLe apostaste $"<<rulap5<<" al numero "<<rul5<<"."<<endl<<endl;
@@ -755,8 +777,6 @@ int main(){
             cin>>rulap6;
             while(rulap6>plata){
                 cout<<"No tenes suficiente plata."<<endl;
-                cout<< "Cuanta plata queres apostar?"<<endl;
-                cout<< "Tu plata es: $"<<plata<<endl;
                 cin>>rulap6;
             }
             cout<<"\nLe apostaste $"<<rulap6<<" al numero "<<rul6<<"."<<endl<<endl;
@@ -779,8 +799,6 @@ int main(){
             cin>>rulap7;
             while(rulap7>plata){
                 cout<<"No tenes suficiente plata."<<endl;
-                cout<< "Cuanta plata queres apostar?"<<endl;
-                cout<< "Tu plata es: $"<<plata<<endl;
                 cin>>rulap7;
             }
             cout<<"\nLe apostaste $"<<rulap7<<" al numero "<<rul7<<"."<<endl<<endl;
@@ -803,8 +821,6 @@ int main(){
             cin>>rulap8;
             while(rulap8>plata){
                 cout<<"No tenes suficiente plata."<<endl;
-                cout<< "Cuanta plata queres apostar?"<<endl;
-                cout<< "Tu plata es: $"<<plata<<endl;
                 cin>>rulap8;
             }
             cout<<"\nLe apostaste $"<<rulap8<<" al numero "<<rul8<<"."<<endl<<endl;
@@ -827,8 +843,6 @@ int main(){
             cin>>rulap9;
             while(rulap9>plata){
                 cout<<"No tenes suficiente plata."<<endl;
-                cout<< "Cuanta plata queres apostar?"<<endl;
-                cout<< "Tu plata es: $"<<plata<<endl;
                 cin>>rulap9;
             }
             cout<<"\nLe apostaste $"<<rulap9<<" al numero "<<rul9<<"."<<endl<<endl;
@@ -851,8 +865,6 @@ int main(){
             cin>>rulap10;
             while(rulap10>plata){
                 cout<<"No tenes suficiente plata."<<endl;
-                cout<< "Cuanta plata queres apostar?"<<endl;
-                cout<< "Tu plata es: $"<<plata<<endl;
                 cin>>rulap10;
             }
             cout<<"\nLe apostaste $"<<rulap10<<" al numero "<<rul10<<"."<<endl<<endl;
@@ -875,8 +887,6 @@ int main(){
             cin>>rulap11;
             while(rulap11>plata){
                 cout<<"No tenes suficiente plata."<<endl;
-                cout<< "Cuanta plata queres apostar?"<<endl;
-                cout<< "Tu plata es: $"<<plata<<endl;
                 cin>>rulap11;
             }
             cout<<"\nLe apostaste $"<<rulap11<<" al numero "<<rul11<<"."<<endl<<endl;
@@ -899,8 +909,6 @@ int main(){
             cin>>rulap12;
             while(rulap12>plata){
                 cout<<"No tenes suficiente plata."<<endl;
-                cout<< "Cuanta plata queres apostar?"<<endl;
-                cout<< "Tu plata es: $"<<plata<<endl;
                 cin>>rulap12;
             }
             cout<<"\nLe apostaste $"<<rulap12<<" al numero "<<rul12<<"."<<endl<<endl;
@@ -923,8 +931,6 @@ int main(){
             cin>>rulap13;
             while(rulap13>plata){
                 cout<<"No tenes suficiente plata."<<endl;
-                cout<< "Cuanta plata queres apostar?"<<endl;
-                cout<< "Tu plata es: $"<<plata<<endl;
                 cin>>rulap13;
             }
             cout<<"\nLe apostaste $"<<rulap13<<" al numero "<<rul13<<"."<<endl<<endl;
@@ -947,8 +953,6 @@ int main(){
             cin>>rulap14;
             while(rulap14>plata){
                 cout<<"No tenes suficiente plata."<<endl;
-                cout<< "Cuanta plata queres apostar?"<<endl;
-                cout<< "Tu plata es: $"<<plata<<endl;
                 cin>>rulap14;
             }
             cout<<"\nLe apostaste $"<<rulap14<<" al numero "<<rul14<<"."<<endl<<endl;
@@ -971,8 +975,6 @@ int main(){
             cin>>rulap15;
             while(rulap15>plata){
                 cout<<"No tenes suficiente plata."<<endl;
-                cout<< "Cuanta plata queres apostar?"<<endl;
-                cout<< "Tu plata es: $"<<plata<<endl;
                 cin>>rulap15;
             }
             cout<<"\nLe apostaste $"<<rulap15<<" al numero "<<rul15<<"."<<endl<<endl;
@@ -995,8 +997,6 @@ int main(){
             cin>>rulap16;
             while(rulap16>plata){
                 cout<<"No tenes suficiente plata."<<endl;
-                cout<< "Cuanta plata queres apostar?"<<endl;
-                cout<< "Tu plata es: $"<<plata<<endl;
                 cin>>rulap16;
             }
             cout<<"\nLe apostaste $"<<rulap16<<" al numero "<<rul16<<"."<<endl<<endl;
@@ -1019,8 +1019,6 @@ int main(){
             cin>>rulap17;
             while(rulap17>plata){
                 cout<<"No tenes suficiente plata."<<endl;
-                cout<< "Cuanta plata queres apostar?"<<endl;
-                cout<< "Tu plata es: $"<<plata<<endl;
                 cin>>rulap17;
             }
             cout<<"\nLe apostaste $"<<rulap17<<" al numero "<<rul17<<"."<<endl<<endl;
@@ -1043,8 +1041,6 @@ int main(){
             cin>>rulap18;
             while(rulap18>plata){
                 cout<<"No tenes suficiente plata."<<endl;
-                cout<< "Cuanta plata queres apostar?"<<endl;
-                cout<< "Tu plata es: $"<<plata<<endl;
                 cin>>rulap18;
             }
             cout<<"\nLe apostaste $"<<rulap18<<" al numero "<<rul18<<"."<<endl<<endl;
@@ -1067,8 +1063,6 @@ int main(){
             cin>>rulap19;
             while(rulap19>plata){
                 cout<<"No tenes suficiente plata."<<endl;
-                cout<< "Cuanta plata queres apostar?"<<endl;
-                cout<< "Tu plata es: $"<<plata<<endl;
                 cin>>rulap19;
             }
             cout<<"\nLe apostaste $"<<rulap19<<" al numero "<<rul19<<"."<<endl<<endl;
@@ -1091,8 +1085,6 @@ int main(){
             cin>>rulap20;
             while(rulap20>plata){
                 cout<<"No tenes suficiente plata."<<endl;
-                cout<< "Cuanta plata queres apostar?"<<endl;
-                cout<< "Tu plata es: $"<<plata<<endl;
                 cin>>rulap20;
             }
             cout<<"\nLe apostaste $"<<rulap20<<" al numero "<<rul20<<"."<<endl<<endl;
@@ -1115,8 +1107,6 @@ int main(){
             cin>>rulap21;
             while(rulap21>plata){
                 cout<<"No tenes suficiente plata."<<endl;
-                cout<< "Cuanta plata queres apostar?"<<endl;
-                cout<< "Tu plata es: $"<<plata<<endl;
                 cin>>rulap21;
             }
             cout<<"\nLe apostaste $"<<rulap21<<" al numero "<<rul21<<"."<<endl<<endl;
@@ -1139,8 +1129,6 @@ int main(){
             cin>>rulap22;
             while(rulap22>plata){
                 cout<<"No tenes suficiente plata."<<endl;
-                cout<< "Cuanta plata queres apostar?"<<endl;
-                cout<< "Tu plata es: $"<<plata<<endl;
                 cin>>rulap22;
             }
             cout<<"\nLe apostaste $"<<rulap22<<" al numero "<<rul22<<"."<<endl<<endl;
@@ -1163,8 +1151,6 @@ int main(){
             cin>>rulap23;
             while(rulap23>plata){
                 cout<<"No tenes suficiente plata."<<endl;
-                cout<< "Cuanta plata queres apostar?"<<endl;
-                cout<< "Tu plata es: $"<<plata<<endl;
                 cin>>rulap23;
             }
             cout<<"\nLe apostaste $"<<rulap23<<" al numero "<<rul23<<"."<<endl<<endl;
@@ -1187,8 +1173,6 @@ int main(){
             cin>>rulap24;
             while(rulap24>plata){
                 cout<<"No tenes suficiente plata."<<endl;
-                cout<< "Cuanta plata queres apostar?"<<endl;
-                cout<< "Tu plata es: $"<<plata<<endl;
                 cin>>rulap24;
             }
             cout<<"\nLe apostaste $"<<rulap24<<" al numero "<<rul24<<"."<<endl<<endl;
@@ -1211,8 +1195,6 @@ int main(){
             cin>>rulap25;
             while(rulap25>plata){
                 cout<<"No tenes suficiente plata."<<endl;
-                cout<< "Cuanta plata queres apostar?"<<endl;
-                cout<< "Tu plata es: $"<<plata<<endl;
                 cin>>rulap25;
             }
             cout<<"\nLe apostaste $"<<rulap25<<" al numero "<<rul25<<"."<<endl<<endl;
@@ -1235,8 +1217,6 @@ int main(){
             cin>>rulap26;
             while(rulap26>plata){
                 cout<<"No tenes suficiente plata."<<endl;
-                cout<< "Cuanta plata queres apostar?"<<endl;
-                cout<< "Tu plata es: $"<<plata<<endl;
                 cin>>rulap26;
             }
             cout<<"\nLe apostaste $"<<rulap26<<" al numero "<<rul26<<"."<<endl<<endl;
@@ -1259,8 +1239,6 @@ int main(){
             cin>>rulap27;
             while(rulap27>plata){
                 cout<<"No tenes suficiente plata."<<endl;
-                cout<< "Cuanta plata queres apostar?"<<endl;
-                cout<< "Tu plata es: $"<<plata<<endl;
                 cin>>rulap27;
             }
             cout<<"\nLe apostaste $"<<rulap27<<" al numero "<<rul27<<"."<<endl<<endl;
@@ -1283,8 +1261,6 @@ int main(){
             cin>>rulap28;
             while(rulap28>plata){
                 cout<<"No tenes suficiente plata."<<endl;
-                cout<< "Cuanta plata queres apostar?"<<endl;
-                cout<< "Tu plata es: $"<<plata<<endl;
                 cin>>rulap28;
             }
             cout<<"\nLe apostaste $"<<rulap28<<" al numero "<<rul28<<"."<<endl<<endl;
@@ -1307,8 +1283,6 @@ int main(){
             cin>>rulap29;
             while(rulap29>plata){
                 cout<<"No tenes suficiente plata."<<endl;
-                cout<< "Cuanta plata queres apostar?"<<endl;
-                cout<< "Tu plata es: $"<<plata<<endl;
                 cin>>rulap29;
             }
             cout<<"\nLe apostaste $"<<rulap29<<" al numero "<<rul29<<"."<<endl<<endl;
@@ -1331,8 +1305,6 @@ int main(){
             cin>>rulap30;
             while(rulap30>plata){
                 cout<<"No tenes suficiente plata."<<endl;
-                cout<< "Cuanta plata queres apostar?"<<endl;
-                cout<< "Tu plata es: $"<<plata<<endl;
                 cin>>rulap30;
             }
             cout<<"\nLe apostaste $"<<rulap30<<" al numero "<<rul30<<"."<<endl<<endl;
@@ -1355,8 +1327,6 @@ int main(){
             cin>>rulap31;
             while(rulap31>plata){
                 cout<<"No tenes suficiente plata."<<endl;
-                cout<< "Cuanta plata queres apostar?"<<endl;
-                cout<< "Tu plata es: $"<<plata<<endl;
                 cin>>rulap31;
             }
             cout<<"\nLe apostaste $"<<rulap31<<" al numero "<<rul31<<"."<<endl<<endl;
@@ -1379,8 +1349,6 @@ int main(){
             cin>>rulap32;
             while(rulap32>plata){
                 cout<<"No tenes suficiente plata."<<endl;
-                cout<< "Cuanta plata queres apostar?"<<endl;
-                cout<< "Tu plata es: $"<<plata<<endl;
                 cin>>rulap32;
             }
             cout<<"\nLe apostaste $"<<rulap32<<" al numero "<<rul32<<"."<<endl<<endl;
@@ -1403,8 +1371,6 @@ int main(){
             cin>>rulap33;
             while(rulap33>plata){
                 cout<<"No tenes suficiente plata."<<endl;
-                cout<< "Cuanta plata queres apostar?"<<endl;
-                cout<< "Tu plata es: $"<<plata<<endl;
                 cin>>rulap33;
             }
             cout<<"\nLe apostaste $"<<rulap33<<" al numero "<<rul33<<"."<<endl<<endl;
@@ -1427,8 +1393,6 @@ int main(){
             cin>>rulap34;
             while(rulap34>plata){
                 cout<<"No tenes suficiente plata."<<endl;
-                cout<< "Cuanta plata queres apostar?"<<endl;
-                cout<< "Tu plata es: $"<<plata<<endl;
                 cin>>rulap34;
             }
             cout<<"\nLe apostaste $"<<rulap34<<" al numero "<<rul34<<"."<<endl<<endl;
@@ -1451,8 +1415,6 @@ int main(){
             cin>>rulap35;
             while(rulap35>plata){
                 cout<<"No tenes suficiente plata."<<endl;
-                cout<< "Cuanta plata queres apostar?"<<endl;
-                cout<< "Tu plata es: $"<<plata<<endl;
                 cin>>rulap35;
             }
             cout<<"\nLe apostaste $"<<rulap35<<" al numero "<<rul35<<"."<<endl<<endl;
@@ -1475,8 +1437,6 @@ int main(){
             cin>>rulap36;
             while(rulap36>plata){
                 cout<<"No tenes suficiente plata."<<endl;
-                cout<< "Cuanta plata queres apostar?"<<endl;
-                cout<< "Tu plata es: $"<<plata<<endl;
                 cin>>rulap36;
             }
             cout<<"\nLe apostaste $"<<rulap36<<" al numero "<<rul36<<"."<<endl<<endl;
@@ -1783,23 +1743,6 @@ int main(){
             rulp=rulp-rulap10;
         }
 
-
-
-
-
-
-        //SEGUIR...
-
-
-
-
-
-
-
-
-
-
-        //GANANCIAS
         int rulg=0;
         if(rul1==NUMERORULETA){
             rulg=rulap1*35;
@@ -1831,9 +1774,6 @@ int main(){
         if(rul10==NUMERORULETA){
             rulg=rulap10*35;
         }
-
-        //SEGUIR...
-
         if((PAROIMPAR==1&&ruletaparoimpar=="par")||(PAROIMPAR==2&&ruletaparoimpar=="impar")){
             rulg=rulg+APruletaparoimpar*2;
         }
@@ -1852,11 +1792,6 @@ int main(){
         int rulppositivo=rulp-rulp*2;
 
         plata=plata+rulg;
-
-
-
-
-
         cout<<"\n\n---GANANCIAS/PERDIDAS---"<<endl;
         cout<<"\nAPOSTADO: $"<<rultotalapostado<<endl;
         if((rulg-rultotalapostado)>0){
@@ -1888,10 +1823,6 @@ int main(){
             if(ruletartaimportante=="N"||ruletartaimportante=="n"){
                 cout<<"Sales del casino."<<endl<<endl;
             }
-
-
-
-        
     }
     if(salircasino==0){
         ruletartaimportante="N";
@@ -1947,53 +1878,5 @@ int main(){
       
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-
-
-    
-
-    //PERIDDA: -$
-    //GANANCIA: $
-//TOTAL GANADO/PERIDO
-//PLATA ACTUAL (dps de apuesta)
-
-
 }
 
-//para apuesta: APruletajuego
-//para juego: ruletajuego
-//corregir saltos de linea
-//+ srand (time(NULL));
-//  NUMERORULETA= rand() % 36 + 1; PARA COLOR Y TIPO
-
-
-
-
-//SEGUIR C cout<<"         "<<rul4<<" ($"<<rulap4<<")"<<endl;
-//rulap=0 con TODAS
-//SEGUIR CON rulp (PERDIDAS)  (NO descontar, ya descontadas)
-//SEGUIR CON rulg (GANANCIAS)
-
-//PLATA APOSTADA:
-//PERIDDA: -$
-//GANANCIA: $
-//TOTAL GANADO/PERIDO
-//PLATA ACTUAL (dps de apuesta)
