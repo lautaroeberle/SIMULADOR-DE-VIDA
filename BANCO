@@ -1,0 +1,75 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <iostream>
+#include <unistd.h>
+
+using namespace std;
+
+int main()
+{
+    int quehacerbanco=10;
+    int plata=1000;
+    int platatrabajo=11, montoaretirar=0;
+    while(quehacerbanco!=0){
+    cout<<"\n-----BANCO-----"<<endl;
+    cout<<"\nQue queres hacer?"<<endl;
+    cout<<"\n1.   RETIRAR PLATA"<<endl;
+    cout<<"2.   PEDIR UN PRESTAMO"<<endl;
+    cout<<"\n0.   SALIR"<<endl;
+    cin>>quehacerbanco;
+    while(quehacerbanco!=1&&quehacerbanco!=2&&quehacerbanco!=0){
+        cout<<"\nNumero invalido"<<endl;
+        cin>>quehacerbanco;
+    }
+    switch(quehacerbanco){
+        case 1:
+        cout<<"\n--CAJERO--"<<endl;
+        cout<<"\nTu plata: $"<<plata<<endl;
+        cout<<"Plata disponible en el banco: $"<<platatrabajo<<endl;
+        cout<<"\nQue monto desea retirar?"<<endl;
+        cin>>montoaretirar;
+        while(montoaretirar>platatrabajo||montoaretirar<0){
+            cout<<"\nSaldo insuficiente."<<endl;
+            cin>>montoaretirar;
+        }
+        cout<<"\nBeep Beep..."<<endl;
+        usleep(500000);
+           cout<<"..."<<endl;
+           usleep(500000);
+           cout<<".."<<endl;
+           usleep(500000);
+           cout<<"."<<endl;
+           usleep(500000);
+           if(montoaretirar==0){
+               cout<<"\nERROR. Retiro cancelado."<<endl;
+                usleep(1000000);
+           }
+           else {
+               cout<<"\nMonto retirado satisfactoriamente."<<endl;
+           usleep(1000000);
+           plata=plata+montoaretirar;
+           platatrabajo=platatrabajo-montoaretirar;
+           }
+        
+        break;
+        
+        
+        
+        case 2:
+        cout<<"--Prestamo--"<<endl;
+         cout<<"\n?"<<endl;
+        
+        
+        
+        
+        break;
+    }
+    }//salir banco while
+    return 0;
+}
