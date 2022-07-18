@@ -40,6 +40,7 @@ int main(){
    int comidaobebida=10;
    int quehacercasa=10;
     int salircasa=10;
+    int dias=1;
 
     cout<<"Bienvenido al simulador de vida."<<endl;
     usleep (1000000);
@@ -140,7 +141,8 @@ int main(){
    }
     
             while(salud>0&&plata>0&&suenio<10&&hambre<10&&sed<10){
-            cout<<"\n\nTe encontras en la calle..."<<endl;
+            cout<<"\n\n-----DIA "<<dias<<"-----"<<endl;
+            cout<<"\nTe encontras en la calle..."<<endl;
             cout<<"Elegi tu destino:"<<endl;
             cout<<"1.   -GIMNASIO-"<<endl;
             cout<<"2.   -TRABAJO-"<<endl;
@@ -534,7 +536,7 @@ int main(){
                }
                cout<<suenio<<endl;
                cout<<"[H] "<<hambre<<" --> ";hambre=hambre+2.5;cout<<hambre<<" | [Se] "<<sed<<" --> ";sed=sed+2.5;cout<<sed<<endl;
-               
+               dias++;
                
            
         break;
@@ -552,7 +554,7 @@ int main(){
                }
                cout<<suenio<<endl;
                 cout<<"[H] "<<hambre<<" --> ";hambre=hambre+2.5;cout<<hambre<<" | [Se] "<<sed<<" --> ";sed=sed+2.5;cout<<sed<<endl;
-           
+           dias++;
         break;
         case 3: 
         cout<<"\nDormiste 7 horas."<<endl;
@@ -568,7 +570,7 @@ int main(){
                }
                cout<<suenio<<endl;
                 cout<<"[H] "<<hambre<<" --> ";hambre=hambre+2.5;cout<<hambre<<" | [Se] "<<sed<<" --> ";sed=sed+2.5;cout<<sed<<endl;
-             
+               dias++;
                
            
         break;
@@ -1901,6 +1903,7 @@ int main(){
      
      
       }//while principal (donde perdes)
+      usleep(3000000);
       if(plata<1){
           cout<<"\n\nTe quedaste sin plata."<<endl;
           usleep(1500000);
