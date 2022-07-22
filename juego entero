@@ -120,7 +120,7 @@ int main(){
     
    }
     
-            while(salud>0&&plata>0&&suenio<10&&hambre<10&&sed<10){
+            while(salud>0&&plata+platatrabajo>0&&suenio<10&&hambre<10&&sed<10){
             cout<<"\n\n-----DIA "<<dias<<"-----"<<endl;
             cout<<"\nTe encontras en la calle..."<<endl;
             cout<<"Elegi tu destino:"<<endl;
