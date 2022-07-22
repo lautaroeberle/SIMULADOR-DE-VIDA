@@ -1,22 +1,18 @@
-/******************************************************************************
 
-Welcome to GDB Online.
-GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
-C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
-Code, Compile, Run and Debug online from anywhere in world.
-
-*******************************************************************************/
 #include <iostream>
 #include <unistd.h>
-
+#include <stdlib.h>
 using namespace std;
 
 int main()
 {
-    int quehacerbanco=10;
-    int plata=1000;
-    int platatrabajo=11, montoaretirar=0;
-    while(quehacerbanco!=0){
+    float plata=50,montoaretirar=0,platatrabajo=30,montoprestamo=0,montoapagarprestamo=0;
+    int prestamodisponible=0,dias=2,diasprestamo=0;
+    int porcentaje=0;
+    //banco
+                int quehacerbanco;
+                quehacerbanco=10;
+                while(quehacerbanco!=0){
     cout<<"\n-----BANCO-----"<<endl;
     cout<<"\nQue queres hacer?"<<endl;
     cout<<"\n1.   RETIRAR PLATA"<<endl;
@@ -62,14 +58,47 @@ int main()
         
         
         case 2:
-        cout<<"--Prestamo--"<<endl;
-         cout<<"\n?"<<endl;
-        
+        cout<<"\n--Prestamo--"<<endl;
+         if(plata+platatrabajo>300){
+             prestamodisponible=plata/3;
+         }
+         else{
+             prestamodisponible=100;
+         }
+         cout<<"\nPrestamo maximo disponible: $"<<prestamodisponible<<endl;
+         cout<<"\nDe cuanta plata va a ser el prestamo que vas a pedir?"<<endl;
+        cin>>montoprestamo;
+        while(montoprestamo>prestamodisponible||montoprestamo<0){
+            cout<<"\nPrestamo disponible insuficiente."<<endl;
+            cin>>montoaretirar;
+        }
+        cout<<"\nProcesando la solicitud..."<<endl;
+        usleep(500000);
+           cout<<"..."<<endl;
+           usleep(500000);
+           cout<<".."<<endl;
+           usleep(500000);
+           cout<<"."<<endl;
+           usleep(500000);
+           if(montoprestamo==0){
+               cout<<"\nERROR. Prestamo cancelado."<<endl;
+                usleep(1000000);
+           }
+           else {
+               cout<<"\nPrestamo obtenido satisfactoriamente."<<endl;
+               diasprestamo=dias+2;
+               porcentaje=(montoprestamo*20)/100;
+               montoapagarprestamo=montoprestamo+porcentaje;
+                usleep(1000000);
+               cout<<"\nPlata a pagar al banco el dia "<<diasprestamo<<": $"<<montoapagarprestamo<<endl;
+           usleep(1000000);
+           }
         
         
         
         break;
     }
     }//salir banco while
+
     return 0;
 }
