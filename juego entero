@@ -18,7 +18,8 @@ int main(){
    int quehacerbanco=10;
    int platatrabajo=1100, montoaretirar=0;
     int salircasa=10;
-    int dias=1;
+    int dias=1,prestamodisponible=0,diasprestamo=0,porcentaje=0,montoprestamo=0,montoapagarprestamo=0;
+    bool prestamopedido=false;
 
     cout<<"Bienvenido al simulador de vida."<<endl;
     usleep (1000000);
@@ -120,7 +121,20 @@ int main(){
     
    }
     
-            while(salud>0&&plata+platatrabajo>0&&suenio<10&&hambre<10&&sed<10){
+            
+            while(salud>0&&plata+platatrabajo>0&&suenio<10&&hambre<10&&sed<10){ //inicio vida
+            if(prestamopedido==true&&diasprestamo==dias){ //AVISO BANCARIO
+                cout<<"\n\n---AVISO BANCARIO---"<<endl;
+                cout<<"El plazo de pago del prestamo de $"<<montoprestamo<<" pedido hace 2 dias se ha acabado."<<endl;
+                usleep(1000000);
+                cout<<"Debes pagar $"<<montoapagarprestamo<<endl;
+                cout<<"Prestamo: -$\n\n"<<montoapagarprestamo<<endl;
+                usleep(1000000);
+                prestamopedido=false;montoapagarprestamo=0;diasprestamo=0;montoprestamo=0;
+                plata=plata-montoapagarprestamo;
+            }
+            
+            if(plata+platatrabajo>0){
             cout<<"\n\n-----DIA "<<dias<<"-----"<<endl;
             cout<<"\nTe encontras en la calle..."<<endl;
             cout<<"Elegi tu destino:"<<endl;
@@ -155,8 +169,8 @@ int main(){
                 
                     break;
 
-                case 4: //tienda
-                 while (comidaobebida!=0){ //mientras que comidaobebida sea diferente a salir 
+                case 4: //tienda-------------------------------------------------------//
+                 while (comidaobebida!=0){ 
     cout<<"\n-----TIENDA-----"<<endl;
     cout<<"\nQue queres comprar?"<<endl;
     cout<<"\n1.  COMIDAS"<<endl;
@@ -460,9 +474,9 @@ int main(){
     }//mientras que comida o bebida sea diferente a salir fin del while
     comidaobebida=10;
                     break;
+                    //fin tienda-------------------------------------------------------//
                     
-                    
-                case 5: //banco
+                case 5: //banco-------------------------------------------------------//
                 quehacerbanco=10;
                 while(quehacerbanco!=0){
     cout<<"\n-----BANCO-----"<<endl;
@@ -510,19 +524,58 @@ int main(){
         
         
         case 2:
-        cout<<"--Prestamo--"<<endl;
-         cout<<"\n?"<<endl;
-        
-        
-        
+        cout<<"\n--Prestamo--"<<endl;
+         if(plata+platatrabajo>300){
+             prestamodisponible=plata/3;
+         }
+         else{
+             prestamodisponible=100;
+         }
+         if(prestamopedido==false){
+         cout<<"\nPrestamo maximo disponible: $"<<prestamodisponible<<endl;
+         cout<<"\nDe cuanta plata va a ser el prestamo que vas a pedir?"<<endl;
+        cin>>montoprestamo;
+        while(montoprestamo>prestamodisponible||montoprestamo<0){
+            cout<<"\nEl monto excede el prestamo maximo disponible."<<endl;
+            cin>>montoprestamo;
+        }
+        cout<<"\nProcesando la solicitud..."<<endl;
+        usleep(500000);
+           cout<<"..."<<endl;
+           usleep(500000);
+           cout<<".."<<endl;
+           usleep(500000);
+           cout<<"."<<endl;
+           usleep(500000);
+           if(montoprestamo==0){
+               cout<<"\nERROR. Prestamo cancelado."<<endl;
+                usleep(1000000);
+           }
+           else {
+               cout<<"\nPrestamo obtenido satisfactoriamente."<<endl;
+               prestamopedido=true;
+               diasprestamo=dias+2;
+               porcentaje=(montoprestamo*20)/100;
+               montoapagarprestamo=montoprestamo+porcentaje;
+                usleep(1000000);
+               cout<<"\nPlata a pagar al banco el dia "<<diasprestamo<<": $"<<montoapagarprestamo<<endl;
+           usleep(1000000);
+           }
+         }//if prestamo no esta pedido
+        else if(prestamopedido==true){
+            cout<<"\nYa has pedido un prestamo recientemente."<<endl;
+            usleep(1000000);
+            cout<<"\nPlata a pagar el dia "<<diasprestamo<<": $"<<montoapagarprestamo<<endl;
+             usleep(1000000);
+        }
         
         break;
     }
     }//salir banco while
                 break;
+                    //fin banco-------------------------------------------------------//
                
-               
-                case 6: //casa
+                case 6: //casa--------------------------------------------------------//
          quehacercasa=10;       
     while(quehacercasa!=0){
         
@@ -616,7 +669,7 @@ int main(){
     }
     }//salir casa
                 break;
-               
+                        //fin casa-----------------------------------------------------//
                
                 case 10://perfil
                 break;
@@ -625,7 +678,7 @@ int main(){
                 case 11://logros
                 break;
                 
-                case 0:  //*AYUDA   -------------------------//
+                case 0:  //*AYUDA   --------------------------------------------------//
                 int ayuda1,ayudan2,ayudai2;ayuda1=1000;ayudan2=1000;while(ayuda1!=0){
                 cout<<"\n-----AYUDA-----"<<endl<<"\n1.   NECESIDADES BASICAS"<<endl<<"2.   INSTALACIONES"<<endl<<endl<<"0.   SALIR"<<endl; ayuda1=10;cin>>ayuda1;
                 while(ayuda1!=1&&ayuda1!=2&&ayuda1!=0){cout<<"\nEl numero ingresado es invalido."<<endl;cin>>ayuda1;}if(ayuda1==1){ayudan2=1000;while(ayudan2!=0){cout<<"\n-----AYUDA-----"<<endl<<"\n--NECESIDADES BASICAS--\n"<<endl<<"1.   ENERGIA"<<endl<<"2.   HAMBRE"<<endl<<"3.   PLATA"<<endl<<"4.   SUEÑO"<<endl<<"5.   SED"<<endl<<"\n0.   VOLVER"<<endl;ayudan2=10;cin>>ayudan2;while(ayudan2!=1&&ayudan2!=2&&ayudan2!=3&&ayudan2!=4&&ayudan2!=5&&ayudan2!=0){cout<<"\nEl numero ingresado es invalido."<<endl;cin>>ayudan2;}switch(ayudan2){   case 1: cout<<"\nEnergia (E):"<<endl<<"Si bien la energia no es una necesidad basica a satisfacer, necesitaras tener un buen nivel de energia para desempeñar actividades durante el dia."<<endl<<"Este se medira del 0 al 10 (0-10)."<<endl<<"Tu nivel de energia disminuira conforme realices actividades durante el dia, pero podras aumentarlo durmiendo o consumiendo bebidas energeticas."<<endl<<"\nIngresa cualquier caracter para continuar."<<endl;cin>>INGRESECUALQUIERCARACTER2; break;case 2: cout<<"\nHambre (H):"<<endl<<"Es muy importante mantenerse con un bajo nivel de hambre."<<endl<<"Este se medira del 0 al 10 (0-10)."<<endl<<"Tu nivel de hambre aumentara cada vez que comience un nuevo dia, pero podras disminuirlo comprando comida en la tienda."<<endl<<"Cuidado con llegar a 10... Podrias morir."<<endl; cout<<"\nIngresa cualquier caracter para continuar."<<endl;cin>>INGRESECUALQUIERCARACTER2;break; case 3: cout<<"\nPlata ($):"<<endl<<"La plata es escencial. Sin ella no llegaras muy lejos."<<endl<<"Vas a comenzar la vida con $100. Podras ganar plata apostando en el casino y/o trabajando."<<endl; cout<<"\nIngresa cualquier caracter para continuar."<<endl;cin>>INGRESECUALQUIERCARACTER2;break;case 4:  cout<<"\nSueño (SU):"<<endl<<"Es realmente importante mantenerse con un bajo nivel de sueño."<<endl<<"Este se medira del 0 al 10 (0-10)."<<endl<<"Tu nivel de sueño aumentara conforme realices actividades durante el dia, pero podras disminuirlo durmiendo."<<endl<<"Cuidado con llegar a 10... Podrias morir."<<endl; cout<<"\nIngresa cualquier caracter para continuar."<<endl;cin>>INGRESECUALQUIERCARACTER2;break;case 5: cout<<"\nSed (SE):"<<endl;cout<<"Es sumamente importante mantenerse con un bajo nivel de sed."<<endl;cout<<"Este se medira del 0 al 10 (0-10)."<<endl;cout<<"Tu nivel de sed aumentara cada vez que comience un nuevo dia, pero podras disminuirlo comprando bebidas en la tienda."<<endl;cout<<"Cuidado con llegar a 10... Podrias morir."<<endl;break;}break;
@@ -701,11 +754,11 @@ break;
             }//fin if ayuda1=2
 
           }//FIN AYUDA------------------------------//
-}
+}                        //fin ayuda-----------------------------------------------------//
 
 
 
-//casino
+                         //casino----------------------------------------------------//
    
     while(ruletartaimportante=="S"||ruletartaimportante=="s"){
         int rul1=-1, rul2=-1,rul3=-1,rul4=-1,rul5=-1,rul6=-1,rul7=-1,rul8=-1,rul9=-1,rul10=-1,rul11=-1,rul12=-1,rul13=-1,rul14=-1,rul15=-1,rul16=-1,rul17=-1,rul18=-1,rul19=-1,rul20=-1,rul21=-1,rul22=-1,rul23=-1,rul24=-1,rul25=-1,rul26=-1,rul27=-1,rul28=-1,rul29=-1,rul30=-1,rul31=-1,rul32=-1,rul33=-1,rul34=-1,rul35=-1,rul36=-1;
@@ -1904,10 +1957,10 @@ break;
     }
     
     }//while casino==s
+                        //fin casino-------------------------------------------------//
      
      
-     
-     
+            }//fin if
       }//while principal (donde perdes)
       usleep(3000000);
       if(plata<1){
