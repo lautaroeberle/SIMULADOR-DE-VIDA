@@ -1,0 +1,119 @@
+quehacerhospital=10;
+     while (quehacerhospital!=0){ 
+    cout<<"\n-----HOSPITAL-----"<<endl;
+    cout<<"\nTenes $"<<plata<<".\n"<<endl;
+    cout<<"Nivel de salud: "<<salud<<"/10\n"<<endl;
+    cout<<"\nQue queres comprar?"<<endl;
+    cout<<"\nComprar..."<<endl;
+     cout<<"\n1. Ibuprofeno 500mg  ($10)"<<endl;
+    cout<<"2. Paracetamol 1g  ($20)"<<endl;
+    cout<<"3. Revision medica  ($35)"<<endl;
+    cout<<"4. Extraccion de tumores  ($85)"<<endl;
+    cout<<"5. Transplante de corazon  ($1000)"<<endl;
+    cout<<"\n0. Salir"<<endl;
+    cin>>quehacerhospital;
+    while(quehacerhospital!=1&&quehacerhospital!=2&&quehacerhospital!=3&&quehacerhospital!=4&&quehacerhospital!=5&&quehacerhospital!=0){
+       cout<<"\nEl numero ingresado es invalido."<<endl;
+     cin>>quehacerhospital;
+    }  
+  
+   switch(quehacerhospital){
+       case 1:
+       if((plata-10)<0){
+           cout<<"\nNo tenes suficiente plata."<<endl;
+           usleep(1000000);
+       }
+       else if ((plata-10)>=0){
+           cout<<"\nCompraste un Ibuprofeno de 500mg."<<endl;
+           usleep(1000000);
+               cout<<"[Sa] "<<salud<<" --> ";
+               salud=salud+1;
+               cout<<salud<<endl;
+               if (salud>10){
+    salud=10;
+    }
+              cout<<"Costo: -$10"<<endl;
+               plata=plata-10;
+               usleep(2000000);
+       }
+       break;
+       case 2:
+      if((plata-20)<0){
+           cout<<"\nNo tenes suficiente plata."<<endl;
+           usleep(1000000);
+       }
+       else if ((plata-20)>=0){
+           cout<<"\nCompraste un paracetamol de 1g."<<endl;
+           usleep(1000000);
+               cout<<"[Sa] "<<salud<<" --> ";
+               salud=salud+2;
+               cout<<salud<<endl;
+               if (salud>10){
+    salud=10;
+    }
+              cout<<"Costo: -$20"<<endl;
+               plata=plata-20;
+               usleep(2000000);
+       }
+       break;
+       case 3:
+       if((plata-35)<0){
+           cout<<"\nNo tenes suficiente plata."<<endl;
+           usleep(1000000);
+       }
+       else if ((plata-35)>=0){
+           cout<<"\nPagaste una revision medica."<<endl;
+           usleep(1000000);
+               cout<<"[Sa] "<<salud<<" --> ";
+               salud=salud+3.5;
+               cout<<salud<<endl;
+               if (salud>10){
+    salud=10;
+    }
+              cout<<"Costo: -$35"<<endl;
+               plata=plata-35;
+               usleep(2000000);
+       }
+          
+       break;
+       case 4:
+       if((plata-85)<0){
+           cout<<"\nNo tenes suficiente plata."<<endl;
+           usleep(1000000);
+       }
+       else if ((plata-85)>=0){
+           cout<<"\nPagaste una extraccion de tumores."<<endl;
+           usleep(1000000);
+               cout<<"[Sa] "<<salud<<" --> ";
+               salud=salud+9;
+               cout<<salud<<endl;
+               if (salud>10){
+    salud=10;
+    }
+              cout<<"Costo: -$85"<<endl;
+               plata=plata-85;
+               usleep(2000000);
+       }
+       break;
+       case 5:
+       if((plata-1000)<0){
+           cout<<"\nNo tenes suficiente plata."<<endl;
+           usleep(1000000);
+       }
+       else if ((plata-1000)>=0){
+           cout<<"\nPagaste una transaccion de corazon."<<endl;
+           usleep(1000000);
+               cout<<"[Sa] "<<salud<<" --> ";
+               salud=salud+10;
+               cout<<salud<<endl;
+               if (salud>10){
+    salud=10;
+    }
+              cout<<"Costo: -$1000"<<endl;
+               plata=plata-1000;
+               usleep(2000000);
+       }
+       break;
+       
+   }
+     }
