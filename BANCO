@@ -1,4 +1,4 @@
-
+//hacer whiles en prestamo. bool prestamo pedido. if bool is true, no puede pedir prestamo
 #include <iostream>
 #include <unistd.h>
 #include <stdlib.h>
