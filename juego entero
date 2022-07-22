@@ -179,7 +179,7 @@ int main(){
      cout<<"\n1. Hamburguesa  ($25)"<<endl;
     cout<<"2. Papas fritas  ($15)"<<endl;
     cout<<"3. Tarta de verdura  ($30)"<<endl;
-    cout<<"4. Caviar c/ salsa de mariscos  ($400)"<<endl;
+    cout<<"4. Caviar c/ salsa de mariscos  ($500)"<<endl;
     cout<<"5. Helado  ($10)"<<endl;
     cout<<"\n0. Salir"<<endl;
     cin>>comidas;
@@ -257,11 +257,11 @@ int main(){
           
        break;
        case 4:
-       if((plata-400)<0){
+       if((plata-500)<0){
            cout<<"\nNo tenes suficiente plata"<<endl;
            usleep(1000000);
            }
-       else if((plata-400)>=0){
+       else if((plata-500)>=0){
            cout<<"\nCompraste caviar c/ salsa de mariscos."<<endl;
            usleep(1000000);
                cout<<"[H] "<<hambre<<" --> ";
@@ -269,8 +269,8 @@ int main(){
                cout<<hambre<<" | [Sa] " <<salud<<" --> ";
                salud=10;
                cout<<salud<<endl;
-               cout<<"Costo: -$400"<<endl;
-               plata=plata-400;
+               cout<<"Costo: -$500"<<endl;
+               plata=plata-500;
                usleep(2000000);
        }
        break;
