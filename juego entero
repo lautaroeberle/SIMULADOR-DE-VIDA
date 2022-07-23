@@ -2054,6 +2054,13 @@ break;
             cout<<"\n\n------TE QUEDASTE SIN PLATA------"<<endl;
             cout<<"------Te expulsan del casino :c------"<<endl;
             ruletartaimportante="PERDITE";
+            usleep(500000);
+            cout<<"[E] "<<energia<<" --> ";
+               energia=energia-0.25;
+               if (energia<0){
+    energia=0;
+    }
+               cout<<energia<<endl;
         }
         else if(plata>0){
             cout<<"\n\nQueres seguir apostando?"<<endl;
@@ -2069,6 +2076,13 @@ break;
 
             if(ruletartaimportante=="N"||ruletartaimportante=="n"){
                 cout<<"Sales del casino."<<endl<<endl;
+                usleep(500000);
+                 cout<<"[E] "<<energia<<" --> ";
+               energia=energia-0.25;
+               if (energia<0){
+    energia=0;
+    }
+               cout<<energia<<endl;
             }
     }
     if(salircasino==0){
