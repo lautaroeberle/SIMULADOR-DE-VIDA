@@ -37,12 +37,12 @@ int main(){
         usleep (1200000);
         cout<<"Plata ($):"<<endl;
         cout<<"La plata es escencial. Sin ella no llegaras muy lejos."<<endl;
-        cout<<"Vas a comenzar la vida con $100. Podras ganar plata apostando en el casino y/o trabajando."<<endl;
+        cout<<"Vas a comenzar la vida con $100. Podras ganar plata apostando en el casino y trabajando."<<endl;
         usleep (1200000);
         cout<<"\nSalud (S):"<<endl;
         cout<<"Es vital mantenerse con buen nivel de salud."<<endl;
         cout<<"Este se medira del 0 al 10 (0-10)."<<endl;
-        cout<<"Podras aumentar tu nivel de salud comiendo sano y ejercitandote. Tu nivel de salud disminuira si comes comida chatarra, contraes enfermedades o te lesionas."<<endl;
+        cout<<"Podras aumentar tu nivel de salud comiendo sano y/o yendo al hospital. Tu nivel de salud disminuira si comes comida chatarra, contraes enfermedades o te lesionas."<<endl;
         cout<<"Cuidado con llegar a 0... Podrias morir."<<endl;
         usleep (1200000);
         cout<<"\nHambre (H):"<<endl;
@@ -80,7 +80,7 @@ int main(){
         cout<<"\nTrabajo:"<<endl;
         cout<<"Podras ganar plata en él."<<endl;
         cout<<"Una sesion trabajo puede ser extremadamente poco exitosa, poco exitosa, regular, exitosa o extremadamente exitosa. De esto dependera cuanta plata ganes en la sesion."<<endl; 
-        cout<<"* consume E - probabilidad de disminuir S * "<<endl;
+        cout<<"En cada sesion de trabajo puedes contraer enfermedades o lesionarte. Manten tu nivel de salud alto! "<<endl;
         usleep (1500000);
         cout<<"\nCasa"<<endl;
         cout<<"Podras dormir en ella. Hacerlo disminuira tu sueño y aumentara tu energia, pero tambien aumentara tu hambre y sed."<<endl;
@@ -128,7 +128,7 @@ int main(){
                 cout<<"El plazo de pago del prestamo de $"<<montoprestamo<<" pedido hace 2 dias se ha acabado."<<endl;
                 usleep(1000000);
                 cout<<"Debes pagar $"<<montoapagarprestamo<<endl;
-                cout<<"Prestamo: -$\n\n"<<montoapagarprestamo<<endl;
+                cout<<"Prestamo: -$"<<montoapagarprestamo<<"\n\n"<<endl;
                 usleep(1000000);
                 prestamopedido=false;montoapagarprestamo=0;diasprestamo=0;montoprestamo=0;
                 plata=plata-montoapagarprestamo;
@@ -293,7 +293,7 @@ int main(){
         cin>>quehacertrabajo;
     }
     if(quehacertrabajo==1){
-    if(energia>=2&&sesiontrabajodisp>0){
+    if(energia>=3&&sesiontrabajodisp>0){
         platasesion1=0,platasesion2=0,platasesion3=0,platasesion4=0,platasesion5=0;
     cout<<"\nEntras al trabajo..."<<endl;    
         usleep (500000);
@@ -314,6 +314,17 @@ int main(){
             usleep (500000);
             platatrabajo=platatrabajo+platasesion1;
             sesiontrabajodisp--;
+            cout<<"[E] "<<energia<<" --> ";
+               energia=energia-3;
+               if (energia<0){
+    energia=0;
+    }
+               cout<<energia<<" | [Su] "<<suenio<<" --> ";
+               suenio=suenio+3;
+               if (suenio>10){
+    suenio=10;
+    }
+    cout<<suenio<<endl;
         }
         if (exitosesion==2){
             platasesion2=40+rand() % (50 + 1 - 40);
@@ -323,6 +334,17 @@ int main(){
             usleep (500000);
             platatrabajo=platatrabajo+platasesion2;
             sesiontrabajodisp--;
+            cout<<"[E] "<<energia<<" --> ";
+               energia=energia-3;
+               if (energia<0){
+    energia=0;
+    }
+               cout<<energia<<" | [Su] "<<suenio<<" --> ";
+               suenio=suenio+3;
+               if (suenio>10){
+    suenio=10;
+    }
+    cout<<suenio<<endl;
         }
         if (exitosesion==3){
             platasesion3=30+rand() % (40 + 1 - 30);
@@ -332,6 +354,17 @@ int main(){
             usleep (500000);
             platatrabajo=platatrabajo+platasesion3;
             sesiontrabajodisp--;
+            cout<<"[E] "<<energia<<" --> ";
+               energia=energia-3;
+               if (energia<0){
+    energia=0;
+    }
+               cout<<energia<<" | [Su] "<<suenio<<" --> ";
+               suenio=suenio+3;
+               if (suenio>10){
+    suenio=10;
+    }
+    cout<<suenio<<endl;
         }
         if (exitosesion==4){
             platasesion4=15+rand() % (30 + 1 - 15);
@@ -341,6 +374,17 @@ int main(){
             usleep (500000);
             platatrabajo=platatrabajo+platasesion4;
             sesiontrabajodisp--;
+            cout<<"[E] "<<energia<<" --> ";
+               energia=energia-3;
+               if (energia<0){
+    energia=0;
+    }
+               cout<<energia<<" | [Su] "<<suenio<<" --> ";
+               suenio=suenio+3;
+               if (suenio>10){
+    suenio=10;
+    }
+    cout<<suenio<<endl;
         }
          if (exitosesion==5){
             platasesion5=1+rand() % (15 + 1 - 1);
@@ -350,6 +394,17 @@ int main(){
             usleep (500000);
             platatrabajo=platatrabajo+platasesion5;
             sesiontrabajodisp--;
+            cout<<"[E] "<<energia<<" --> ";
+               energia=energia-3;
+               if (energia<0){
+    energia=0;
+    }
+               cout<<energia<<" | [Su] "<<suenio<<" --> ";
+               suenio=suenio+3;
+               if (suenio>10){
+    suenio=10;
+    }
+    cout<<suenio<<endl;
         }
         enfermedad=1+rand() % (5 + 1 - 1);
         cout<<enfermedad;
@@ -780,7 +835,7 @@ int main(){
         
         case 2:
         cout<<"\n--Prestamo--"<<endl;
-         if(plata+platatrabajo<300){
+         if(plata+platatrabajo>300){
              prestamodisponible=(plata+platatrabajo)/3;
          }
          else{
@@ -870,12 +925,12 @@ int main(){
                case 1:
                cout<<"\nDormiste 5 horas."<<endl;
                cout<<"[E] "<<energia<<" --> ";
-               energia=energia+3;
+               energia=energia+ 3;
                if (energia>10){
     energia=10;
     }
                cout<<energia<<" | [Su] " <<suenio<<" --> ";
-               suenio=suenio-3;
+               suenio=suenio- 3;
                if(suenio<0){
                    suenio=0;
                }
@@ -889,34 +944,34 @@ int main(){
         case 2: 
         cout<<"\nDormiste 6 horas."<<endl;
                cout<<"[E] "<<energia<<" --> ";
-               energia=energia+4;
+               energia=energia+ 4;
                if (energia>10){
     energia=10;
     }
                cout<<energia<<" | [Su] " <<suenio<<" --> ";
-               suenio=suenio-4;
+               suenio=suenio- 4;
                if(suenio<0){
                    suenio=0;
                }
                cout<<suenio<<endl;
-                cout<<"[H] "<<hambre<<" --> ";hambre=hambre+2.5;cout<<hambre<<" | [Se] "<<sed<<" --> ";sed=sed+2.5;cout<<sed<<endl;
+                cout<<"[H] "<<hambre<<" --> ";hambre=hambre+ 2.5;cout<<hambre<<" | [Se] "<<sed<<" --> ";sed=sed+ 2.5;cout<<sed<<endl;
            dias++;
            sesiontrabajodisp=1;
         break;
         case 3: 
         cout<<"\nDormiste 7 horas."<<endl;
                cout<<"[E] "<<energia<<" --> ";
-               energia=energia+5;
+               energia=energia+ 5;
                if (energia>10){
     energia=10;
     }
                cout<<energia<<" | [Su] " <<suenio<<" --> ";
-               suenio=suenio-5;
+               suenio=suenio- 5;
                if(suenio<0){
                    suenio=0;
                }
                cout<<suenio<<endl;
-                cout<<"[H] "<<hambre<<" --> ";hambre=hambre+2.5;cout<<hambre<<" | [Se] "<<sed<<" --> ";sed=sed+2.5;cout<<sed<<endl;
+                cout<<"[H] "<<hambre<<" --> ";hambre=hambre+ 2.5;cout<<hambre<<" | [Se] "<<sed<<" --> ";sed=sed+2.5;cout<<sed<<endl;
                dias++;
                sesiontrabajodisp=1;
                
@@ -968,7 +1023,7 @@ break;
                 case 2: cout<<"\nTrabajo:"<<endl;
         cout<<"Podras ganar plata en él."<<endl;
         cout<<"Una sesion trabajo puede ser extremadamente poco exitosa, poco exitosa, regular, exitosa o extremadamente exitosa. De esto dependera cuanta plata ganes en la sesion."<<endl; 
-        cout<<"Cada sesion de trabajo disminuira tu nivel de energia. Te expones mucho en el trabajo, por lo que tu salud podria bajar en cualquier sesion."<<endl;cout<<"\nIngresa cualquier caracter para continuar."<<endl;cin>>INGRESECUALQUIERCARACTER2;
+        cout<<"Cada sesion de trabajo disminuira tu nivel de energia."<<endl;cout<<"En cada sesion de trabajo puedes contraer enfermedades o lesionarte. Manten tu nivel de salud alto! "<<endl;;cin>>INGRESECUALQUIERCARACTER2;
                     break;
 
                 case 3: cout<<"\nCasino:"<<endl;
@@ -1024,6 +1079,7 @@ break;
         int APruletaparoimpar=0;
         int APruletarojoonegro=0;
         ruletartaimportante="S";
+        if(energia>=0.5){
         cout<<"-----CASINO-----"<<endl<<endl;
         cout<<"\nVas a jugar a la ruleta..."<<endl;
         cout<<"-La ruleta tiene 36 casilleros con 1 numero en cada uno. "<<endl;
@@ -2195,11 +2251,16 @@ break;
             ruletartaimportante="PERDITE";
             usleep(500000);
             cout<<"[E] "<<energia<<" --> ";
-               energia=energia-0.25;
+               energia=energia-0.5;
                if (energia<0){
     energia=0;
     }
-               cout<<energia<<endl;
+               cout<<energia<<" | [Su] "<<suenio<<" --> ";
+               suenio=suenio+0.5;
+               if (suenio>10){
+    suenio=10;
+    }
+    cout<<suenio<<endl;
         }
         else if(plata>0){
             cout<<"\n\nQueres seguir apostando?"<<endl;
@@ -2217,17 +2278,22 @@ break;
                 cout<<"Sales del casino."<<endl<<endl;
                 usleep(500000);
                  cout<<"[E] "<<energia<<" --> ";
-               energia=energia-0.25;
+               energia=energia-0.5;
                if (energia<0){
     energia=0;
     }
-               cout<<energia<<endl;
+               cout<<energia<<" | [Su] "<<suenio<<" --> ";
+               suenio=suenio+0.5;
+               if (suenio>10){
+    suenio=10;
+    }
+    cout<<suenio<<endl;
             }
     }
     if(salircasino==0){
         ruletartaimportante="N";
     }
-    
+        }//while energia>=0.5
     }//while casino==s
                         //fin casino-------------------------------------------------//
      
