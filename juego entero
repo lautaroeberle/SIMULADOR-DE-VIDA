@@ -14,11 +14,12 @@ int main(){
     string ruletartaimportante="N";
     float salud=5, energia=5, hambre=4, sed=4, suenio=2;
    int comidaobebida=10;
-   int quehacercasa=10, quehacerbanco,quehacerhospital=10;
-   int platatrabajo=1100, montoaretirar=0;
+   int quehacercasa=10, quehacerbanco=10,quehacerhospital=10,quehacertrabajo=10;
+   int platatrabajo=0, montoaretirar=0;
     int salircasa=10;
     int dias=1,prestamodisponible=0,diasprestamo=0,porcentaje=0,montoprestamo=0,montoapagarprestamo=0;
     bool prestamopedido=false;
+    int exitosesion=-2,platasesion1=0,platasesion2=0,platasesion3=0,platasesion4=0,platasesion5=0,enfermedad=0, queenfermedad=0, sesiontrabajodisp=1;
 
     cout<<"Bienvenido al simulador de vida."<<endl;
     usleep (1000000);
@@ -278,7 +279,142 @@ int main(){
 
 
 
-                case 2: //funciontrabajo
+                case 2:  
+                quehacertrabajo=10;
+                while(quehacertrabajo!=0){
+    cout<<"\n-----TRABAJO-----"<<endl;
+    cout<<"\nNivel de energia: "<<energia<<endl;
+    cout<<"\nSesiones de trabajo disponibles hoy: "<<sesiontrabajodisp<<endl;
+    cout<<"\nIngrese 1 para trabajar."<<endl;
+    cout<<"Ingrese 0 para salir."<<endl;
+    cin>>quehacertrabajo;
+    while(quehacertrabajo!=1&&quehacertrabajo!=0){
+        cout<<"\nNumero invalido"<<endl;
+        cin>>quehacertrabajo;
+    }
+    if(quehacertrabajo==1){
+    if(energia>=2&&sesiontrabajodisp>0){
+        platasesion1=0,platasesion2=0,platasesion3=0,platasesion4=0,platasesion5=0;
+    cout<<"\nEntras al trabajo..."<<endl;    
+        usleep (500000);
+        cout<<"..."<<endl;
+        usleep (500000);
+        cout<<".."<<endl;
+        usleep (500000);
+        cout<<"."<<endl;
+        usleep (500000);
+         //variable = limite_inferior + rand() % (limite_superior +1 - limite_inferior) ;
+
+        exitosesion= rand() % 5 + 1;
+        if (exitosesion==1){
+            platasesion1=50 + rand() % (60 + 1 - 50);
+            cout<<"\nLa sesion de trabajo fue EXTREMADAMENTE EXITOSA!"<<endl;
+            usleep (500000);
+            cout<<"Ganaste $"<<platasesion1<<endl;
+            usleep (500000);
+            platatrabajo=platatrabajo+platasesion1;
+            sesiontrabajodisp--;
+        }
+        if (exitosesion==2){
+            platasesion2=40+rand() % (50 + 1 - 40);
+            cout<<"\nLa sesion de trabajo fue EXITOSA!"<<endl;
+            usleep (500000);
+            cout<<"Ganaste $"<<platasesion2<<endl;
+            usleep (500000);
+            platatrabajo=platatrabajo+platasesion2;
+            sesiontrabajodisp--;
+        }
+        if (exitosesion==3){
+            platasesion3=30+rand() % (40 + 1 - 30);
+            cout<<"\nLa sesion de trabajo fue REGULAR"<<endl;
+            usleep (500000);
+            cout<<"Ganaste $"<<platasesion3<<endl;
+            usleep (500000);
+            platatrabajo=platatrabajo+platasesion3;
+            sesiontrabajodisp--;
+        }
+        if (exitosesion==4){
+            platasesion4=15+rand() % (30 + 1 - 15);
+            cout<<"\nLa sesion de trabajo fue POCO EXITOSA"<<endl;
+            usleep (500000);
+            cout<<"Ganaste $"<<platasesion4<<endl;
+            usleep (500000);
+            platatrabajo=platatrabajo+platasesion4;
+            sesiontrabajodisp--;
+        }
+         if (exitosesion==5){
+            platasesion5=1+rand() % (15 + 1 - 1);
+            cout<<"\nLa sesion de trabajo fue EXTREMADAMENTE POCO EXITOSA"<<endl;
+            usleep (500000);
+            cout<<"Ganaste $"<<platasesion5<<endl;
+            usleep (500000);
+            platatrabajo=platatrabajo+platasesion5;
+            sesiontrabajodisp--;
+        }
+        enfermedad=1+rand() % (5 + 1 - 1);
+        cout<<enfermedad;
+        if(enfermedad==5){
+            queenfermedad=1+rand() % 87 - 1;
+            if(queenfermedad<50){
+                usleep (500000);
+                cout<<"\nUY! Has contraido GRIPE en el trabajo."<<endl;
+                usleep (1000000);
+                cout<<"[Sa] "<<salud<<" --> ";
+               salud=salud-2;
+               cout<<salud<<endl;
+            }
+            else if (queenfermedad<=65){
+                usleep (500000);
+                cout<<"\nUY! Te has golpeado la cabeza en el trabajo."<<endl;
+                usleep (1000000);
+                cout<<"[Sa] "<<salud<<" --> ";
+               salud=salud-3;
+               cout<<salud<<endl;
+            }
+            else if (queenfermedad<=75){
+                usleep (500000);
+                cout<<"\nUY! Te has desgarrado un musculo en el trabajo."<<endl;
+                usleep (1000000);
+                cout<<"[Sa] "<<salud<<" --> ";
+               salud=salud-3.5;
+               cout<<salud<<endl;
+            }
+            else if (queenfermedad<=85){
+                usleep (500000);
+                cout<<"\nUY! Te has roto un brazo en el trabajo."<<endl;
+                usleep (1000000);
+                cout<<"[Sa] "<<salud<<" --> ";
+               salud=salud-4.5;
+               cout<<salud<<endl;
+            }
+            else{
+                usleep (500000);
+                cout<<"\nUY! Tocaste un cable pelado en el trabajo."<<endl;
+                usleep (1000000);
+                cout<<"[Sa] "<<salud<<" --> ";
+               salud=salud-8;
+               cout<<salud<<endl;
+            }
+        }
+        
+        
+        
+    
+        
+        
+        
+    }//if energia>=2
+    else if(sesiontrabajodisp==0){
+        cout<<"\nVolve mañana para seguir trabajando!"<<endl;
+    } 
+    else  {
+        cout<<"\nNivel de energia insuficiente"<<endl;
+    }
+        
+    
+    
+    } //que hacertrabajo==1   
+    }//salir trabajo while
                     break;
 
                 case 3: ruletartaimportante="S";
@@ -746,6 +882,7 @@ int main(){
                cout<<suenio<<endl;
                cout<<"[H] "<<hambre<<" --> ";hambre=hambre+2.5;cout<<hambre<<" | [Se] "<<sed<<" --> ";sed=sed+2.5;cout<<sed<<endl;
                dias++;
+               sesiontrabajodisp=1;
                
            
         break;
@@ -764,6 +901,7 @@ int main(){
                cout<<suenio<<endl;
                 cout<<"[H] "<<hambre<<" --> ";hambre=hambre+2.5;cout<<hambre<<" | [Se] "<<sed<<" --> ";sed=sed+2.5;cout<<sed<<endl;
            dias++;
+           sesiontrabajodisp=1;
         break;
         case 3: 
         cout<<"\nDormiste 7 horas."<<endl;
@@ -780,6 +918,7 @@ int main(){
                cout<<suenio<<endl;
                 cout<<"[H] "<<hambre<<" --> ";hambre=hambre+2.5;cout<<hambre<<" | [Se] "<<sed<<" --> ";sed=sed+2.5;cout<<sed<<endl;
                dias++;
+               sesiontrabajodisp=1;
                
            
         break;
