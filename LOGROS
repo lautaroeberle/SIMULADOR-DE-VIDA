@@ -1,1 +1,140 @@
-cout<<"1. "<<endl;
+/******************************************************************************
+bool ltodaslascomidas cuando compras 1 cosa, suma al logro, bool true y no suma mas
+
+*******************************************************************************/
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int a;
+    int quehacerlogros=100;
+    int lplataganada=0, lplataapostada=0;
+    int ltodaslascomidas=0,ltodaslasbebidas=0;
+    int lcaviar=0;
+    int lbebidasenergeticas=0;
+    int lhospital=0;
+    int lcorazon=0;
+    int llesionestrabajo=0;
+    int lprestamo=0;
+    int logrosjuego=0;
+    
+    bool l1=false,l2=false,l3=false,l4=false,l5=false,l6=false,l7=false,l8=false,l9=false,l10=false,l11=false,l12=false,l13=false,l14=false,l15=false,l16=false,l17=false,l18=false,l19=false,l20=false,l21=false;
+    
+    
+    //---
+     int dias=0;
+
+    while(quehacerlogros!=0){
+    cout<<"\n-----LOGROS-----"<<endl;
+    cout<<"\nIngrese el numero de cualquier logro completado para recibir una recompensa..."<<endl;
+    cout<<"\n1. GANAR PLATA: ("<<lplataganada<<"/100)";
+    if(l1==true){
+        cout<<"  [RECLAMADO]";
+    }
+    cout<<"\n2. GANAR PLATA: ("<<lplataganada<<"/500)";
+     if(l2==true){
+        cout<<"  [RECLAMADO]";
+    }
+    cout<<"\n3. GANAR PLATA: ("<<lplataganada<<"/1000)";
+     if(l3==true){
+        cout<<"  [RECLAMADO]";
+    }
+    cout<<"\n4. GANAR PLATA: ("<<lplataganada<<"/10000)";
+     if(l4==true){
+        cout<<"  [RECLAMADO]";
+    }
+    cout<<"\n5. SOBREVIVE DIAS: ("<<dias<<"/5)";  
+     if(l5==true){
+        cout<<"  [RECLAMADO]";
+    }
+    cout<<"\n6. SOBREVIVE DIAS: ("<<dias<<"/10)";
+     if(l6==true){
+        cout<<"  [RECLAMADO]";
+    }
+    cout<<"\n7. SOBREVIVE DIAS: ("<<dias<<"/50)";
+     if(l7==true){
+        cout<<"  [RECLAMADO]";
+    }
+    cout<<"\n8. SOBREVIVE DIAS: ("<<dias<<"/100)";
+     if(l8==true){
+        cout<<"  [RECLAMADO]";
+    }
+    cout<<"\n9. APUESTA PLATA EN UNA SESION DE CASINO: ("<<lplataapostada<<"/100)";
+     if(l9==true){
+        cout<<"  [RECLAMADO]";
+    }
+    cout<<"\n10. APUESTA PLATA EN UNA SESION DE CASINO: ("<<lplataapostada<<"/500)";
+     if(l10==true){
+        cout<<"  [RECLAMADO]";
+    }
+    cout<<"\n11. APUESTA PLATA EN UNA SESION DE CASINO: ("<<lplataapostada<<"/1000)";
+     if(l11==true){
+        cout<<"  [RECLAMADO]";
+    }
+    cout<<"\n12. APUESTA PLATA EN UNA SESION DE CASINO: ("<<lplataapostada<<"/10000)";
+     if(l12==true){
+        cout<<"  [RECLAMADO]";
+    }
+    cout<<"\n13. COME TODAS LAS COMIDAS DE LA TIENDA: ("<<ltodaslascomidas<<"/5)";
+     if(l13==true){
+        cout<<"  [RECLAMADO]";
+    }
+    cout<<"\n14. BEBE TODAS LAS BEBIDAS DE LA TIENDA: ("<<ltodaslasbebidas<<"/5)";
+     if(l14==true){
+        cout<<"  [RECLAMADO]";
+    }
+    cout<<"\n15. PAGA TODO LO QUE OFRECE EL HOSPITAL: ("<<lhospital<<"/2)";
+     if(l15==true){
+        cout<<"  [RECLAMADO]";
+    }
+    cout<<"\n16. COMPRA 2 PLATOS DE CAVIAR: ("<<lcaviar<<"/2)";
+     if(l16==true){
+        cout<<"  [RECLAMADO]";
+    }
+    cout<<"\n17. BEBE BEBIDAS ENERGETICAS: ("<<lbebidasenergeticas<<"/10)"; 
+     if(l17==true){
+        cout<<"  [RECLAMADO]";
+    }
+    cout<<"\n18. TRANSPLANTATE EL CORAZON: ("<<lcorazon<<"/1)";
+     if(l18==true){
+        cout<<"  [RECLAMADO]";
+    }
+    cout<<"\n19. SOBREVIVE A 5 LESIONES EN EL TRABAJO: ("<<llesionestrabajo<<"/5)";
+     if(l19==true){
+        cout<<"  [RECLAMADO]";
+    }
+    cout<<"\n20. PIDE UN PRESTAMO DE MAS DE $1000: ("<<lprestamo<<"/1)";
+     if(l20==true){
+        cout<<"  [RECLAMADO]";
+    }
+    cout<<"\n21. COMPLETA TODOS LOS LOGROS DEL JUEGO: ("<<logrosjuego<<"/20)";
+     if(l21==true){
+        cout<<"  [RECLAMADO]";
+    }
+    cout<<"\n";
+    cin>>a;
+        //GANAR PLATA: 100(10)-500(50)-1000(100)-10000(400)
+//PAGA UN TRANSPLANTE DE CORAZON (200)
+//COMPRA 2 `PLATOS DE CAVIAR (150)
+//SOBREVIVIR DIAS: 5(35)-10(70)-50(250)-100(500)
+//BEBE BEBIDAS ENERGETICAS (0/10) (50)
+//BEBE TODAS LAS BEBIDAS DE LA TIENDA (35)
+//COME TODAS LAS COMIDAS DE LA TIENDA (35)
+//PAGA TODO LO QUE OFRECE EL HOSPITAL (50)
+//APUESTA PLATA EN UNA SESION DE CASINO 100 (10) 500(35)-1000(70)-10000(200)
+//PEDI UN PRESTAMO DE MAS DE $1000 (50)
+//SOBREVIVE A 5 LESIONES EN EL TRABAJO (45)
+//COMPLETA TODOS LOS LOGROS DEL JUEGO (0/1)(10000)
+
+        
+        
+        
+        
+        
+        
+        
+    }//while que hacerogros=!ª 0
+    return 0;
+}
