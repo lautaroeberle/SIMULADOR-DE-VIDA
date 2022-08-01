@@ -3,14 +3,14 @@ bool ltodaslascomidas cuando compras 1 cosa, suma al logro, bool true y no suma 
 
 *******************************************************************************/
 #include <iostream>
-
+#include <unistd.h>
 using namespace std;
 
 int main()
 {
     int a;
     int quehacerlogros=100;
-    int lplataganada=0, lplataapostada=0;
+    int lplataganada=100, lplataapostada=0;
     int ltodaslascomidas=0,ltodaslasbebidas=0;
     int lcaviar=0;
     int lbebidasenergeticas=0;
@@ -24,11 +24,13 @@ int main()
     
     
     //---
-     int dias=0;
+     int dias=0,platatrabajo=0;
 
     while(quehacerlogros!=0){
     cout<<"\n-----LOGROS-----"<<endl;
     cout<<"\nIngrese el numero de cualquier logro completado para recibir una recompensa..."<<endl;
+   //l1
+   
     cout<<"\n1. GANAR PLATA: ("<<lplataganada<<"/100)";
     if(l1==true){
         cout<<"  [RECLAMADO]";
@@ -114,7 +116,120 @@ int main()
         cout<<"  [RECLAMADO]";
     }
     cout<<"\n";
-    cin>>a;
+    cin>>quehacerlogros;
+    
+    
+    switch(quehacerlogros){
+        case 1:
+        if(lplataganada>=100&&l1==false){
+            l1=true;
+            cout<<"\nLOGRO COMPLETADO"<<endl;
+            usleep(500000);
+            cout<<"\nRecompensa: $10"<<endl;
+            platatrabajo=platatrabajo + 10;
+            usleep(1000000);
+        }
+        else if(l1==true){
+            cout<<"\nEl logro ya ha sido reclamado"<<endl;
+            usleep(1000000);
+        }
+        else if(lplataganada<100){
+             cout<<"\nEl logro no fue completado aun"<<endl;
+             usleep(1000000);
+        }
+        break;
+        case 2:
+        if(lplataganada>=500&&l2==false){
+            l2=true;
+            cout<<"\nLOGRO COMPLETADO"<<endl;
+            usleep(500000);
+            cout<<"\nRecompensa: $50"<<endl;
+            platatrabajo=platatrabajo + 50;
+            usleep(1000000);
+        }
+         else if(l2==true){
+            cout<<"\nEl logro ya ha sido reclamado"<<endl;
+            usleep(1000000);
+        }
+        else if(lplataganada<500){
+             cout<<"\nEl logro no fue completado aun"<<endl;
+             usleep(1000000);
+        }
+        break;
+        case 3:
+        if(lplataganada>=1000&&l3==false){
+            l3=true;
+            cout<<"\nLOGRO COMPLETADO"<<endl;
+            usleep(500000);
+            cout<<"\nRecompensa: $100"<<endl;
+            platatrabajo=platatrabajo + 100;
+            usleep(1000000);
+        }
+         else if(l3==true){
+            cout<<"\nEl logro ya ha sido reclamado"<<endl;
+            usleep(1000000);
+        }
+        else if(lplataganada<1000){
+             cout<<"\nEl logro no fue completado aun"<<endl;
+             usleep(1000000);
+        }
+        break;
+        case 4:
+        if(lplataganada>=10000&&l4==false){
+            l4=true;
+            cout<<"\nLOGRO COMPLETADO"<<endl;
+            usleep(500000);
+            cout<<"\nRecompensa: $350"<<endl;
+            platatrabajo=platatrabajo + 350;
+            usleep(1000000);
+        }
+         else if(l4==true){
+            cout<<"\nEl logro ya ha sido reclamado"<<endl;
+            usleep(1000000);
+        }
+        else if(lplataganada<10000){
+             cout<<"\nEl logro no fue completado aun"<<endl;
+             usleep(1000000);
+        }
+        break;
+        case 5:
+        break;
+        case 6:
+        break;
+        case 7:
+        break;
+        case 8:
+        break;
+        case 9:
+        break;
+        case 10:
+        break;
+        case 11:
+        break;
+        case 12:
+        break;
+        case 13:
+        break;
+        case 14:
+        break;
+        case 15:
+        break;
+        case 16:
+        break;
+        case 17:
+        break;
+        case 18:
+        break;
+        case 19:
+        break;
+        case 20:
+        break;
+        case 21:
+        break;
+    }
+    
+    
+    
         //GANAR PLATA: 100(10)-500(50)-1000(100)-10000(400)
 //PAGA UN TRANSPLANTE DE CORAZON (200)
 //COMPRA 2 `PLATOS DE CAVIAR (150)
