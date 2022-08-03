@@ -1,0 +1,11 @@
+quehacerperfil=10;
+while (quehacerperfil!=0){
+    cout<<"-----PERFIL-----"<<endl;
+    cout<<"\n\nNombre: "<<nombre<<endl;
+    cout<<"Apellido: "<<apellido<<endl;
+    cout<<"Energia: "<<energia<<endl;
+    cout<<"Hambre: "<<hambre<<endl;
+    cout<<"Salud: "<<salud<<endl;
+    cout<<"Sueño: "<<suenio<<endl;
+    cout<<"Sed: "<<sed<<endl;
+    cout<<"\n0. SALIR"<<endl;
