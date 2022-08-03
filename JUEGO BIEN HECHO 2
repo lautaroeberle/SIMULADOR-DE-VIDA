@@ -932,6 +932,7 @@ int main(){
                if(montoprestamo>=1000){
                    lprestamo++;
                }
+               platatrabajo=platatrabajo+montoprestamo;
                cout<<"\nPrestamo obtenido satisfactoriamente."<<endl;
                prestamopedido=true;
                diasprestamo=dias+2;
