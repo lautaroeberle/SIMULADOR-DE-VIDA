@@ -14,7 +14,7 @@ int main(){
     string ruletartaimportante="N";
     float salud=5, energia=5, hambre=4, sed=4, suenio=2;
    int comidaobebida=10;
-   int quehacercasa=10, quehacerbanco=10,quehacerhospital=10,quehacertrabajo=10;
+   int quehacercasa=10, quehacerbanco=10,quehacerhospital=10,quehacertrabajo=10,quehacerlogros;
    int platatrabajo=0, montoaretirar=0;
     int salircasa=10;
     int dias=1,prestamodisponible=0,diasprestamo=0,porcentaje=0,montoprestamo=0,montoapagarprestamo=0;
@@ -904,8 +904,10 @@ int main(){
              prestamodisponible=(plata+platatrabajo)/3;
          }
          else{
+             
              prestamodisponible=100;
          }
+         
          if(prestamopedido==false){
          cout<<"\nPrestamo maximo disponible: $"<<prestamodisponible<<endl;
          cout<<"\nDe cuanta plata va a ser el prestamo que vas a pedir?"<<endl;
@@ -927,6 +929,9 @@ int main(){
                 usleep(1000000);
            }
            else {
+               if(montoprestamo>=1000){
+                   lprestamo++;
+               }
                cout<<"\nPrestamo obtenido satisfactoriamente."<<endl;
                prestamopedido=true;
                diasprestamo=dias+2;
@@ -1054,6 +1059,567 @@ int main(){
                
                
                 case 11://logros
+                 quehacerlogros=10;
+                 while(quehacerlogros!=0){
+    cout<<"\n-----LOGROS-----"<<endl;
+    cout<<"\nIngrese el numero de cualquier logro completado para recibir una recompensa..."<<endl;
+   //l1
+   
+    cout<<"\n1. GANAR PLATA: ("<<lplataganada<<"/100)";
+    if(l1==true){
+        cout<<"  [RECLAMADO]";
+    }
+    cout<<"\n2. GANAR PLATA: ("<<lplataganada<<"/500)";
+     if(l2==true){
+        cout<<"  [RECLAMADO]";
+    }
+    cout<<"\n3. GANAR PLATA: ("<<lplataganada<<"/1000)";
+     if(l3==true){
+        cout<<"  [RECLAMADO]";
+    }
+    cout<<"\n4. GANAR PLATA: ("<<lplataganada<<"/10000)";
+     if(l4==true){
+        cout<<"  [RECLAMADO]";
+    }
+    cout<<"\n5. SOBREVIVE DIAS: ("<<dias<<"/5)";  
+     if(l5==true){
+        cout<<"  [RECLAMADO]";
+    }
+    cout<<"\n6. SOBREVIVE DIAS: ("<<dias<<"/10)";
+     if(l6==true){
+        cout<<"  [RECLAMADO]";
+    }
+    cout<<"\n7. SOBREVIVE DIAS: ("<<dias<<"/50)";
+     if(l7==true){
+        cout<<"  [RECLAMADO]";
+    }
+    cout<<"\n8. SOBREVIVE DIAS: ("<<dias<<"/100)";
+     if(l8==true){
+        cout<<"  [RECLAMADO]";
+    }
+    if(l9b==true){cout<<"\n9. APUESTA PLATA EN UNA SESION DE CASINO: (100/100)";
+     if(l9==true){
+        cout<<"  [RECLAMADO]";
+    }}
+    else cout<<"\n9. APUESTA PLATA EN UNA SESION DE CASINO: (0/100)";
+    if(l10b==true){cout<<"\n10. APUESTA PLATA EN UNA SESION DE CASINO: (500/500)";
+     if(l10==true){
+        cout<<"  [RECLAMADO]";
+    }}
+    else cout<<"\n10. APUESTA PLATA EN UNA SESION DE CASINO: (0/500)";
+     if(l11b==true){cout<<"\n11. APUESTA PLATA EN UNA SESION DE CASINO: (1000/1000)";
+     if(l11==true){
+        cout<<"  [RECLAMADO]";
+    }}
+    else cout<<"\n11. APUESTA PLATA EN UNA SESION DE CASINO: (0/1000)";
+    if(l12b==true){cout<<"\n12. APUESTA PLATA EN UNA SESION DE CASINO: (10000/10000)";
+     if(l12==true){
+        cout<<"  [RECLAMADO]";
+    }}
+    else cout<<"\n12. APUESTA PLATA EN UNA SESION DE CASINO: (0/10000)";
+    cout<<"\n13. COME TODAS LAS COMIDAS DE LA TIENDA: ("<<ltodaslascomidas<<"/5)";
+     if(l13==true){
+        cout<<"  [RECLAMADO]";
+    }
+    cout<<"\n14. BEBE TODAS LAS BEBIDAS DE LA TIENDA: ("<<ltodaslasbebidas<<"/5)";
+     if(l14==true){
+        cout<<"  [RECLAMADO]";
+    }
+    cout<<"\n15. PAGA TODO LO QUE OFRECE EL HOSPITAL: ("<<lhospital<<"/5)";
+     if(l15==true){
+        cout<<"  [RECLAMADO]";
+    }
+    cout<<"\n16. COMPRA 2 PLATOS DE CAVIAR: ("<<lcaviar<<"/2)";
+     if(l16==true){
+        cout<<"  [RECLAMADO]";
+    }
+    cout<<"\n17. BEBE BEBIDAS ENERGETICAS: ("<<lbebidasenergeticas<<"/10)"; 
+     if(l17==true){
+        cout<<"  [RECLAMADO]";
+    }
+    cout<<"\n18. TRANSPLANTATE EL CORAZON: ("<<lcorazon<<"/1)";
+     if(l18==true){
+        cout<<"  [RECLAMADO]";
+    }
+    cout<<"\n19. SOBREVIVE A 5 LESIONES EN EL TRABAJO: ("<<llesionestrabajo<<"/5)";
+     if(l19==true){
+        cout<<"  [RECLAMADO]";
+    }
+    cout<<"\n20. PIDE UN PRESTAMO DE MAS DE $1000: ("<<lprestamo<<"/1)";
+     if(l20==true){
+        cout<<"  [RECLAMADO]";
+    }
+    cout<<"\n21. COMPLETA TODOS LOS LOGROS DEL JUEGO: ("<<logrosjuego<<"/20)";
+     if(l21==true){
+        cout<<"  [RECLAMADO]";
+    }
+    cout<<"\n";
+    if(FINJUEGO==true){
+       cout<<"\n-HAS COMPLETADO TODOS LOS LOGROS DEL SIMULADOR DE VIDA. ¡FELICIDADES!"<<endl; 
+    }
+    cin>>quehacerlogros;
+    
+    
+    switch(quehacerlogros){
+        case 1:
+        if(lplataganada>=100&&l1==false){
+            logrosjuego++;
+            l1=true;
+            cout<<"\nLOGRO COMPLETADO"<<endl;
+            usleep(500000);
+            cout<<"\nRecompensa: $10"<<endl;
+            platatrabajo=platatrabajo + 10;
+            usleep(1000000);
+        }
+        else if(l1==true){
+            cout<<"\nEl logro ya ha sido reclamado"<<endl;
+            usleep(1000000);
+        }
+        else if(lplataganada<100){
+             cout<<"\nEl logro no fue completado aun"<<endl;
+             usleep(1000000);
+        }
+        break;
+        case 2:
+        if(lplataganada>=500&&l2==false){
+            logrosjuego++;
+            l2=true;
+            cout<<"\nLOGRO COMPLETADO"<<endl;
+            usleep(500000);
+            cout<<"\nRecompensa: $50"<<endl;
+            platatrabajo=platatrabajo + 50;
+            usleep(1000000);
+        }
+         else if(l2==true){
+            cout<<"\nEl logro ya ha sido reclamado"<<endl;
+            usleep(1000000);
+        }
+        else if(lplataganada<500){
+             cout<<"\nEl logro no fue completado aun"<<endl;
+             usleep(1000000);
+        }
+        break;
+        case 3:
+        if(lplataganada>=1000&&l3==false){
+            logrosjuego++;
+            l3=true;
+            cout<<"\nLOGRO COMPLETADO"<<endl;
+            usleep(500000);
+            cout<<"\nRecompensa: $100"<<endl;
+            platatrabajo=platatrabajo + 100;
+            usleep(1000000);
+        }
+         else if(l3==true){
+            cout<<"\nEl logro ya ha sido reclamado"<<endl;
+            usleep(1000000);
+        }
+        else if(lplataganada<1000){
+             cout<<"\nEl logro no fue completado aun"<<endl;
+             usleep(1000000);
+        }
+        break;
+        case 4:
+        if(lplataganada>=10000&&l4==false){
+            logrosjuego++;
+            l4=true;
+            cout<<"\nLOGRO COMPLETADO"<<endl;
+            usleep(500000);
+            cout<<"\nRecompensa: $350"<<endl;
+            platatrabajo=platatrabajo + 350;
+            usleep(1000000);
+        }
+         else if(l4==true){
+            cout<<"\nEl logro ya ha sido reclamado"<<endl;
+            usleep(1000000);
+        }
+        else if(lplataganada<10000){
+             cout<<"\nEl logro no fue completado aun"<<endl;
+             usleep(1000000);
+        }
+        break;
+        case 5:
+        if(dias>=5&&l5==false){
+            logrosjuego++;
+            l5=true;
+            cout<<"\nLOGRO COMPLETADO"<<endl;
+            usleep(500000);
+            cout<<"\nRecompensa: $35"<<endl;
+            platatrabajo=platatrabajo + 35;
+            usleep(1000000);
+        }
+        else if(l5==true){
+            cout<<"\nEl logro ya ha sido reclamado"<<endl;
+            usleep(1000000);
+        }
+        else if(dias<5){
+             cout<<"\nEl logro no fue completado aun"<<endl;
+             usleep(1000000);
+        }
+        break;
+        case 6:
+         if(dias>=10&&l6==false){
+             logrosjuego++;
+            l6=true;
+            cout<<"\nLOGRO COMPLETADO"<<endl;
+            usleep(500000);
+            cout<<"\nRecompensa: $70"<<endl;
+            platatrabajo=platatrabajo + 70;
+            usleep(1000000);
+        }
+        else if(l6==true){
+            cout<<"\nEl logro ya ha sido reclamado"<<endl;
+            usleep(1000000);
+        }
+        else if(dias<10){
+             cout<<"\nEl logro no fue completado aun"<<endl;
+             usleep(1000000);
+        }
+        break;
+        case 7:
+         if(dias>=50&&l7==false){
+             logrosjuego++;
+            l7=true;
+            cout<<"\nLOGRO COMPLETADO"<<endl;
+            usleep(500000);
+            cout<<"\nRecompensa: $250"<<endl;
+            platatrabajo=platatrabajo + 250;
+            usleep(1000000);
+        }
+        else if(l7==true){
+            cout<<"\nEl logro ya ha sido reclamado"<<endl;
+            usleep(1000000);
+        }
+        else if(dias<50){
+             cout<<"\nEl logro no fue completado aun"<<endl;
+             usleep(1000000);
+        }
+        break;
+        case 8:
+         if(dias>=100&&l8==false){
+             logrosjuego++;
+            l8=true;
+            cout<<"\nLOGRO COMPLETADO"<<endl;
+            usleep(500000);
+            cout<<"\nRecompensa: $500"<<endl;
+            platatrabajo=platatrabajo + 500;
+            usleep(1000000);
+        }
+        else if(l8==true){
+            cout<<"\nEl logro ya ha sido reclamado"<<endl;
+            usleep(1000000);
+        }
+        else if(dias<100){
+             cout<<"\nEl logro no fue completado aun"<<endl;
+             usleep(1000000);
+        }
+        break;
+        case 9: if(l9b==true&&l9==false){
+            logrosjuego++;
+            l9=true;
+            cout<<"\nLOGRO COMPLETADO"<<endl;
+            usleep(500000);
+            cout<<"\nRecompensa: $10"<<endl;
+            platatrabajo=platatrabajo + 10;
+            usleep(1000000);
+        }
+        else if(l9==true){
+            cout<<"\nEl logro ya ha sido reclamado"<<endl;
+            usleep(1000000);
+        }
+        else if(l9b==false){
+             cout<<"\nEl logro no fue completado aun"<<endl;
+             usleep(1000000);
+        }
+        break;
+        case 10:
+        if(l10b==true&&l10==false){
+            logrosjuego++;
+            l10=true;
+            cout<<"\nLOGRO COMPLETADO"<<endl;
+            usleep(500000);
+            cout<<"\nRecompensa: $35"<<endl;
+            platatrabajo=platatrabajo + 35;
+            usleep(1000000);
+        }
+        else if(l10==true){
+            cout<<"\nEl logro ya ha sido reclamado"<<endl;
+            usleep(1000000);
+        }
+        else if(l10b==false){
+             cout<<"\nEl logro no fue completado aun"<<endl;
+             usleep(1000000);
+        }
+        break;
+        case 11:
+        if(l11b==true&&l11==false){
+            logrosjuego++;
+            l11=true;
+            cout<<"\nLOGRO COMPLETADO"<<endl;
+            usleep(500000);
+            cout<<"\nRecompensa: $70"<<endl;
+            platatrabajo=platatrabajo + 70;
+            usleep(1000000);
+        }
+        else if(l11==true){
+            cout<<"\nEl logro ya ha sido reclamado"<<endl;
+            usleep(1000000);
+        }
+        else if(l11b==false){
+             cout<<"\nEl logro no fue completado aun"<<endl;
+             usleep(1000000);
+        }
+        break;
+        case 12:
+        if(l12b==true&&l12==false){
+            logrosjuego++;
+            l12=true;
+            cout<<"\nLOGRO COMPLETADO"<<endl;
+            usleep(500000);
+            cout<<"\nRecompensa: $200"<<endl;
+            platatrabajo=platatrabajo + 200;
+            usleep(1000000);
+        }
+        else if(l12==true){
+            cout<<"\nEl logro ya ha sido reclamado"<<endl;
+            usleep(1000000);
+        }
+        else if(l12b==false){
+             cout<<"\nEl logro no fue completado aun"<<endl;
+             usleep(1000000);
+        }
+        break;
+        case 13:
+        if(ltodaslascomidas>=5&&l13==false){
+            logrosjuego++;
+            l13=true;
+            cout<<"\nLOGRO COMPLETADO"<<endl;
+            usleep(500000);
+            cout<<"\nRecompensa: $35"<<endl;
+            platatrabajo=platatrabajo + 35;
+            usleep(1000000);
+        }
+        else if(l13==true){
+            cout<<"\nEl logro ya ha sido reclamado"<<endl;
+            usleep(1000000);
+        }
+        else if(ltodaslascomidas<5){
+             cout<<"\nEl logro no fue completado aun"<<endl;
+             usleep(1000000);
+        }
+        break;
+        case 14:
+         if(ltodaslasbebidas>=5&&l14==false){
+             logrosjuego++;
+            l14=true;
+            cout<<"\nLOGRO COMPLETADO"<<endl;
+            usleep(500000);
+            cout<<"\nRecompensa: $35"<<endl;
+            platatrabajo=platatrabajo + 35;
+            usleep(1000000);
+        }
+        else if(l14==true){
+            cout<<"\nEl logro ya ha sido reclamado"<<endl;
+            usleep(1000000);
+        }
+        else if(ltodaslasbebidas<5){
+             cout<<"\nEl logro no fue completado aun"<<endl;
+             usleep(1000000);
+        }
+        break;
+        case 15:
+         if(lhospital>=5&&l15==false){
+             logrosjuego++;
+            l15=true;
+            cout<<"\nLOGRO COMPLETADO"<<endl;
+            usleep(500000);
+            cout<<"\nRecompensa: $35"<<endl;
+            platatrabajo=platatrabajo + 35;
+            usleep(1000000);
+        }
+        else if(l15==true){
+            cout<<"\nEl logro ya ha sido reclamado"<<endl;
+            usleep(1000000);
+        }
+        else if(lhospital<5){
+             cout<<"\nEl logro no fue completado aun"<<endl;
+             usleep(1000000);
+        }
+        break;
+        case 16:
+        if(lcaviar>=2&&l16==false){
+            logrosjuego++;
+            l16=true;
+            cout<<"\nLOGRO COMPLETADO"<<endl;
+            usleep(500000);
+            cout<<"\nRecompensa: $100"<<endl;
+            platatrabajo=platatrabajo + 100;
+            usleep(1000000);
+        }
+        else if(l16==true){
+            cout<<"\nEl logro ya ha sido reclamado"<<endl;
+            usleep(1000000);
+        }
+        else if(lcaviar<2){
+             cout<<"\nEl logro no fue completado aun"<<endl;
+             usleep(1000000);
+        }
+        break;
+        case 17:
+         if(lbebidasenergeticas>=10&&l17==false){
+             logrosjuego++;
+            l17=true;
+            cout<<"\nLOGRO COMPLETADO"<<endl;
+            usleep(500000);
+            cout<<"\nRecompensa: $40"<<endl;
+            platatrabajo=platatrabajo + 40;
+            usleep(1000000);
+        }
+        else if(l17==true){
+            cout<<"\nEl logro ya ha sido reclamado"<<endl;
+            usleep(1000000);
+        }
+        else if(lbebidasenergeticas<10){
+             cout<<"\nEl logro no fue completado aun"<<endl;
+             usleep(1000000);
+        }
+        break;
+        case 18: 
+        if(lcorazon>=1&&l18==false){
+            logrosjuego++;
+            l18=true;
+            cout<<"\nLOGRO COMPLETADO"<<endl;
+            usleep(500000);
+            cout<<"\nRecompensa: $200"<<endl;
+            platatrabajo=platatrabajo + 200;
+            usleep(1000000);
+        }
+        else if(l18==true){
+            cout<<"\nEl logro ya ha sido reclamado"<<endl;
+            usleep(1000000);
+        }
+        else if(lcorazon<1){
+             cout<<"\nEl logro no fue completado aun"<<endl;
+             usleep(1000000);
+        }
+        break;
+        case 19:
+         if(llesionestrabajo>=5&&l19==false){
+             logrosjuego++;
+            l19=true;
+            cout<<"\nLOGRO COMPLETADO"<<endl;
+            usleep(500000);
+            cout<<"\nRecompensa: $45"<<endl;
+            platatrabajo=platatrabajo + 45;
+            usleep(1000000);
+        }
+        else if(l19==true){
+            cout<<"\nEl logro ya ha sido reclamado"<<endl;
+            usleep(1000000);
+        }
+        else if(llesionestrabajo<5){
+             cout<<"\nEl logro no fue completado aun"<<endl;
+             usleep(1000000);
+        }
+        break;
+        case 20:
+         if(lprestamo>=1&&l20==false){
+             logrosjuego++;
+            l20=true;
+            cout<<"\nLOGRO COMPLETADO"<<endl;
+            usleep(500000);
+            cout<<"\nRecompensa: $50"<<endl;
+            platatrabajo=platatrabajo + 50;
+            usleep(1000000);
+        }
+        else if(l20==true){
+            cout<<"\nEl logro ya ha sido reclamado"<<endl;
+            usleep(1000000);
+        }
+        else if(lprestamo<1){
+             cout<<"\nEl logro no fue completado aun"<<endl;
+             usleep(1000000);
+        }
+        break;
+        case 21:
+         if(logrosjuego>=20&&l21==false){
+             FINJUEGO==true;
+            l21=true;
+            cout<<"\nLOGRO COMPLETADO"<<endl;
+            usleep(500000);
+            cout<<"\nRecompensa: $100000"<<endl;
+            platatrabajo=platatrabajo + 100000;
+            usleep(1000000);
+        }
+        else if(l21==true){
+            cout<<"\nEl logro ya ha sido reclamado"<<endl;
+            usleep(1000000);
+        }
+        else if(logrosjuego<20){
+             cout<<"\nEl logro no fue completado aun"<<endl;
+             usleep(1000000);
+        }
+        break;
+    }
+    
+    
+    
+        //GANAR PLATA: 100(10)-500(50)-1000(100)-10000(400)
+//PAGA UN TRANSPLANTE DE CORAZON (200)
+//COMPRA 2 `PLATOS DE CAVIAR (150)
+//SOBREVIVIR DIAS: 5(35)-10(70)-50(250)-100(500)
+//BEBE BEBIDAS ENERGETICAS (0/10) (50)
+//BEBE TODAS LAS BEBIDAS DE LA TIENDA (35)
+//COME TODAS LAS COMIDAS DE LA TIENDA (35)
+//PAGA TODO LO QUE OFRECE EL HOSPITAL (50)
+//APUESTA PLATA EN UNA SESION DE CASINO 100 (10) 500(35)-1000(70)-10000(200)
+//PEDI UN PRESTAMO DE MAS DE $1000 (50)
+//SOBREVIVE A 5 LESIONES EN EL TRABAJO (45)
+//COMPLETA TODOS LOS LOGROS DEL JUEGO (0/1)(10000)
+
+        
+        
+        
+        
+        
+        
+        
+    }//while que hacerogros=!ª 0
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 break;
                 
                 case 0:  //*AYUDA   --------------------------------------------------//
@@ -2309,6 +2875,7 @@ break;
         }
 
         cout<<"\n\nTU PLATA: $"<<plata<<endl;
+         lplataganada=lplataganada+rulg;
 
         if(plata==0){
             cout<<"\n\n------TE QUEDASTE SIN PLATA------"<<endl;
