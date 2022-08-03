@@ -1153,10 +1153,11 @@ int main(){
      if(l21==true){
         cout<<"  [RECLAMADO]";
     }
-    cout<<"\n";
     if(FINJUEGO==true){
        cout<<"\n-HAS COMPLETADO TODOS LOS LOGROS DEL SIMULADOR DE VIDA. ¡FELICIDADES!"<<endl; 
     }
+    cout<<"\n0. SALIR";
+    cout<<"\n";
     cin>>quehacerlogros;
     
     
