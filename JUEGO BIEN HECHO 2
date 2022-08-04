@@ -6,7 +6,7 @@
 #endif
 using namespace std;
 int main(){
-
+//a
     int plata=250;
     int adondeir=200, salircasino=10;
     string ruletaparoimpar, ruletarojoonegro, rtaruleta;
