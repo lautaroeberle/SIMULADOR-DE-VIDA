@@ -497,7 +497,7 @@ int main(){
 
 
 
-                        } //que hacertrabajo==1   
+                        } //que hacertrabajo==1
                     }//salir trabajo while
                     break;
 
@@ -966,10 +966,12 @@ int main(){
                     while(quehacercasa!=0){
 
                         cout<<"\n\n-----CASA-----"<<endl;
+                        cout<<"\nTu plata: $"<<plata<<endl;
                         cout<<"\nNivel de energia: "<<energia<<endl;
                         cout<<"Nivel de sueño: "<<suenio<<endl;
                         cout<<"Nivel de hambre: "<<hambre<<endl;
-                        cout<<"Nivel de sueño: "<<sed<<endl;
+                        cout<<"Nivel de sed: "<<sed<<endl;
+                        cout<<"Nivel de salud: "<<salud<<endl;
                         cout<<"\nQue queres hacer?"<<endl;
                         cout<<"\n\n1.   DORMIR"<<endl;
                         cout<<"2.   PROXIMAMENTE"<<endl;
@@ -1654,7 +1656,7 @@ int main(){
                     int ayuda1,ayudan2,ayudai2;ayuda1=1000;ayudan2=1000;while(ayuda1!=0){
                 cout<<"\n-----AYUDA-----"<<endl<<"\n1.   NECESIDADES BASICAS"<<endl<<"2.   INSTALACIONES"<<endl<<endl<<"0.   SALIR"<<endl; ayuda1=10;cin>>ayuda1;
                 while(ayuda1!=1&&ayuda1!=2&&ayuda1!=0){cout<<"\nEl numero ingresado es invalido."<<endl;cin>>ayuda1;}if(ayuda1==1){ayudan2=1000;while(ayudan2!=0){cout<<"\n-----AYUDA-----"<<endl<<"\n--NECESIDADES BASICAS--\n"<<endl<<"1.   ENERGIA"<<endl<<"2.   HAMBRE"<<endl<<"3.   PLATA"<<endl<<"4.   SUEÑO"<<endl<<"5.   SED"<<endl<<"\n0.   VOLVER"<<endl;ayudan2=10;cin>>ayudan2;while(ayudan2!=1&&ayudan2!=2&&ayudan2!=3&&ayudan2!=4&&ayudan2!=5&&ayudan2!=0){cout<<"\nEl numero ingresado es invalido."<<endl;cin>>ayudan2;}switch(ayudan2){   case 1: cout<<"\nEnergia (E):"<<endl<<"Si bien la energia no es una necesidad basica a satisfacer, necesitaras tener un buen nivel de energia para desempeñar actividades durante el dia."<<endl<<"Este se medira del 0 al 10 (0-10)."<<endl<<"Tu nivel de energia disminuira conforme realices actividades durante el dia, pero podras aumentarlo durmiendo o consumiendo bebidas energeticas."<<endl<<"\nIngresa cualquier caracter para continuar."<<endl;cin>>INGRESECUALQUIERCARACTER2; break;case 2: cout<<"\nHambre (H):"<<endl<<"Es muy importante mantenerse con un bajo nivel de hambre."<<endl<<"Este se medira del 0 al 10 (0-10)."<<endl<<"Tu nivel de hambre aumentara cada vez que comience un nuevo dia, pero podras disminuirlo comprando comida en la tienda."<<endl<<"Cuidado con llegar a 10... Podrias morir."<<endl; cout<<"\nIngresa cualquier caracter para continuar."<<endl;cin>>INGRESECUALQUIERCARACTER2;break; case 3: cout<<"\nPlata ($):"<<endl<<"La plata es escencial. Sin ella no llegaras muy lejos."<<endl<<"Vas a comenzar la vida con $100. Podras ganar plata apostando en el casino y/o trabajando."<<endl; cout<<"\nIngresa cualquier caracter para continuar."<<endl;cin>>INGRESECUALQUIERCARACTER2;break;case 4:  cout<<"\nSueño (SU):"<<endl<<"Es realmente importante mantenerse con un bajo nivel de sueño."<<endl<<"Este se medira del 0 al 10 (0-10)."<<endl<<"Tu nivel de sueño aumentara conforme realices actividades durante el dia, pero podras disminuirlo durmiendo."<<endl<<"Cuidado con llegar a 10... Podrias morir."<<endl; cout<<"\nIngresa cualquier caracter para continuar."<<endl;cin>>INGRESECUALQUIERCARACTER2;break;case 5: cout<<"\nSed (SE):"<<endl;cout<<"Es sumamente importante mantenerse con un bajo nivel de sed."<<endl;cout<<"Este se medira del 0 al 10 (0-10)."<<endl;cout<<"Tu nivel de sed aumentara cada vez que comience un nuevo dia, pero podras disminuirlo comprando bebidas en la tienda."<<endl;cout<<"Cuidado con llegar a 10... Podrias morir."<<endl;break;}break;
-                    }}//fin if 
+                    }}//fin if
                 else if(ayuda1==2){  //inicio actual
                     cout<<"\n-----AYUDA-----"<<endl;
                     cout<<"\n--INSTALACIONES--\n"<<endl;
@@ -1722,7 +1724,7 @@ int main(){
                             break;
 
 
-                    }//fin switch   
+                    }//fin switch
                 }//fin if ayuda1=2
 
             }//FIN AYUDA------------------------------//
