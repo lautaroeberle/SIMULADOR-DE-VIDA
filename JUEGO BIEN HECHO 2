@@ -7,7 +7,7 @@
 using namespace std;
 int main(){
 
-    int plata=100;
+    int plata=250;
     int adondeir=200, salircasino=10;
     string ruletaparoimpar, ruletarojoonegro, rtaruleta;
     string INGRESECUALQUIERCARACTER1,INGRESECUALQUIERCARACTER2, confirmarnombreyedad="n"; 
