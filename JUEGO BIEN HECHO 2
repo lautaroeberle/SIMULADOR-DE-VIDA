@@ -6,7 +6,7 @@
 #endif
 using namespace std;
 int main(){
-//a
+
     int plata=250;
     int adondeir=200, salircasino=10;
     string ruletaparoimpar, ruletarojoonegro, rtaruleta;
@@ -2897,6 +2897,18 @@ int main(){
                         plata=plata+rulg;
                         cout<<"\n\n---GANANCIAS/PERDIDAS---"<<endl;
                         cout<<"\nAPOSTADO: $"<<rultotalapostado<<endl;
+                        if(rultotalapostado>=100){
+                            l9b=true;
+                        }
+                        if(rultotalapostado>=500){
+                            l10b=true;
+                        }
+                        if(rultotalapostado>=1000){
+                            l11b=true;
+                        }
+                        if(rultotalapostado>=10000){
+                            l12b=true;
+                        }
                         if((rulg-rultotalapostado)>0){
                             cout<<"\nGANANCIA: +$"<<rulg-rultotalapostado<<endl;
                         }
@@ -2938,24 +2950,26 @@ int main(){
 
                         if(ruletartaimportante=="N"||ruletartaimportante=="n"){
                             cout<<"Sales del casino."<<endl<<endl;
-                            usleep(500000);
-                            cout<<"[E] "<<energia<<" --> ";
-                            energia=energia-0.5;
-                            if (energia<0){
-                                energia=0;
-                            }
-                            cout<<energia<<" | [Su] "<<suenio<<" --> ";
-                            suenio=suenio+0.5;
-                            if (suenio>10){
-                                suenio=10;
-                            }
-                            cout<<suenio<<endl;
+
+
                         }
                     }
                     if(salircasino==0){
                         ruletartaimportante="N";
                     }
                 }//while energia>=0.5
+                usleep(500000);
+                cout<<"[E] "<<energia<<" --> ";
+                energia=energia-0.5;
+                if (energia<0){
+                    energia=0;
+                }
+                cout<<energia<<" | [Su] "<<suenio<<" --> ";
+                suenio=suenio+0.5;
+                if (suenio>10){
+                    suenio=10;
+                }
+                cout<<suenio<<endl;
             }//while casino==s
             //fin casino-------------------------------------------------//
 
